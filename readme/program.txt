@@ -1,0 +1,153 @@
+1) 우리 프로그램은?
+
+KIS v2.0 — AI-First 견적+ERP 오케스트레이터입니다. 핵심은:
+
+ChatOps 중심: 모든 복잡한 절차를 대화로 실행·감사 추적. (증거 없는 실행 금지·정책 우선·게이트 기반)
+
+자동견적 FIX-4 파이프라인: 외함선정→차단기배치/검증→견적양식화→표지/린트, 단계별 증거 번들과 게이트 강제.
+
+Agentic RAG: 모든 실행/대화/파일을 JSON 지식팩으로 저장→검증→지식화→재학습하는 루프. (3중 인덱스, 반례 우선, Reflect 자동 반영)
+
+전문가 집단형 멀티에이전트: 견적 전용 커스텀 AI(Estimator-AI)와 ERP 전용 AI(ERP-AI)를 필수로 두고, Gateway/Overseer가 정책과 계약을 집행.
+
+프론트엔드 기준: 좌측 사이드바( AI매니저·견적·ERP·캘린더·이메일·도면 )와 견적 탭의 입력/탭 시스템/AI챗이 이미 정의됨 — 백엔드는 이를 정확히 맞춰야 합니다.
+
+시뮬레이션·회귀 시나리오: 외함 솔버/중복요청/유효성/내부오류/지연 등 목업 시나리오로 API 행태와 에러 규약이 고정됨.
+
+2) 탭 구성과 기능(완성 정의)
+
+AI매니저: 업무 지시/요약/증거팩 조회, Agentic Queue 확인, Evidence Drawer 열람.
+
+견적: 고객/외함/메인·분기 차단기/부속자재 입력 → 견적 생성 → 테이블/총액/다운로드/전송. “차단기 설정” 팝업, 다중 탭 관리 포함.
+
+ERP: 아래 모든 버튼/메뉴 구현(이미지 기준 전수). 데이터는 ERP-AI와 RAG로 상호 학습/검증.
+
+기초자료 등록: 자재정보등록, 부서/센터, 상품/거래처, 신용/카드매입, 입출금, 자사은행계좌 등록
+
+기초이월: 상품/미수·미지급/운영/이용/채권채무/현금잔고 이월
+
+전표작성: 매입·매출·수금·지급·입출금·조립, 전표 등록/수정/삭제, 입출금(경비) 항목, 반품 처리, 거래처 월별잔고·단가관리·최종단가, 전표 항목 조기화
+
+보고서 조회: 매출명세/거래처·상품별 매출현황, 외계표·원표·상세, 기간별 통계/종합 현황/월별현황표, 거래처 원장/확인표, 상품/원재료 단가, 미수·미지급금 조회, 보고서 상세 조회 히스토리
+
+전자전송: 이메일(거래명세서/견적서/발주서)·전자지급, 문자·팩스 전송
+
+보고서 출력/저장: 거래원장/보고서 프린트, 엑셀·IMG·PDF 저장, 명세서 위치 초기화
+
+재고: 재고조정, 원가계산
+
+환경설정: 기본·양식·문자·바코드·프린트·기타·급여 설정
+
+기타: 사업장 마감, 새 사양 구성/추가, 명세서 위치 초기화, 백업/복원, Data3 저장경로 변경, 일정관리, 편리한 검색, 프로그램 단축키, 피시 변경(데이터 이전) 방법
+
+캘린더/이메일: 일정·메일 연동(전송/승인 루프와 증거 동봉).
+
+도면: 견적 결과를 입력으로 분전반 제작도면을 자동 생성(배치/간섭/상평형/간극·연면거리 규정 적용). CAD/OCR/도면-SVG MCP 포함.
+
+3) 백엔드 원샷 작업 프롬프트 (Claude Code용 · 통짜 블록)
+
+아래 블록을 그대로 전달해 실행하세요.
+
+ROLE / PERSONA
+- 너는 “KIS 백엔드 리드 엔지니어(Claude Code)”다.
+- 목표: 프론트엔드 스펙(사이드바·견적UI·AI챗·ERP 카드)와 사업 아키텍처(Agentic AI + FIX-4 + Agentic RAG)를 정확히 구현/연결/검증한다.
+- 품질바: 게이트 100%·회귀 100%·증거 커버리지 100%.
+
+REFERENCE (읽고 준수)
+- KIS v2.0 캐논(자율운영/정책·게이트/증거팩/Agentic RAG/ FIX-4 )  → 근거 규정 준수. [ref:v2.0-plan]  // :contentReference[oaicite:14]{index=14}
+- UI 스펙: hero/chat/quote/erp/ai-chat 팝업/탭/버튼/입력 필드/다운로드  → UI 계약 고정. [ref:frontend]  // :contentReference[oaicite:15]{index=15}
+- API 행태 목업: enclosure solver/지연/중복/유효성/500 오류 등 시나리오  → 상태코드·페이로드·힌트 규약 고정. [ref:scenarios]  // :contentReference[oaicite:16]{index=16}
+
+ARCHITECTURE (서비스)
+1) API Gateway (Express/Fastify) 
+   - JWT/Key 가드, RateLimit, Request-ID(traceId), Evidence Header (hash, path).
+   - Routes: /v1/estimate/*, /v1/erp/*, /v1/drawings/*, /v1/rag/*, /v1/admin/*.
+2) Estimator Service (FastAPI or Node)
+   - FIX-4 파이프라인: enclosure → breaker_placer+critic → estimate_formatter → cover_tab+doc_lint.
+   - 각 단계 Evidence 생성(svg/png/json/csv) + Gate 통과 여부 기록.
+3) ERP-AI Service (FastAPI)
+   - ERP 전 메뉴의 명세 기반 CRUD/리포트/전표엔진/전자전송/원가/재고/설정/마감.
+   - ChatOps 명령 → Plan → 계약(Agreement) → 실행(DAG) → Evidence → Reflect.
+4) RAG Service
+   - JSON 지식팩(packs/), guides/, indices/ (구조화+키워드+벡터) 3중 인덱스.
+   - Reflect Pack 자동 생성/머지/재인덱스.
+5) Drawing Service
+   - 견적 결과를 입력으로 분전반 배치/간섭/상평형 계산 후 **제작도면(SVG/DXF)** 자동 생성, 도면 Evidence/히트맵/검증 리포트 산출.
+
+DATA & CONTRACTS
+- SSOT 레이아웃: /KIS/Knowledge/{packs,guides,indices}/, /KIS/Prompts/, /KIS/Rules/, /KIS/Work/<session>/{input,output,logs}.  // [ref:v2.0-plan] :contentReference[oaicite:17]{index=17}
+- 공통 스키마(요지):
+  Estimate:
+    id, customer, enclosure, breakers{main,branches[]}, accessories[], totals, evidence[], meta{dedupKey,latencyMs}, createdAtZ, updatedAtZ
+  ERP:
+    master/* (items, partners, depts, cards, banks), opening/*, vouchers/*, reports/*, e-send/*, inventory/*, cost/*, settings/*, misc/*
+  Evidence:
+    id, kind(svg|png|json|pdf|xlsx), path, sha256, gate{ id, pass, metrics{} }, citations[]
+  RAG Pack:
+    id, version, rules[], examples[], counterexamples[], tests[], citations[], hash
+
+ENDPOINTS (요약·필수)
+- /v1/estimate (POST) : 견적 생성(FIX-4) – [ref:scenarios]의 status/에러/지연/중복 규약 준수.
+- /v1/estimate/{id}/evidence (GET) : 증거 번들 링크/다운로드.
+- /v1/drawings/from-estimate/{id} (POST) : 배치·간섭·상평형 계산→SVG/DXF + 리포트(json).
+- /v1/rag/packs (POST/PUT/GET) : JSON 지식팩 ingest/버전업/조회. Reflect 자동 빌드.
+- /v1/erp/** : 아래 “ERP MENU CONTRACTS” 전수 구현.
+
+ERP MENU CONTRACTS (전수 · 이미지의 모든 버튼 포함)
+A. 기초자료 등록
+   - POST /master/items, /master/departments, /master/products, /master/partners, /master/credit, /master/cashbooks, /master/bank-accounts
+   - GET/PUT/DELETE 전부, 중복/무결성 게이트
+B. 기초이월
+   - POST /opening/{goods,ar,ap,operating,usage,bonds,cash}
+C. 전표작성
+   - POST /vouchers/{purchase,sales,receipt,disbursement,cash,assembly}
+   - PATCH /vouchers/{id}/return, /vouchers/{id}/close
+   - 가격/단가/최종단가 관리, 전표 항목 조기화 API
+D. 보고서 조회
+   - GET /reports/{sales,by-partner,by-product,ledger,detail,period,summary,monthly,partner-ledger,partner-confirmation,price,ar,ap,history}
+E. 전자전송
+   - POST /e-send/{email,pay,sms,fax}  (템플릿·첨부·추적ID·재전송)
+F. 보고서 출력/저장
+   - POST /export/{print,excel,img,pdf}  (레이아웃 맵핑·위치 초기화)
+G. 재고
+   - POST /inventory/adjust, POST /cost/calc, GET /inventory/*
+H. 환경설정
+   - PUT /settings/{basic,forms,sms,barcode,printer,misc,payroll}
+I. 기타
+   - POST /closing/site, POST /specs/add, POST /backup, POST /restore, PUT /data3/path, GET /calendar, GET /search, GET /shortcuts, POST /pc-transfer
+
+GATES (차단 기준)
+- NO-EVIDENCE-NO-ACTION: 모든 쓰기 경로는 evidence.path+sha256 필요.
+- Estimate Gates: fit_score≥0.90, phase_balance≤3%, LintError=0, CoverRules=100%.
+- ERP Gates: 전표 이중기입 방지, 회계기초 락(마감 후 수정 금지), 단가 규범 위반 차단.
+- Export Gates: 템플릿 해시 검증, 누락 필드 0.
+
+ERROR MODEL (예시)
+- 409 DUPLICATE_REQUEST (meta.dedup_key), 422 VALIDATION with hint, 500 INTERNAL_ERROR with traceId.  // [ref:scenarios] :contentReference[oaicite:18]{index=18}
+
+SECURITY/OPS
+- JWT(iss=aud=…)/KeyId, RBAC(roles: admin, estimator, erp, viewer), PII 마스킹.
+- 비용/라이선스 가드, 캐시/큐/리트라이/타임아웃/폴백 기본.
+
+TESTS (회귀·시나리오)
+- /tests/estimate/: 정상·빈결과·지연·중복·유효성·500 전수.  // [ref:scenarios] :contentReference[oaicite:19]{index=19}
+- /tests/erp/: 각 메뉴 CRUD+리포트 스냅샷 비교, 전자전송 목서버, 마감 락/단가 규범 위반 케이스.
+- /tests/drawings/: 상평형 계산·간섭 0·연면거리 규정·SVG 비교.
+
+DoD (완료판정)
+- 프론트엔드 모든 버튼과 1:1 매핑 동작, PDF/Excel/IMG 내보내기 정상.  // [ref:frontend] :contentReference[oaicite:20]{index=20}
+- 회귀 100% PASS, Evidence 100%, 게이트 100%, 시나리오 응답 형식 일치.  // [ref:scenarios] :contentReference[oaicite:21]{index=21}
+
+4) 도면 자동화 & MCP 제안
+
+필수 MCP: CAD-to-SVG/DXF 변환, 도면 OCR/도면표 테이블 추출, 컴포넌트 배치/간섭 검사, 상평형·간극 계산, Excel 네임드 범위 주입기, PDF 폴리셔/린터. (FIX-4 및 도면 생성에 직결)
+
+5) 워크플로우(요약)
+
+AI챗에 견적요청서/도면 업로드 → Agentic Parser가 JSON 지식팩 생성 → Estimator-AI가 FIX-4 실행·증거팩 생성.
+
+완료된 견적 JSON이 RAG에 저장되어 차기 요청의 근거·반례로 학습. ERP-AI는 전표/재고/원가/보고서 생성 및 전송까지 수행.
+
+도면 탭이 견적 결과를 받아 제작도면 자동 출력(SVG/DXF)·검증 리포트 첨부.
+
+대표님, 바로 이 프롬프트로 진행하면 ERP 탭 전 메뉴를 하나도 빠짐없이 포함해 완성형 백엔드를 만들 수 있어요. (항상 믿고 갑니다.)

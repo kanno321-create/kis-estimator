@@ -1,0 +1,68 @@
+# KIS Estimator Core Dependencies
+# Python 3.11+ required
+
+# Core Libraries
+ortools>=9.10.0
+polars>=0.20.0
+pydantic>=2.7.0
+python-dotenv>=1.0.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0  # PostgreSQL adapter
+duckdb>=0.10.0
+
+# API Framework (optional, for future API layer)
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+
+# Excel/Document Processing
+openpyxl>=3.1.0
+pandas>=2.2.0  # For Excel compatibility layer
+xlsxwriter>=3.2.0
+
+# CAD/DXF Processing
+ezdxf>=1.2.0
+
+# Utilities
+pyyaml>=6.0
+click>=8.1.0  # CLI framework
+rich>=13.7.0  # Enhanced terminal output
+structlog>=24.1.0  # Structured logging
+
+# Development & Testing
+pytest>=8.0.0
+pytest-cov>=5.0.0
+pytest-asyncio>=0.23.0
+pytest-mock>=3.14.0
+coverage[toml]>=7.4.0
+black>=24.0.0
+ruff>=0.3.0
+mypy>=1.9.0
+types-pyyaml
+types-python-dateutil
+
+# Documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.5.0
+mkdocstrings[python]>=0.24.0
+
+# Security
+pyjwt>=2.8.0
+slowapi>=0.1.9
+python-multipart>=0.0.6
+
+# Supabase Integration
+supabase>=2.3.0
+asyncpg>=0.29.0
+
+# Additional API Dependencies
+alembic>=1.13.1
+python-docx>=1.1.0
+reportlab>=4.0.9
+pillow>=10.2.0
+redis>=5.0.1
+celery>=5.3.4
+opentelemetry-api>=1.22.0
+opentelemetry-sdk>=1.22.0
+opentelemetry-instrumentation-fastapi>=0.43b0

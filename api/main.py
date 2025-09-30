@@ -6,22 +6,29 @@ Contract-First + Evidence-Gated System
 import hashlib
 import json
 import logging
+import os
 import time
 import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
-from fastapi import FastAPI, HTTPException, Request, Response, status
+from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
 from api.db import init_db, close_db, check_db_health
 from api.storage import storage_client
+from api.security_config import get_allowed_origins, get_allowed_hosts, EXPOSE_HEADERS
+from api.auth import verify_token
 
 # Routers
 from api.routers import estimate, validate, documents, catalog
@@ -116,21 +123,45 @@ app = FastAPI(
     openapi_url="/openapi.json"
 )
 
-# Configure CORS
+# Configure CORS with whitelist
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=get_allowed_origins(),
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["X-Trace-Id", "X-Evidence-SHA"]
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "Authorization"],
+    expose_headers=EXPOSE_HEADERS
 )
 
-# Configure trusted hosts
+# Configure trusted hosts with whitelist
 app.add_middleware(
     TrustedHostMiddleware,
-    allowed_hosts=["*"]  # Configure appropriately for production
+    allowed_hosts=get_allowed_hosts()
 )
+
+# Configure rate limiting
+limiter = Limiter(
+    key_func=get_remote_address,
+    default_limits=["100/minute"],
+    storage_uri=os.getenv("REDIS_URL", "memory://")
+)
+app.state.limiter = limiter
+app.add_middleware(SlowAPIMiddleware)
+
+# Rate limit exceeded handler
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    """Handle rate limit exceeded"""
+    return JSONResponse(
+        status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+        content=jsonable_encoder(ErrorResponse(
+            code="RATE_LIMIT_EXCEEDED",
+            message="Too many requests",
+            hint="Please wait before making more requests",
+            traceId=getattr(request.state, "trace_id", str(uuid.uuid4())),
+            meta={"dedupKey": f"rate_limit_{request.url.path}_{time.time()}"}
+        ))
+    )
 
 # Middleware for trace ID injection
 @app.middleware("http")
@@ -301,11 +332,32 @@ def generate_evidence_hash(data: Dict[str, Any]) -> str:
     json_str = json.dumps(data, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(json_str.encode()).hexdigest()
 
-# Include routers
-app.include_router(estimate.router, prefix="/v1/estimate", tags=["Estimate"])
-app.include_router(validate.router, prefix="/v1/validate", tags=["Validation"])
-app.include_router(documents.router, prefix="/v1/documents", tags=["Documents"])
-app.include_router(catalog.router, prefix="/v1/catalog", tags=["Catalog"])
+# Include routers with JWT authentication
+# All API endpoints require authentication except health/ready/root
+app.include_router(
+    estimate.router,
+    prefix="/v1/estimate",
+    tags=["Estimate"],
+    dependencies=[Depends(verify_token)]
+)
+app.include_router(
+    validate.router,
+    prefix="/v1/validate",
+    tags=["Validation"],
+    dependencies=[Depends(verify_token)]
+)
+app.include_router(
+    documents.router,
+    prefix="/v1/documents",
+    tags=["Documents"],
+    dependencies=[Depends(verify_token)]
+)
+app.include_router(
+    catalog.router,
+    prefix="/v1/catalog",
+    tags=["Catalog"],
+    dependencies=[Depends(verify_token)]
+)
 
 # Root endpoint
 @app.get("/")

@@ -106,11 +106,22 @@ class FakeMCP:
         }
 
         self.orchestration_history = []
+        self._failure_mode = False
+        self._failure_tools = []
+
+    def inject_failure(self, tool_names: Optional[List[str]] = None):
+        """Inject failures for testing error handling"""
+        self._failure_mode = True
+        self._failure_tools = tool_names or []
 
     def call_tool(self, tool_name: str, **params) -> Dict[str, Any]:
         """Call an MCP tool"""
         if tool_name not in self.tools:
             return {"error": f"Tool {tool_name} not found"}
+
+        # Check for injected failures
+        if self._failure_mode and (not self._failure_tools or tool_name in self._failure_tools):
+            return {"error": f"Injected failure for {tool_name}"}
 
         result = self.tools[tool_name].execute(**params)
 

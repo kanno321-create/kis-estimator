@@ -1,5 +1,5 @@
 """Fake Gmail Client for Testing"""
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 import hashlib
 

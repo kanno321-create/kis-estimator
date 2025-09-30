@@ -26,7 +26,7 @@ class Config:
     # Application configuration
     APP_ENV: str = "development"
     APP_PORT: int = 8000
-    APP_DEBUG: bool = True
+    APP_DEBUG: bool = False  # SECURITY: Default to False for production safety
     APP_LOG_LEVEL: str = "INFO"
 
     # Storage configuration

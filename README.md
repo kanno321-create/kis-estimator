@@ -180,6 +180,7 @@ For support, please contact the KIS Development Team.
 
 ## 🏷️ Version History
 
+<<<<<<< HEAD
 - **v0.1.0** (2024-12-29): Initial NABERAL project release with consolidated estimation core
 
 
@@ -219,3 +220,6 @@ YOLO 모드(`--dangerously-skip-permissions`)도 컨테이너 안에서만 사�
 - 컨테이너 재빌드: `F1` → *Dev Containers: Rebuild Container*
 - CLI 최신화: `npm i -g @anthropic-ai/claude-code && claude --version`
 - 여전히 퍼미션 프롬프트가 뜨면, 대안 모드로 전환해서 작업 지속하세요.
+=======
+- **v0.1.0** (2024-12-29): Initial NABERAL project release with consolidated estimation core
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e

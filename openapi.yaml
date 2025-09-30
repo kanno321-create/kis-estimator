@@ -2,6 +2,7 @@ openapi: 3.1.0
 info:
   title: KIS Estimator API
   version: 1.0.0
+<<<<<<< HEAD
   description: |
     NABERAL KIS Estimator - Electrical Panel Estimation System
     Contract-First + Evidence-Gated + SPEC KIT methodology
@@ -12,10 +13,17 @@ info:
     - Format: formula_loss = 0
     - Doc Lint: lint_errors = 0
     - Regression: 20/20 PASS required
+=======
+  description: Contract-First Estimator System with Evidence-Gated validation
+  contact:
+    name: KIS Engineering Team
+    email: engineering@kis.com
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 servers:
   - url: http://localhost:8000
     description: Development server
+<<<<<<< HEAD
 
 tags:
   - name: estimate
@@ -29,11 +37,419 @@ paths:
       operationId: createEstimate
       tags: [estimate]
       summary: Create new estimate
+=======
+  - url: https://api.kis-estimator.com
+    description: Production server
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+        - traceId
+        - meta
+      properties:
+        code:
+          type: string
+          example: "VALIDATION_ERROR"
+        message:
+          type: string
+          example: "Invalid input parameters"
+        hint:
+          type: string
+          nullable: true
+          example: "Check the phase balance requirements"
+        traceId:
+          type: string
+          format: uuid
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        meta:
+          type: object
+          required:
+            - dedupKey
+          properties:
+            dedupKey:
+              type: string
+              example: "est_2024_12_30_001"
+
+    EstimateRequest:
+      type: object
+      required:
+        - customer
+        - items
+        - panels
+      properties:
+        customer:
+          type: object
+          required:
+            - name
+            - contact
+          properties:
+            name:
+              type: string
+            contact:
+              type: string
+            company:
+              type: string
+              nullable: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EstimateItem'
+        panels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Panel'
+        currency:
+          type: string
+          default: "KRW"
+        locale:
+          type: string
+          default: "ko-KR"
+
+    EstimateItem:
+      type: object
+      required:
+        - type
+        - name
+        - quantity
+      properties:
+        type:
+          type: string
+          enum: [enclosure, breaker_main, breaker_branch, accessory]
+        name:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        specifications:
+          type: object
+        unitPrice:
+          type: number
+          nullable: true
+
+    Panel:
+      type: object
+      required:
+        - name
+        - breakers
+      properties:
+        name:
+          type: string
+        enclosureSku:
+          type: string
+          nullable: true
+        breakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Breaker'
+
+    Breaker:
+      type: object
+      required:
+        - type
+        - poles
+        - capacity
+        - quantity
+      properties:
+        type:
+          type: string
+          enum: [main, branch, earth_leakage, surge_protector]
+        poles:
+          type: integer
+          enum: [1, 2, 3, 4]
+        capacity:
+          type: integer
+        quantity:
+          type: integer
+          minimum: 1
+        brand:
+          type: string
+          nullable: true
+        phase:
+          type: string
+          enum: [R, S, T]
+          nullable: true
+
+    EstimateResponse:
+      type: object
+      required:
+        - id
+        - status
+        - createdAt
+        - updatedAt
+        - evidenceSha
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, processing, completed, failed]
+        customer:
+          type: object
+        totals:
+          type: object
+          properties:
+            subtotal:
+              type: number
+            tax:
+              type: number
+            total:
+              type: number
+        currency:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        evidenceSha:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+        evidenceUrl:
+          type: string
+          format: uri
+
+    ValidationRequest:
+      type: object
+      required:
+        - file
+        - type
+      properties:
+        file:
+          type: string
+          format: binary
+        type:
+          type: string
+          enum: [excel, pdf, csv]
+
+    ValidationResponse:
+      type: object
+      required:
+        - valid
+        - panels
+        - breakers
+      properties:
+        valid:
+          type: boolean
+        panels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Panel'
+        breakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Breaker'
+        errors:
+          type: array
+          items:
+            type: string
+        warnings:
+          type: array
+          items:
+            type: string
+
+    DocumentRequest:
+      type: object
+      required:
+        - quoteId
+        - kind
+      properties:
+        quoteId:
+          type: string
+          format: uuid
+        kind:
+          type: string
+          enum: [pdf, xlsx, svg]
+
+    DocumentResponse:
+      type: object
+      required:
+        - id
+        - path
+        - sha256
+        - createdAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        path:
+          type: string
+        sha256:
+          type: string
+          pattern: '^[a-f0-9]{64}$'
+        createdAt:
+          type: string
+          format: date-time
+
+    CatalogItem:
+      type: object
+      required:
+        - id
+        - kind
+        - name
+        - spec
+        - unitPrice
+      properties:
+        id:
+          type: string
+          format: uuid
+        kind:
+          type: string
+          enum: [enclosure, breaker, accessory]
+        name:
+          type: string
+        spec:
+          type: object
+        unitPrice:
+          type: number
+        meta:
+          type: object
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+  parameters:
+    IdempotencyKey:
+      in: header
+      name: Idempotency-Key
+      schema:
+        type: string
+      required: false
+      description: Idempotency key for safe retries
+
+    Page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        default: 1
+      description: Page number
+
+    Size:
+      in: query
+      name: size
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+      description: Page size
+
+    Sort:
+      in: query
+      name: sort
+      schema:
+        type: string
+      description: Sort field and order
+
+    Filter:
+      in: query
+      name: filter
+      schema:
+        type: string
+      description: Filter expression
+
+    Locale:
+      in: query
+      name: locale
+      schema:
+        type: string
+        default: "ko-KR"
+      description: Locale for response
+
+    Currency:
+      in: query
+      name: currency
+      schema:
+        type: string
+        default: "KRW"
+      description: Currency code
+
+    Tz:
+      in: query
+      name: tz
+      schema:
+        type: string
+        default: "UTC"
+      description: Timezone (fixed to UTC)
+
+paths:
+  /healthz:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [healthy]
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /readyz:
+    get:
+      summary: Readiness check
+      operationId: readinessCheck
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is ready
+        '503':
+          description: Service not ready
+
+  /openapi:
+    get:
+      summary: OpenAPI specification
+      operationId: getOpenApiSpec
+      tags:
+        - System
+      responses:
+        '200':
+          description: OpenAPI specification
+          content:
+            application/yaml:
+              schema:
+                type: string
+
+  /v1/estimate:
+    post:
+      summary: Create estimate
+      operationId: createEstimate
+      tags:
+        - Estimate
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
       requestBody:
         required: true
         content:
           application/json:
             schema:
+<<<<<<< HEAD
               type: object
               required: [customer, panels, currency]
               properties:
@@ -80,11 +496,30 @@ paths:
                       currency: {type: string}
         '400':
           description: Bad Request
+=======
+              $ref: '#/components/schemas/EstimateRequest'
+      responses:
+        '201':
+          description: Estimate created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Duplicate request
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
 
+<<<<<<< HEAD
   /v1/estimate/{id}:
     get:
       operationId: getEstimate
@@ -211,3 +646,212 @@ components:
           required: [dedupKey]
           properties:
             dedupKey: {type: string}
+=======
+    get:
+      summary: List estimates
+      operationId: listEstimates
+      tags:
+        - Estimate
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: Estimates list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EstimateResponse'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  size:
+                    type: integer
+
+  /v1/estimate/{id}:
+    get:
+      summary: Get estimate by ID
+      operationId: getEstimate
+      tags:
+        - Estimate
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Estimate details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateResponse'
+        '404':
+          description: Estimate not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/estimate/stream:
+    get:
+      summary: Stream estimate generation progress
+      operationId: streamEstimate
+      tags:
+        - Estimate
+      parameters:
+        - in: query
+          name: estimateId
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: SSE stream
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: Server-sent events stream
+
+  /v1/validate:
+    post:
+      summary: Validate uploaded file
+      operationId: validateFile
+      tags:
+        - Validation
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ValidationRequest'
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResponse'
+        '400':
+          description: Invalid file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/documents:
+    get:
+      summary: Get document
+      operationId: getDocument
+      tags:
+        - Documents
+      parameters:
+        - in: query
+          name: quoteId
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: kind
+          required: true
+          schema:
+            type: string
+            enum: [pdf, xlsx, svg]
+      responses:
+        '200':
+          description: Document information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '404':
+          description: Document not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Generate document
+      operationId: generateDocument
+      tags:
+        - Documents
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentRequest'
+      responses:
+        '201':
+          description: Document generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/catalog:
+    get:
+      summary: List catalog items
+      operationId: listCatalogItems
+      tags:
+        - Catalog
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Size'
+        - in: query
+          name: kind
+          schema:
+            type: string
+            enum: [enclosure, breaker, accessory]
+      responses:
+        '200':
+          description: Catalog items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CatalogItem'
+                  total:
+                    type: integer
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: System
+    description: System endpoints
+  - name: Estimate
+    description: Estimate management
+  - name: Validation
+    description: File validation
+  - name: Documents
+    description: Document generation
+  - name: Catalog
+    description: Product catalog
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e

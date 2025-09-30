@@ -2,17 +2,28 @@
 # https://supabase.com/docs/guides/local-development/cli/config
 # A string used to distinguish different Supabase projects on the same host. Defaults to the
 # working directory name when running `supabase init`.
+<<<<<<< HEAD
 project_id = "kis-estimator"
+=======
+project_id = "NABERAL_PROJECT"
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 [api]
 enabled = true
 # Port to use for the API URL.
 port = 54321
 # Schemas to expose in your API. Tables, views and stored procedures in this schema will get API
+<<<<<<< HEAD
 # endpoints. KIS Estimator uses `estimator` and `shared` schemas.
 schemas = ["public", "estimator", "shared", "graphql_public"]
 # Extra schemas to add to the search_path of every request.
 extra_search_path = ["public", "estimator", "shared", "extensions"]
+=======
+# endpoints. `public` and `graphql_public` schemas are included by default.
+schemas = ["public", "graphql_public"]
+# Extra schemas to add to the search_path of every request.
+extra_search_path = ["public", "extensions"]
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 # The maximum number of rows returns from a view, table, or stored procedure. Limits payload size
 # for accidental or malicious requests.
 max_rows = 1000
@@ -52,8 +63,13 @@ max_client_conn = 100
 # If disabled, migrations will be skipped during a db push or reset.
 enabled = true
 # Specifies an ordered list of schema files that describe your database.
+<<<<<<< HEAD
 # KIS Estimator uses dedicated schema files in /db directory
 schema_paths = ["../db/schema.sql", "../db/functions.sql", "../db/policies.sql"]
+=======
+# Supports glob patterns relative to supabase directory: "./schemas/*.sql"
+schema_paths = []
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 [db.seed]
 # If enabled, seeds the database after migrations during a db reset.
@@ -109,12 +125,21 @@ file_size_limit = "50MiB"
 # [storage.image_transformation]
 # enabled = true
 
+<<<<<<< HEAD
 # KIS Estimator evidence bucket configuration
 [storage.buckets.evidence]
 public = false
 file_size_limit = "50MiB"
 allowed_mime_types = ["application/json", "application/pdf", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/svg+xml"]
 objects_path = "./storage/evidence"
+=======
+# Uncomment to configure local storage buckets
+# [storage.buckets.images]
+# public = false
+# file_size_limit = "50MiB"
+# allowed_mime_types = ["image/png", "image/jpeg"]
+# objects_path = "./images"
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 [auth]
 enabled = true

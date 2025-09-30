@@ -21,12 +21,23 @@ from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel
 
+<<<<<<< HEAD
 from api.config import config
 from api.db import init_db, close_db, check_db_health
 from api.storage import storage_client
 
 # Import routers
 from api.routers import estimate, validate, documents, catalog
+=======
+from api.routers import estimate, validation, documents, catalog, system
+from api.services import (
+    estimate_service,
+    layout_service,
+    enclosure_service,
+    document_service,
+    rag_service
+)
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 # Configure logging
 logging.basicConfig(
@@ -58,6 +69,7 @@ class AppContext:
         """Initialize application resources"""
         logger.info("Starting KIS Estimator API...")
 
+<<<<<<< HEAD
         # Initialize database connection
         await init_db()
 
@@ -67,6 +79,14 @@ class AppContext:
         # await enclosure_service.initialize()
         # await document_service.initialize()
         # await rag_service.initialize()
+=======
+        # Initialize services
+        await estimate_service.initialize()
+        await layout_service.initialize()
+        await enclosure_service.initialize()
+        await document_service.initialize()
+        await rag_service.initialize()
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
         self.ready = True
         logger.info("KIS Estimator API started successfully")
@@ -75,6 +95,7 @@ class AppContext:
         """Cleanup application resources"""
         logger.info("Shutting down KIS Estimator API...")
 
+<<<<<<< HEAD
         # Close database connections
         await close_db()
 
@@ -84,6 +105,14 @@ class AppContext:
         # await enclosure_service.cleanup()
         # await document_service.cleanup()
         # await rag_service.cleanup()
+=======
+        # Cleanup services
+        await estimate_service.cleanup()
+        await layout_service.cleanup()
+        await enclosure_service.cleanup()
+        await document_service.cleanup()
+        await rag_service.cleanup()
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
         self.ready = False
         logger.info("KIS Estimator API shut down successfully")
@@ -125,12 +154,15 @@ app.add_middleware(
     allowed_hosts=["*"]  # Configure appropriately for production
 )
 
+<<<<<<< HEAD
 # Register routers
 app.include_router(estimate.router)
 app.include_router(validate.router)
 app.include_router(documents.router)
 app.include_router(catalog.router)
 
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 # Middleware for trace ID injection
 @app.middleware("http")
 async def inject_trace_id(request: Request, call_next):
@@ -231,6 +263,7 @@ async def health_check():
 
 # Readiness check endpoint
 @app.get("/readyz")
+<<<<<<< HEAD
 async def readiness_check(request: Request):
     """
     Readiness check endpoint with DB and Storage validation.
@@ -275,15 +308,28 @@ async def readiness_check(request: Request):
                 "ts": datetime.now(timezone.utc).isoformat() + "Z",
                 "traceId": trace_id
             }
+=======
+async def readiness_check():
+    """Readiness check endpoint"""
+    if not app_context.ready:
+        return JSONResponse(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            content={"status": "not_ready"}
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
         )
 
     return JSONResponse(
         content={
+<<<<<<< HEAD
             "status": "ok",
             "db": "ok",
             "storage": "ok",
             "ts": db_health.get("timestamp", datetime.now(timezone.utc).isoformat() + "Z"),
             "traceId": trace_id
+=======
+            "status": "ready",
+            "timestamp": datetime.now(timezone.utc).isoformat()
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
         }
     )
 
@@ -300,12 +346,21 @@ def generate_evidence_hash(data: Dict[str, Any]) -> str:
     json_str = json.dumps(data, sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(json_str.encode()).hexdigest()
 
+<<<<<<< HEAD
 # Include routers (when implemented)
 # app.include_router(estimate.router, prefix="/v1/estimate", tags=["Estimate"])
 # app.include_router(validation.router, prefix="/v1/validate", tags=["Validation"])
 # app.include_router(documents.router, prefix="/v1/documents", tags=["Documents"])
 # app.include_router(catalog.router, prefix="/v1/catalog", tags=["Catalog"])
 # app.include_router(system.router, prefix="/system", tags=["System"])
+=======
+# Include routers
+app.include_router(estimate.router, prefix="/v1/estimate", tags=["Estimate"])
+app.include_router(validation.router, prefix="/v1/validate", tags=["Validation"])
+app.include_router(documents.router, prefix="/v1/documents", tags=["Documents"])
+app.include_router(catalog.router, prefix="/v1/catalog", tags=["Catalog"])
+app.include_router(system.router, prefix="/system", tags=["System"])
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 # Root endpoint
 @app.get("/")

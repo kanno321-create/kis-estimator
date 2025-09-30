@@ -9,7 +9,10 @@ on:
 env:
   PYTHON_VERSION: '3.11'
   NODE_VERSION: '18'
+<<<<<<< HEAD
   SUPABASE_CLI_VERSION: '1.123.4'
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
 jobs:
   quality-check:
@@ -106,6 +109,7 @@ jobs:
     - name: Run integration tests
       run: pytest tests/integration/ -v
 
+<<<<<<< HEAD
     - name: Run contract validation tests
       run: pytest tests/test_contracts.py -v
 
@@ -115,6 +119,8 @@ jobs:
     - name: Run regression tests (20/20 REQUIRED)
       run: pytest tests/regression/test_regression_runner.py -v -m regression
 
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
     - name: Upload coverage to Codecov
       if: matrix.python-version == '3.11' && matrix.database == 'postgres'
       uses: codecov/codecov-action@v4
@@ -124,6 +130,7 @@ jobs:
         name: codecov-umbrella
         fail_ci_if_error: false
 
+<<<<<<< HEAD
   supabase-check:
     name: Supabase Database Check
     runs-on: ubuntu-latest
@@ -282,6 +289,8 @@ jobs:
         echo "✅ Health check passed" >> $GITHUB_STEP_SUMMARY
         echo "📅 Deployed at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
 
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
   security:
     name: Security Check
     runs-on: ubuntu-latest
@@ -311,7 +320,11 @@ jobs:
   build:
     name: Build Package
     runs-on: ubuntu-latest
+<<<<<<< HEAD
     needs: [quality-check, test, supabase-check]
+=======
+    needs: [quality-check, test]
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
 
     steps:
     - uses: actions/checkout@v4
@@ -365,6 +378,7 @@ jobs:
     - name: Generate regression report
       run: |
         echo "## Regression Test Report" >> $GITHUB_STEP_SUMMARY
+<<<<<<< HEAD
         echo "✅ All regression tests passed" >> $GITHUB_STEP_SUMMARY
     - name: Run document generation tests
       run: pytest tests/test_documents.py -v
@@ -386,3 +400,6 @@ jobs:
           test_*.xlsx
           test_logs/
         retention-days: 7
+=======
+        echo "✅ All regression tests passed" >> $GITHUB_STEP_SUMMARY
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e

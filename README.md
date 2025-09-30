@@ -181,3 +181,41 @@ For support, please contact the KIS Development Team.
 ## 🏷️ Version History
 
 - **v0.1.0** (2024-12-29): Initial NABERAL project release with consolidated estimation core
+
+
+
+
+# Claude Code Dev Container (Windows VS Code)
+
+이 템플릿으로 Windows의 VS Code에서 컨테이너 내부에서 **Claude Code**를 안전하게 실행합니다.
+YOLO 모드(`--dangerously-skip-permissions`)도 컨테이너 안에서만 사용하세요.
+
+## 0) 사전 준비
+- Windows에 **Docker Desktop** 설치(리눅스 컨테이너 모드)
+- VS Code 확장: **Dev Containers** 설치
+
+## 1) 사용법(클릭 바이 클릭)
+1. 이 폴더를 VS Code로 엽니다.
+2. 좌측 하단의 >< 아이콘 클릭 → **Reopen in Container** (또는 `F1` → *Dev Containers: Reopen in Container*).
+3. 컨테이너가 뜨면 VS Code 터미널에서 아래 중 하나를 실행:
+   - 완전 무인(위험, 컨테이너에서만!):
+     ```bash
+     claude --dangerously-skip-permissions
+     ```
+   - 안전 대안(추천):
+     ```bash
+     # 모든 요청 자동 승인
+     claude --permission-mode auto-accept
+     # 특정 툴만 자동 승인(화이트리스트)
+     claude --permission-mode auto-accept --allowedTools "Read" "Edit" "Bash(git *)"
+     ```
+
+## 2) 팁
+- 모델 변경: `claude --model sonnet`
+- 세션 계속: `claude --continue`
+- 도움말: REPL에서 `/help`, `/status`, `/permissions`
+
+## 3) 문제 해결
+- 컨테이너 재빌드: `F1` → *Dev Containers: Rebuild Container*
+- CLI 최신화: `npm i -g @anthropic-ai/claude-code && claude --version`
+- 여전히 퍼미션 프롬프트가 뜨면, 대안 모드로 전환해서 작업 지속하세요.

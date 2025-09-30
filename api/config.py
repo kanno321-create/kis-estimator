@@ -25,6 +25,7 @@ class Config:
 
     # Application configuration
     APP_ENV: str = "development"
+    APP_PORT: int = 8000
     APP_DEBUG: bool = True
     APP_LOG_LEVEL: str = "INFO"
 
@@ -70,6 +71,7 @@ class Config:
     def _load_optional_env_vars(self) -> None:
         """Load optional environment variables with defaults"""
         self.APP_ENV = os.getenv("APP_ENV", self.APP_ENV)
+        self.APP_PORT = int(os.getenv("APP_PORT", str(self.APP_PORT)))
         self.APP_DEBUG = os.getenv("APP_DEBUG", str(self.APP_DEBUG)).lower() in (
             "true",
             "1",

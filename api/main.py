@@ -231,18 +231,24 @@ async def health_check():
 
 # Readiness check endpoint
 @app.get("/readyz")
-async def readiness_check():
+async def readiness_check(request: Request):
     """
     Readiness check endpoint with DB and Storage validation.
     Requirements:
     - DB: SELECT 1, current UTC timestamp
     - Storage: Upload test file → generate signed URL → cleanup
-    - Response: {"status":"ok","db":"ok","storage":"ok","ts":"<UTC-ISO>Z"}
+    - Response: {"status":"ok","db":"ok","storage":"ok","ts":"<UTC-ISO>Z","traceId":"..."}
     """
+    trace_id = getattr(request.state, "trace_id", str(uuid.uuid4()))
+
     if not app_context.ready:
         return JSONResponse(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            content={"status": "not_ready", "message": "Application not ready"}
+            content={
+                "status": "not_ready",
+                "message": "Application not ready",
+                "traceId": trace_id
+            }
         )
 
     # Check database health
@@ -266,7 +272,8 @@ async def readiness_check():
                 "storage": storage_health.get("status"),
                 "db_error": db_health.get("error"),
                 "storage_error": storage_health.get("error"),
-                "ts": datetime.now(timezone.utc).isoformat() + "Z"
+                "ts": datetime.now(timezone.utc).isoformat() + "Z",
+                "traceId": trace_id
             }
         )
 
@@ -275,7 +282,8 @@ async def readiness_check():
             "status": "ok",
             "db": "ok",
             "storage": "ok",
-            "ts": db_health.get("timestamp", datetime.now(timezone.utc).isoformat() + "Z")
+            "ts": db_health.get("timestamp", datetime.now(timezone.utc).isoformat() + "Z"),
+            "traceId": trace_id
         }
     )
 

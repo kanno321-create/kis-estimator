@@ -1,0 +1,36 @@
+{
+  "lifecycle": {
+    "rules": [
+      {
+        "id": "evidence-expiration",
+        "enabled": true,
+        "filter": {
+          "prefix": "evidence/"
+        },
+        "expiration": {
+          "days": 90
+        }
+      },
+      {
+        "id": "evidence-archive-option",
+        "enabled": false,
+        "filter": {
+          "prefix": "evidence/"
+        },
+        "transitions": [
+          {
+            "days": 60,
+            "storageClass": "ARCHIVE"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "Evidence blob lifecycle policy (Operations Mode)",
+  "notes": [
+    "Rule 1 (enabled): Delete evidence after 90 days (production default)",
+    "Rule 2 (disabled): Optional archive to cold storage after 60 days",
+    "To enable archiving: set rule 2 enabled=true, disable rule 1",
+    "Apply via: Supabase Dashboard → Storage → evidence bucket → Lifecycle"
+  ]
+}

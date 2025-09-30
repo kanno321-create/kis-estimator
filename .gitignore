@@ -75,3 +75,27 @@ secrets/
 tmp/
 temp/
 *.tmp
+# API credentials and deployment files
+.env*
+!.env.example
+!.env.sample
+!.env.*.example
+
+# Deployment scripts with hardcoded passwords
+scripts/deploy_db*.py
+
+# Sensitive analysis reports  
+**/deploy_*.py
+**/deploy_*.sh
+
+# Production configuration
+.env.production
+!.env.production.example
+
+# Session data
+.serena/
+
+# Temporary files
+out/
+spec-kit-main.zip
+frontend-kis-complete.html

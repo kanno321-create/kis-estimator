@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ============================================================================
-# KIS Estimator - Supabase Storage Initialization Script
-# Purpose: Create and configure evidence bucket with proper policies
+# KIS Estimator - Supabase Storage Initialization (OPERATIONS MODE)
+# Purpose: Create and configure evidence bucket (idempotent, private, RLS)
 # ============================================================================
 
 set -euo pipefail
@@ -12,10 +12,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Configuration
+# Configuration (OPERATIONS MODE)
 BUCKET_NAME="evidence"
-BUCKET_PUBLIC=false
-FILE_SIZE_LIMIT=52428800  # 50MB in bytes
+BUCKET_PUBLIC=false  # ✅ Private bucket (signed URLs only)
+FILE_SIZE_LIMIT=$((100 * 1024 * 1024))  # 100MB (production grade)
 ALLOWED_MIME_TYPES='["application/json","application/pdf","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","image/svg+xml"]'
 
 echo "============================================================================"
@@ -48,25 +48,41 @@ echo "  - File size limit: ${FILE_SIZE_LIMIT} bytes (50MB)"
 echo "  - Allowed MIME types: ${ALLOWED_MIME_TYPES}"
 echo ""
 
-# Create bucket
-BUCKET_RESPONSE=$(curl -s -X POST \
-    "${SUPABASE_URL}/rest/v1/rpc/storage_create_bucket" \
+# Check if bucket exists (idempotent)
+BUCKET_CHECK=$(curl -s -X GET \
+    "${SUPABASE_URL}/storage/v1/bucket/${BUCKET_NAME}" \
     -H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}" \
-    -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}" \
-    -H "Content-Type: application/json" \
-    -d "{
-        \"id\": \"${BUCKET_NAME}\",
-        \"name\": \"${BUCKET_NAME}\",
-        \"public\": ${BUCKET_PUBLIC},
-        \"file_size_limit\": ${FILE_SIZE_LIMIT},
-        \"allowed_mime_types\": ${ALLOWED_MIME_TYPES}
-    }")
+    -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}")
 
-if echo "$BUCKET_RESPONSE" | grep -q "error"; then
-    echo -e "${YELLOW}Warning: Bucket may already exist or creation failed${NC}"
-    echo "Response: ${BUCKET_RESPONSE}"
+if echo "$BUCKET_CHECK" | grep -q "\"id\":\"${BUCKET_NAME}\""; then
+    echo -e "${GREEN}✓ Bucket '${BUCKET_NAME}' already exists (idempotent)${NC}"
 else
-    echo -e "${GREEN}✓ Bucket '${BUCKET_NAME}' created successfully${NC}"
+    echo "Creating bucket '${BUCKET_NAME}'..."
+
+    # Create bucket using Storage API
+    BUCKET_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+        "${SUPABASE_URL}/storage/v1/bucket" \
+        -H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}" \
+        -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}" \
+        -H "Content-Type: application/json" \
+        -d "{
+            \"id\": \"${BUCKET_NAME}\",
+            \"name\": \"${BUCKET_NAME}\",
+            \"public\": ${BUCKET_PUBLIC},
+            \"file_size_limit\": ${FILE_SIZE_LIMIT},
+            \"allowed_mime_types\": ${ALLOWED_MIME_TYPES}
+        }")
+
+    HTTP_CODE=$(echo "$BUCKET_RESPONSE" | tail -n1)
+    RESPONSE_BODY=$(echo "$BUCKET_RESPONSE" | head -n-1)
+
+    if [[ "$HTTP_CODE" == "200" ]] || [[ "$HTTP_CODE" == "201" ]]; then
+        echo -e "${GREEN}✓ Bucket '${BUCKET_NAME}' created successfully${NC}"
+    else
+        echo -e "${RED}✗ Bucket creation failed (HTTP $HTTP_CODE)${NC}"
+        echo "Response: $RESPONSE_BODY"
+        exit 1
+    fi
 fi
 
 # Apply storage policies via SQL

@@ -1,5 +1,5 @@
 """
-Regression Test Runner - 20/20 PASS Required
+Regression Test Runner - 22/22 PASS Required
 Goldset validation for FIX-4 pipeline quality gates
 """
 import json
@@ -27,15 +27,15 @@ def goldset():
     return load_goldset()
 
 def test_goldset_loaded(goldset):
-    """Verify goldset has exactly 20 cases"""
-    assert len(goldset) == 20, f"Goldset must have 20 cases, found {len(goldset)}"
+    """Verify goldset has exactly 22 cases"""
+    assert len(goldset) == 22, f"Goldset must have 22 cases, found {len(goldset)}"
 
-@pytest.mark.parametrize("case_idx", range(20))
+@pytest.mark.parametrize("case_idx", range(22))
 def test_regression_case(goldset, case_idx):
     """
     Test individual regression case
-    
-    CRITICAL: All 20 cases must PASS for merge approval
+
+    CRITICAL: All 22 cases must PASS for merge approval
     """
     case = goldset[case_idx]
     case_name = case["case"]
@@ -114,5 +114,5 @@ def test_regression_summary(goldset):
     logger.info(f"By stage: {by_stage}")
     logger.info(f"By priority: {by_priority}")
     logger.info("=" * 60)
-    
-    assert len(goldset) == 20  # Sanity check
+
+    assert len(goldset) == 22  # Sanity check

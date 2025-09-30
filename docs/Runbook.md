@@ -393,6 +393,148 @@ WHERE created_at > NOW() - INTERVAL '24 hours'
 ORDER BY created_at DESC;
 ```
 
+### Real Connection Deployment Testing
+
+#### 1. Local Deployment Test (Development)
+```bash
+# Set environment variables (use .env file)
+export SUPABASE_URL="https://your-project.supabase.co"
+export SUPABASE_ANON_KEY="your-anon-key"
+export SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
+export SUPABASE_DB_URL="postgresql://postgres:password@db.project.supabase.co:6543/postgres"
+export APP_ENV="staging"
+export APP_PORT="8000"
+export SKIP_DB_PUSH="true"  # Skip DB push for dry-run
+
+# Run deployment test script (POSIX)
+bash ops/supabase/deploy_test.sh
+
+# OR run deployment test script (Windows PowerShell)
+powershell -ExecutionPolicy Bypass -File ops/supabase/deploy_test.ps1
+```
+
+**Expected Output:**
+```
+✅ Environment variables validated
+✅ DB lint passed
+✅ DB diff OK
+✅ Storage initialized
+✅ API server is ready
+✅ /readyz check passed
+✅ Supabase 실제 연결 배포 테스트 완료
+```
+
+#### 2. E2E Supabase Test (CI/CD)
+```bash
+# Run E2E tests with real Supabase connection
+pytest tests/test_e2e_supabase.py -v
+
+# Expected tests:
+# ✅ test_db_ping: SELECT 1
+# ✅ test_db_utc_timestamp: UTC timestamp query
+# ✅ test_storage_upload_download_integrity: Full upload/download/SHA256 cycle
+# ✅ test_evidence_blobs_table_exists: Table structure validation
+# ✅ test_storage_bucket_exists: Bucket existence check
+# ✅ test_db_health_check_function: health_check_detailed() function
+# ✅ test_readyz_endpoint_integration: /readyz endpoint async test
+```
+
+#### 3. Deployment Workflow Steps
+
+**Step 0: Environment Variable Check**
+```bash
+# Required variables for deployment testing
+SUPABASE_URL="https://project.supabase.co"
+SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+SUPABASE_SERVICE_ROLE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+SUPABASE_DB_URL="postgresql://postgres:password@db.project.supabase.co:6543/postgres"
+APP_PORT="8000"
+APP_ENV="staging"  # or "production"
+```
+
+**Step 1: DB Lint & Diff**
+- Runs `supabase db lint` to check SQL quality
+- Runs `supabase db diff --linked` to compare with remote
+- Non-fatal warnings allowed
+
+**Step 2: DB Push (Optional with Guard)**
+- Skipped if `SKIP_DB_PUSH=true`
+- Skipped if `APP_ENV=production` (manual only)
+- Requires user confirmation: "Push database migrations? (yes/NO)"
+- Runs `supabase db push --include-all`
+
+**Step 3: Storage Initialization**
+- Runs `ops/supabase/storage_init.sh`
+- Creates "evidence" bucket if not exists (idempotent)
+- Sets bucket to private with RLS enforcement
+- Configures lifecycle policies
+
+**Step 4: API Server Start**
+- Kills existing process on APP_PORT
+- Starts `uvicorn api.main:app` in background
+- Waits up to 30 seconds for `/health` endpoint
+- Captures logs to `/tmp/kis_api.log`
+
+**Step 5: /readyz Endpoint Test**
+- Calls `http://localhost:APP_PORT/readyz`
+- Verifies HTTP 200 status
+- Checks response format:
+  ```json
+  {
+    "status": "ok",
+    "db": "ok",
+    "storage": "ok",
+    "ts": "2025-09-30T12:00:00Z",
+    "traceId": "uuid-here"
+  }
+  ```
+
+#### 4. /readyz Endpoint Behavior
+
+**Health Check Flow:**
+1. **App Context Check**: Verifies application is ready
+2. **DB Health Check** (`api/db.py:check_db_health()`):
+   - Executes `SELECT 1` for connection test
+   - Queries `SELECT now() AT TIME ZONE 'utc'` for timestamp
+   - Returns `{"status": "ok", "connected": true, "timestamp": "2025-09-30T12:00:00Z"}`
+3. **Storage Health Check** (`api/storage.py:check_storage_health()`):
+   - Uploads test file to `readyz/{uuid}.txt`
+   - Generates signed URL with 60s TTL
+   - Deletes test file (cleanup)
+   - Returns `{"status": "ok", "accessible": true, "bucket": "evidence"}`
+4. **Combined Response**:
+   - Returns 200 if both DB and Storage are "ok"
+   - Returns 503 if either fails with detailed error
+
+**Response Examples:**
+```json
+// Success
+{
+  "status": "ok",
+  "db": "ok",
+  "storage": "ok",
+  "ts": "2025-09-30T12:00:00Z",
+  "traceId": "123e4567-e89b-12d3-a456-426614174000"
+}
+
+// Degraded
+{
+  "status": "degraded",
+  "db": "error",
+  "storage": "ok",
+  "db_error": "connection timeout",
+  "ts": "2025-09-30T12:00:00Z",
+  "traceId": "123e4567-e89b-12d3-a456-426614174000"
+}
+
+// Not Ready
+{
+  "status": "not_ready",
+  "message": "Application not ready",
+  "traceId": "123e4567-e89b-12d3-a456-426614174000"
+}
+```
+
 ### CI/CD Operations
 
 #### 1. Pre-Deployment Checks (Automated in CI)
@@ -405,10 +547,13 @@ supabase db lint --file db/migrations/20250930_init.sql
 # Step 2: Check diff against remote (requires linked project)
 supabase db diff --linked
 
-# Step 3: Run all regression tests (20/20 MUST pass)
+# Step 3: Run E2E Supabase tests (real connection)
+pytest tests/test_e2e_supabase.py -v
+
+# Step 4: Run all regression tests (20/20 MUST pass)
 pytest tests/regression/test_regression_runner.py -v -m regression
 
-# Step 4: Verify test suite passes
+# Step 5: Verify test suite passes
 pytest tests/test_contracts.py tests/test_sse.py tests/test_documents.py -v
 ```
 
@@ -607,11 +752,14 @@ supabase stop            # Stop local instance
 | 2025-09-30 | Added CI/CD integration with GitHub Actions   | AI     |
 | 2025-09-30 | Added emergency rollback procedures           | AI     |
 | 2025-09-30 | Updated storage initialization instructions   | AI     |
+| 2025-09-30 | Added real connection deployment testing      | AI     |
+| 2025-09-30 | Added /readyz endpoint behavior documentation | AI     |
+| 2025-09-30 | Added E2E Supabase test procedures            | AI     |
 
 ---
 
 **Last Updated**: 2025-09-30
-**Version**: 1.1.0
+**Version**: 1.2.0
 
 ## Quick Reference Card
 

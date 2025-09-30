@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>견적서 - {{ quote_id }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; font-size: 11pt; color: #333; }
+        .header { margin-bottom: 20mm; }
+        .title { font-size: 18pt; font-weight: bold; color: #003366; }
+        .meta { font-size: 10pt; color: #666; }
+        table { width: 100%; border-collapse: collapse; margin: 10mm 0; }
+        th { background: #003366; color: white; padding: 8px; text-align: left; }
+        td { border: 1px solid #ccc; padding: 6px; }
+        .total { font-size: 14pt; font-weight: bold; text-align: right; color: #00A86B; }
+        .footer { font-size: 9pt; color: #999; margin-top: 20mm; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">전기 패널 견적서</div>
+        <div class="meta">
+            견적 번호: {{ quote_id }}<br>
+            고객명: {{ customer.name }}<br>
+            작성일: {{ created_at }}<br>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>항목</th>
+                <th>사양</th>
+                <th>수량</th>
+                <th>단가</th>
+                <th>금액</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.spec }}</td>
+                <td style="text-align: right;">{{ item.qty }}</td>
+                <td style="text-align: right;">₩{{ "{:,}".format(item.unit_price) }}</td>
+                <td style="text-align: right;">₩{{ "{:,}".format(item.total) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="total">
+        합계: ₩{{ "{:,}".format(totals.total) }}
+    </div>
+
+    <div class="footer">
+        본 견적서는 {{ company }} 에서 작성되었습니다. 기밀 문서입니다.
+    </div>
+</body>
+</html>

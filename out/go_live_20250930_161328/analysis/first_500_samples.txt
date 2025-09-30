@@ -1,0 +1,2 @@
+31:0.095,500,95,52,GET,http://localhost:8000/api/catalog
+93:0.103,500,103,52,GET,http://localhost:8000/api/catalog

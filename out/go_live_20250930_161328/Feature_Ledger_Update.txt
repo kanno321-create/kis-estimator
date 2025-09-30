@@ -1,0 +1,5 @@
+F-EST-006=In-Progress (Rollback triggered)
+F-EST-007=In-Progress (Rollback triggered)
+Criteria: /readyz OK, p95=114.85ms (PASS), err%=2.0% (FAIL), Evidence 100%, JWT/CORS/Host PASS
+Status: ROLLBACK due to error rate exceeding 1% threshold
+Action: Fix error rate issues before retry

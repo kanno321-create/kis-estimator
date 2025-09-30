@@ -1,0 +1,235 @@
+{
+  "catalog_items": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "kind": "enclosure",
+      "name": "외함 2000x800x400 (IP54)",
+      "spec": {
+        "width": 2000,
+        "height": 800,
+        "depth": 400,
+        "ip_rating": "IP54",
+        "material": "steel",
+        "color": "RAL7035"
+      },
+      "unit_price": 850000,
+      "meta": {
+        "sku": "ENC-2000x800x400",
+        "manufacturer": "KIS Electric",
+        "weight_kg": 45,
+        "door_type": "single"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "kind": "enclosure",
+      "name": "외함 1600x800x400 (IP54)",
+      "spec": {
+        "width": 1600,
+        "height": 800,
+        "depth": 400,
+        "ip_rating": "IP54",
+        "material": "steel",
+        "color": "RAL7035"
+      },
+      "unit_price": 720000,
+      "meta": {
+        "sku": "ENC-1600x800x400",
+        "manufacturer": "KIS Electric",
+        "weight_kg": 38,
+        "door_type": "single"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "kind": "breaker",
+      "name": "메인 차단기 3P 100A",
+      "spec": {
+        "type": "main",
+        "poles": 3,
+        "capacity": 100,
+        "breaking_capacity": "35kA",
+        "voltage": "380V"
+      },
+      "unit_price": 125000,
+      "meta": {
+        "sku": "BRK-M3P100",
+        "manufacturer": "LS Electric",
+        "width_mm": 75,
+        "height_mm": 130
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "kind": "breaker",
+      "name": "메인 차단기 3P 200A",
+      "spec": {
+        "type": "main",
+        "poles": 3,
+        "capacity": 200,
+        "breaking_capacity": "50kA",
+        "voltage": "380V"
+      },
+      "unit_price": 245000,
+      "meta": {
+        "sku": "BRK-M3P200",
+        "manufacturer": "LS Electric",
+        "width_mm": 105,
+        "height_mm": 160
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "kind": "breaker",
+      "name": "분기 차단기 2P 20A",
+      "spec": {
+        "type": "branch",
+        "poles": 2,
+        "capacity": 20,
+        "breaking_capacity": "10kA",
+        "voltage": "220V"
+      },
+      "unit_price": 18000,
+      "meta": {
+        "sku": "BRK-B2P20",
+        "manufacturer": "LS Electric",
+        "width_mm": 36,
+        "height_mm": 80
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "kind": "breaker",
+      "name": "분기 차단기 2P 30A",
+      "spec": {
+        "type": "branch",
+        "poles": 2,
+        "capacity": 30,
+        "breaking_capacity": "10kA",
+        "voltage": "220V"
+      },
+      "unit_price": 22000,
+      "meta": {
+        "sku": "BRK-B2P30",
+        "manufacturer": "LS Electric",
+        "width_mm": 36,
+        "height_mm": 80
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "kind": "breaker",
+      "name": "누전 차단기 2P 30A 30mA",
+      "spec": {
+        "type": "earth_leakage",
+        "poles": 2,
+        "capacity": 30,
+        "sensitivity": "30mA",
+        "voltage": "220V"
+      },
+      "unit_price": 45000,
+      "meta": {
+        "sku": "BRK-EL2P30",
+        "manufacturer": "LS Electric",
+        "width_mm": 36,
+        "height_mm": 80
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "kind": "accessory",
+      "name": "부스바 3P 200A",
+      "spec": {
+        "type": "busbar",
+        "phases": 3,
+        "capacity": 200,
+        "length_mm": 1000,
+        "material": "copper"
+      },
+      "unit_price": 85000,
+      "meta": {
+        "sku": "ACC-BB3P200",
+        "manufacturer": "KIS Electric",
+        "cross_section_mm2": 50
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "kind": "accessory",
+      "name": "단자대 12P",
+      "spec": {
+        "type": "terminal_block",
+        "points": 12,
+        "max_wire_mm2": 4,
+        "voltage": "600V"
+      },
+      "unit_price": 8500,
+      "meta": {
+        "sku": "ACC-TB12",
+        "manufacturer": "Phoenix Contact",
+        "mounting": "DIN rail"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "kind": "accessory",
+      "name": "서지 보호기 3P Type2",
+      "spec": {
+        "type": "surge_protector",
+        "poles": 3,
+        "class": "Type 2",
+        "discharge_current": "40kA",
+        "voltage": "380V"
+      },
+      "unit_price": 125000,
+      "meta": {
+        "sku": "ACC-SPD3P-T2",
+        "manufacturer": "ABB",
+        "width_mm": 54,
+        "response_time_ns": 25
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "kind": "accessory",
+      "name": "DIN 레일 1m",
+      "spec": {
+        "type": "din_rail",
+        "length_mm": 1000,
+        "width_mm": 35,
+        "material": "steel"
+      },
+      "unit_price": 5500,
+      "meta": {
+        "sku": "ACC-DR1000",
+        "manufacturer": "KIS Electric",
+        "standard": "EN 60715"
+      }
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440012",
+      "kind": "accessory",
+      "name": "케이블 글랜드 PG21",
+      "spec": {
+        "type": "cable_gland",
+        "size": "PG21",
+        "cable_diameter_min": 13,
+        "cable_diameter_max": 18,
+        "material": "polyamide"
+      },
+      "unit_price": 2200,
+      "meta": {
+        "sku": "ACC-CG-PG21",
+        "manufacturer": "Lapp",
+        "ip_rating": "IP68"
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2024-12-30T00:00:00Z",
+    "currency": "KRW",
+    "locale": "ko-KR",
+    "total_items": 12
+  }
+}

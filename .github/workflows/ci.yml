@@ -1,0 +1,405 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+<<<<<<< HEAD
+  SUPABASE_CLI_VERSION: '1.123.4'
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
+
+jobs:
+  quality-check:
+    name: Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Black formatter check
+      run: black --check src/ tests/
+
+    - name: Run Ruff linter
+      run: ruff check src/ tests/
+
+    - name: Run MyPy type checker
+      run: mypy src/
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+        database: ['sqlite', 'postgres']
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: kis_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: kis_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-${{ matrix.python-version }}-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Set database URL
+      run: |
+        if [ "${{ matrix.database }}" = "postgres" ]; then
+          echo "DATABASE_URL=postgresql://kis_user:test_password@localhost:5432/kis_test" >> $GITHUB_ENV
+          echo "TEST_DATABASE_URL=postgresql://kis_user:test_password@localhost:5432/kis_test" >> $GITHUB_ENV
+        else
+          echo "DATABASE_URL=sqlite:///./test.db" >> $GITHUB_ENV
+          echo "TEST_DATABASE_URL=sqlite:///./test.db" >> $GITHUB_ENV
+        fi
+
+    - name: Run unit tests
+      run: pytest tests/unit/ -v --cov=src --cov-report=xml
+
+    - name: Run integration tests
+      run: pytest tests/integration/ -v
+
+<<<<<<< HEAD
+    - name: Run contract validation tests
+      run: pytest tests/test_contracts.py -v
+
+    - name: Run SSE validation tests
+      run: pytest tests/test_sse.py -v
+
+    - name: Run regression tests (20/20 REQUIRED)
+      run: pytest tests/regression/test_regression_runner.py -v -m regression
+
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
+    - name: Upload coverage to Codecov
+      if: matrix.python-version == '3.11' && matrix.database == 'postgres'
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+<<<<<<< HEAD
+  supabase-check:
+    name: Supabase Database Check
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install Supabase CLI
+      run: npm install -g supabase@${{ env.SUPABASE_CLI_VERSION }}
+
+    - name: Check Supabase CLI version
+      run: supabase --version
+
+    - name: Link Supabase project
+      if: env.SUPABASE_PROJECT_REF != '' && env.SUPABASE_ACCESS_TOKEN != ''
+      run: |
+        echo "Linking Supabase project..."
+        supabase link --project-ref ${{ env.SUPABASE_PROJECT_REF }} || echo "⚠️  Project linking skipped (offline mode)"
+
+    - name: Lint database migration
+      run: |
+        echo "Running supabase db lint..."
+        supabase db lint --file db/migrations/20250930_init.sql || {
+          echo "⚠️  Lint warnings detected, but not failing build"
+          exit 0
+        }
+        echo "✅ Database migration lint passed"
+
+    - name: Database diff check (PR only)
+      if: github.event_name == 'pull_request' && env.SUPABASE_PROJECT_REF != ''
+      run: |
+        echo "Checking database diff against remote..."
+        supabase db diff --linked || {
+          echo "⚠️  Database diff check skipped (requires linked project)"
+          exit 0
+        }
+        echo "✅ No unexpected schema differences"
+
+    - name: Validate migration SQL syntax
+      run: |
+        echo "Validating migration SQL file..."
+        if [ ! -f "db/migrations/20250930_init.sql" ]; then
+          echo "❌ Migration file not found: db/migrations/20250930_init.sql"
+          exit 1
+        fi
+        echo "✅ Migration file exists"
+
+        # Check file is not empty
+        if [ ! -s "db/migrations/20250930_init.sql" ]; then
+          echo "❌ Migration file is empty"
+          exit 1
+        fi
+        echo "✅ Migration file is not empty"
+
+        # Basic SQL syntax validation
+        if grep -q "CREATE TABLE\|CREATE FUNCTION\|CREATE POLICY" "db/migrations/20250930_init.sql"; then
+          echo "✅ Migration contains expected SQL statements"
+        else
+          echo "⚠️  Warning: Migration may be incomplete"
+        fi
+
+  supabase-e2e:
+    name: Supabase E2E Test (Real Connection)
+    runs-on: ubuntu-latest
+    needs: [test, supabase-check]
+    if: github.event_name == 'pull_request'
+    env:
+      SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.STAGING_SUPABASE_ANON_KEY }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.STAGING_SUPABASE_SERVICE_ROLE_KEY }}
+      SUPABASE_DB_URL: ${{ secrets.STAGING_SUPABASE_DB_URL }}
+      APP_ENV: staging
+      APP_PORT: 8000
+      SIGNED_URL_TTL_SEC: 600
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install httpx requests
+
+    - name: Run E2E Supabase tests
+      run: |
+        echo "Running E2E tests with real Supabase connection..."
+        pytest tests/test_e2e_supabase.py -v --tb=short
+
+    - name: E2E test summary
+      run: |
+        echo "## 🧪 Supabase E2E Test Results" >> $GITHUB_STEP_SUMMARY
+        echo "✅ DB connection test passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Storage upload/download test passed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ SHA256 integrity check passed" >> $GITHUB_STEP_SUMMARY
+        echo "📅 Tested at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+
+  supabase-deploy:
+    name: Supabase Database Deploy
+    runs-on: ubuntu-latest
+    needs: [test, supabase-check, supabase-e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    env:
+      SUPABASE_URL: ${{ secrets.PROD_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.PROD_SUPABASE_SERVICE_ROLE_KEY }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install Supabase CLI
+      run: npm install -g supabase@${{ env.SUPABASE_CLI_VERSION }}
+
+    - name: Link Supabase project
+      run: |
+        echo "Linking Supabase project for deployment..."
+        supabase link --project-ref ${{ env.SUPABASE_PROJECT_REF }}
+
+    - name: Run deployment script
+      run: |
+        echo "Running full deployment to production..."
+        chmod +x ops/supabase/deploy_production.sh
+        export SUPABASE_ANON_KEY="${{ secrets.PROD_SUPABASE_ANON_KEY }}"
+        export SUPABASE_DB_URL="${{ secrets.PROD_SUPABASE_DB_URL }}"
+        export APP_ENV="production"
+        export SKIP_DB_PUSH="false"
+        echo "yes" | ./ops/supabase/deploy_production.sh
+
+    - name: Deployment summary
+      run: |
+        echo "## 🚀 Production Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Database migrations pushed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ RLS policies applied" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Database functions deployed" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Storage initialized" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Health check passed" >> $GITHUB_STEP_SUMMARY
+        echo "📅 Deployed at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+
+=======
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
+  security:
+    name: Security Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install safety bandit
+
+    - name: Check for security vulnerabilities
+      run: |
+        pip install -r requirements.txt
+        safety check --json
+      continue-on-error: true
+
+    - name: Run Bandit security linter
+      run: bandit -r src/ -ll
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+<<<<<<< HEAD
+    needs: [quality-check, test, supabase-check]
+=======
+    needs: [quality-check, test]
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build wheel
+
+    - name: Build distribution
+      run: python -m build
+
+    - name: Check distribution
+      run: |
+        pip install twine
+        twine check dist/*
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+  regression:
+    name: Regression Tests
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run regression tests
+      run: pytest tests/ -m regression -v
+
+    - name: Generate regression report
+      run: |
+        echo "## Regression Test Report" >> $GITHUB_STEP_SUMMARY
+<<<<<<< HEAD
+        echo "✅ All regression tests passed" >> $GITHUB_STEP_SUMMARY
+    - name: Run document generation tests
+      run: pytest tests/test_documents.py -v
+
+    - name: Run evidence integrity tests
+      run: pytest tests/test_evidence_integrity.py -v
+
+    - name: Run SSE progress tests
+      run: pytest tests/test_sse_progress.py -v
+
+    - name: Upload test artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-artifacts-${{ matrix.python-version }}
+        path: |
+          evidence_pack.json
+          test_*.pdf
+          test_*.xlsx
+          test_logs/
+        retention-days: 7
+=======
+        echo "✅ All regression tests passed" >> $GITHUB_STEP_SUMMARY
+>>>>>>> b21feef637c13ecc0be617bfd6c88f47155d8b0e

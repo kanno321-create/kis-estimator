@@ -1,0 +1,15 @@
+{
+  "total": 100,
+  "errors": 2,
+  "by_code": {
+    "500": 2
+  },
+  "error_latencies": [
+    95.0,
+    103.0
+  ],
+  "error_lines": [
+    31,
+    93
+  ]
+}

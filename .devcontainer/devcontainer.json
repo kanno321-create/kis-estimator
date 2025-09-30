@@ -1,0 +1,18 @@
+{
+  "name": "Claude Code (Windows VS Code)",
+  "build": { "dockerfile": "Dockerfile" },
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "updateRemoteUserUID": false,
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode-remote.remote-containers"],
+      "settings": { "terminal.integrated.defaultProfile.linux": "bash" }
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "npm i -g @anthropic-ai/claude-code && claude --version",
+  "containerEnv": { "FORCE_COLOR": "1" }
+}

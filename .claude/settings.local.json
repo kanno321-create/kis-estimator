@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "SlashCommand(/sc:improve:*)",
+      "Bash(PORT=8001 bash go_live.sh)",
+      "Bash(dir:*)",
+      "Read(//c/Users/PC/AppData/Roaming/Claude/**)",
+      "Bash(npm install:*)",
+      "Bash(npm search:*)",
+      "Bash(powershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\")",
+      "Bash(curl -LsSf https://astral.sh/uv/install.sh)",
+      "Bash(sh)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(uvx:*)",
+      "Bash(claude mcp add:*)",
+      "Read(//c/Users/PC/**)",
+      "Bash(claude mcp:*)",
+      "Bash(python:*)",
+      "Bash(tee:*)",
+      "Bash(set SUPABASE_JWT_SECRET=2Ujjd4++CT6/reNK0pOvIbuCwcq/3BPDMaiEvWyEp3QjyF4Q5uLts+GA+H0XY8EzR1UErgoZvTiAp7gdilhfCw==)",
+      "Bash(set SUPABASE_URL=https://cgqukhmqnndwdbmkmjrn.supabase.co)",
+      "Bash(set:*)",
+      "Bash(pytest:*)",
+      "Bash(TEST_DIR=\"out/EVIDENCE_TEST_20250930T141505Z\")",
+      "Bash(chmod:*)",
+      "Bash(bash:*)",
+      "Bash(findstr:*)",
+      "Bash(else echo \"NOT_FOUND\")",
+      "Bash(fi)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh repo create:*)",
+      "Bash(supabase orgs:*)",
+      "Bash(npx supabase:*)",
+      "Bash(psql:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

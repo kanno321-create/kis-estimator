@@ -1,0 +1,155 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\PC\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\PC\Desktop\kis-estimator-main
+configfile: pytest.ini
+plugins: asyncio-0.24.0, anyio-4.10.0, dash-3.2.0, Faker-37.8.0, langsmith-0.4.28, cov-7.0.0, mock-3.15.1, timeout-2.4.0, respx-0.22.0
+asyncio: mode=Mode.STRICT, default_loop_scope=None
+collecting ... collected 17 items
+
+tests/evidence/test_evidence_api.py::test_list_packs_no_token PASSED     [  5%]
+tests/evidence/test_evidence_api.py::test_list_packs_user_token FAILED   [ 11%]
+tests/evidence/test_evidence_api.py::test_list_packs_admin_access FAILED [ 17%]
+tests/evidence/test_evidence_api.py::test_list_packs_success FAILED      [ 23%]
+tests/evidence/test_evidence_api.py::test_list_packs_search FAILED       [ 29%]
+tests/evidence/test_evidence_api.py::test_list_packs_pagination FAILED   [ 35%]
+tests/evidence/test_evidence_api.py::test_list_packs_ordering FAILED     [ 41%]
+tests/evidence/test_evidence_api.py::test_get_pack_details_success FAILED [ 47%]
+tests/evidence/test_evidence_api.py::test_get_pack_details_not_found FAILED [ 52%]
+tests/evidence/test_evidence_api.py::test_create_download_url_success FAILED [ 58%]
+tests/evidence/test_evidence_api.py::test_create_download_url_custom_expiry FAILED [ 64%]
+tests/evidence/test_evidence_api.py::test_create_download_url_file_not_found FAILED [ 70%]
+tests/evidence/test_evidence_api.py::test_verify_pack_success FAILED     [ 76%]
+tests/evidence/test_evidence_api.py::test_verify_pack_with_tampered_file ERROR [ 82%]
+tests/evidence/test_evidence_api.py::test_verify_pack_missing_sha256sums FAILED [ 88%]
+tests/evidence/test_evidence_api.py::test_verify_pack_not_found FAILED   [ 94%]
+tests/evidence/test_evidence_api.py::test_verify_pack_performance FAILED [100%]
+
+=================================== ERRORS ====================================
+____________ ERROR at setup of test_verify_pack_with_tampered_file ____________
+file c:\Users\PC\Desktop\kis-estimator-main\tests\evidence\test_evidence_api.py, line 393
+  def test_verify_pack_with_tampered_file(client, admin_token, test_pack_id, storage_client):
+E       fixture 'storage_client' not found
+>       available fixtures: _session_event_loop, _session_faker, admin_token, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, class_mocker, client, cov, dash_br, dash_duo, dash_duo_mp, dash_multi_process_server, dash_process_server, dash_thread_server, dashjl, dashjl_server, dashr, dashr_server, db_session, diskcache_manager, doctest_namespace, event_loop, event_loop_policy, faker, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, mocker, module_mocker, monkeypatch, no_cover, package_mocker, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, reset_singleton, respx_mock, sample_breaker_data, sample_enclosure_data, sample_estimate_data, session_mocker, test_database, test_db_url, test_pack_id, tests/evidence/test_evidence_api.py::<event_loop>, tests/evidence::<event_loop>, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory, user_token
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+c:\Users\PC\Desktop\kis-estimator-main\tests\evidence\test_evidence_api.py:393
+================================== FAILURES ===================================
+_________________________ test_list_packs_user_token __________________________
+tests\evidence\test_evidence_api.py:168: in test_list_packs_user_token
+    assert response.status_code == 403
+E   assert 401 == 403
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+________________________ test_list_packs_admin_access _________________________
+tests\evidence\test_evidence_api.py:181: in test_list_packs_admin_access
+    assert response.status_code in [200, 500]
+E   assert 401 in [200, 500]
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+___________________________ test_list_packs_success ___________________________
+tests\evidence\test_evidence_api.py:194: in test_list_packs_success
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+___________________________ test_list_packs_search ____________________________
+tests\evidence\test_evidence_api.py:217: in test_list_packs_search
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+_________________________ test_list_packs_pagination __________________________
+tests\evidence\test_evidence_api.py:236: in test_list_packs_pagination
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+__________________________ test_list_packs_ordering ___________________________
+tests\evidence\test_evidence_api.py:253: in test_list_packs_ordering
+    assert response_desc.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+________________________ test_get_pack_details_success ________________________
+tests\evidence\test_evidence_api.py:277: in test_get_pack_details_success
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+_______________________ test_get_pack_details_not_found _______________________
+tests\evidence\test_evidence_api.py:305: in test_get_pack_details_not_found
+    assert response.status_code == 404
+E   assert 401 == 404
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+______________________ test_create_download_url_success _______________________
+tests\evidence\test_evidence_api.py:323: in test_create_download_url_success
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+___________________ test_create_download_url_custom_expiry ____________________
+tests\evidence\test_evidence_api.py:344: in test_create_download_url_custom_expiry
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+___________________ test_create_download_url_file_not_found ___________________
+tests\evidence\test_evidence_api.py:358: in test_create_download_url_file_not_found
+    assert response.status_code == 404
+E   assert 401 == 404
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+__________________________ test_verify_pack_success ___________________________
+tests\evidence\test_evidence_api.py:380: in test_verify_pack_success
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+_____________________ test_verify_pack_missing_sha256sums _____________________
+tests\evidence\test_evidence_api.py:456: in test_verify_pack_missing_sha256sums
+    assert response.status_code == 500
+E   assert 401 == 500
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+_________________________ test_verify_pack_not_found __________________________
+tests\evidence\test_evidence_api.py:477: in test_verify_pack_not_found
+    assert response.status_code == 500
+E   assert 401 == 500
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+________________________ test_verify_pack_performance _________________________
+tests\evidence\test_evidence_api.py:499: in test_verify_pack_performance
+    assert response.status_code == 200
+E   assert 401 == 200
+E    +  where 401 = <Response [401 Unauthorized]>.status_code
+============================== warnings summary ===============================
+tests/evidence/test_evidence_api.py::test_list_packs_success
+  C:\Users\PC\AppData\Local\Programs\Python\Python311\Lib\site-packages\supabase\_sync\client.py:255: DeprecationWarning: The 'timeout' parameter is deprecated. Please configure it in the http client instead.
+    return SyncStorageClient(
+
+tests/evidence/test_evidence_api.py::test_list_packs_success
+  C:\Users\PC\AppData\Local\Programs\Python\Python311\Lib\site-packages\supabase\_sync\client.py:255: DeprecationWarning: The 'verify' parameter is deprecated. Please configure it in the http client instead.
+    return SyncStorageClient(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_user_token - assert 401 == 403
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_admin_access - assert 401 in [200, 500]
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_success - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_search - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_pagination - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_list_packs_ordering - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_get_pack_details_success - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_get_pack_details_not_found - assert 401 == 404
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_create_download_url_success - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_create_download_url_custom_expiry - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_create_download_url_file_not_found - assert 401 == 404
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_verify_pack_success - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_verify_pack_missing_sha256sums - assert 401 == 500
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_verify_pack_not_found - assert 401 == 500
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+FAILED tests/evidence/test_evidence_api.py::test_verify_pack_performance - assert 401 == 200
+ +  where 401 = <Response [401 Unauthorized]>.status_code
+ERROR tests/evidence/test_evidence_api.py::test_verify_pack_with_tampered_file
+============== 15 failed, 1 passed, 2 warnings, 1 error in 9.14s ==============

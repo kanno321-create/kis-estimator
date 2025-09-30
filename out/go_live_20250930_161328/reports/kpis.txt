@@ -1,0 +1,6 @@
+p95=114.85ms err%=2.0 rps=1.67
+Target KPIs:
+- P95 ≤ 200ms: PASS (114.85ms)
+- Error% ≤ 0.5: FAIL (2.0%)
+- Stop Rule P95 > 500ms: NO (114.85ms)
+- Stop Rule Error% > 1%: YES (2.0%)

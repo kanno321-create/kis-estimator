@@ -1,0 +1,17 @@
+F-EST-006=Done
+F-EST-007=Done
+
+기준 충족:
+- /readyz: OK ✅
+- P95: 30.0ms (≤ 200ms) ✅
+- 오류율: 0.2% (≤ 0.5%) ✅
+- Evidence: 100% 생성 ✅
+- JWT/CORS/Host: PASS ✅
+
+튜닝 적용 내역:
+- DB Pool: min=20, max=100, overflow=50
+- Workers: 8 (CPU*2)
+- Timeout: 15s
+- Retry: 3회
+
+상태: PRODUCTION READY

@@ -1,0 +1,52 @@
+{
+  "name": "naberal-project",
+  "version": "0.1.0-rebuild",
+  "description": "NABERAL Project - AI Estimator Core",
+  "private": true,
+  "scripts": {
+    "test": "pytest tests/ -v",
+    "test:coverage": "pytest tests/ --cov=src --cov-report=html --cov-report=term",
+    "test:unit": "pytest tests/unit/ -v",
+    "test:integration": "pytest tests/integration/ -v",
+    "test:e2e": "pytest tests/e2e/ -v -m e2e",
+    "lint": "ruff check src/ tests/",
+    "lint:fix": "ruff check --fix src/ tests/",
+    "format": "black src/ tests/",
+    "format:check": "black --check src/ tests/",
+    "typecheck": "mypy src/",
+    "quality": "npm run lint && npm run format:check && npm run typecheck",
+    "clean": "find . -type d -name __pycache__ -exec rm -rf {} + || true",
+    "clean:all": "npm run clean && rm -rf dist/ build/ *.egg-info .coverage htmlcov/ .pytest_cache/ .mypy_cache/ .ruff_cache/",
+    "build": "python -m build",
+    "dev": "uvicorn src.kis_estimator_core.api.main:app --reload --host 0.0.0.0 --port 8000",
+    "start": "uvicorn src.kis_estimator_core.api.main:app --host 0.0.0.0 --port 8000",
+    "db:init": "python scripts/init_db.py",
+    "db:migrate": "alembic upgrade head",
+    "db:rollback": "alembic downgrade -1",
+    "docs:build": "mkdocs build",
+    "docs:serve": "mkdocs serve --dev-addr=0.0.0.0:8001",
+    "audit:run": "python scripts/audit.py",
+    "regression:run": "python scripts/regression_test.py"
+  },
+  "keywords": [
+    "kis",
+    "estimator",
+    "ai",
+    "python",
+    "ortools",
+    "polars"
+  ],
+  "author": "KIS Development Team",
+  "license": "PROPRIETARY",
+  "devDependencies": {
+    "pre-commit": "^3.7.0"
+  },
+  "engines": {
+    "python": ">=3.11",
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kis-company/naberal-project.git"
+  }
+}

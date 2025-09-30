@@ -1,0 +1,3 @@
+no_token 404
+bad_token 404
+good_token 404

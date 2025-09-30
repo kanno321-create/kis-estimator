@@ -1,0 +1,141 @@
+{
+  "estimate_request": {
+    "customer": {
+      "name": "테스트 고객사",
+      "project": "신규 공장 전기공사",
+      "contact": "김담당"
+    },
+    "panels": [
+      {
+        "name": "MCC-1",
+        "type": "motor_control_center",
+        "voltage": 380,
+        "phases": 3,
+        "breakers": [
+          {
+            "name": "MAIN",
+            "type": "MCCB",
+            "rating": 800,
+            "poles": 4,
+            "quantity": 1
+          },
+          {
+            "name": "FEEDER-1",
+            "type": "MCCB",
+            "rating": 200,
+            "poles": 3,
+            "quantity": 5,
+            "phase": "A"
+          },
+          {
+            "name": "FEEDER-2",
+            "type": "MCCB",
+            "rating": 100,
+            "poles": 3,
+            "quantity": 8,
+            "phase": "B"
+          },
+          {
+            "name": "FEEDER-3",
+            "type": "MCCB",
+            "rating": 50,
+            "poles": 3,
+            "quantity": 10,
+            "phase": "C"
+          }
+        ]
+      },
+      {
+        "name": "DB-1",
+        "type": "distribution_board",
+        "voltage": 220,
+        "phases": 3,
+        "breakers": [
+          {
+            "name": "MAIN",
+            "type": "MCCB",
+            "rating": 400,
+            "poles": 4,
+            "quantity": 1
+          },
+          {
+            "name": "SUB-1",
+            "type": "MCB",
+            "rating": 32,
+            "poles": 2,
+            "quantity": 12
+          },
+          {
+            "name": "SUB-2",
+            "type": "MCB",
+            "rating": 20,
+            "poles": 1,
+            "quantity": 24
+          }
+        ]
+      }
+    ],
+    "requirements": {
+      "ip_rating": "IP54",
+      "installation_type": "wall_mount",
+      "door_type": "hinged",
+      "color": "RAL7035",
+      "certification": ["CE", "KC"],
+      "delivery_days": 30
+    }
+  },
+  "expected_response": {
+    "quote_id": "uuid",
+    "status": "processing",
+    "stages": [
+      {
+        "stage": "enclosure",
+        "status": "pending",
+        "progress": 0
+      },
+      {
+        "stage": "breaker",
+        "status": "pending",
+        "progress": 0
+      },
+      {
+        "stage": "critic",
+        "status": "pending",
+        "progress": 0
+      },
+      {
+        "stage": "format",
+        "status": "pending",
+        "progress": 0
+      },
+      {
+        "stage": "cover",
+        "status": "pending",
+        "progress": 0
+      },
+      {
+        "stage": "doc_lint",
+        "status": "pending",
+        "progress": 0
+      }
+    ],
+    "sse_events": [
+      "data: {\"stage\": \"enclosure\", \"progress\": 50, \"message\": \"외함 계산 중...\"}",
+      "data: {\"stage\": \"enclosure\", \"progress\": 100, \"message\": \"외함 계산 완료\"}",
+      "data: {\"stage\": \"breaker\", \"progress\": 30, \"message\": \"브레이커 배치 최적화 중...\"}",
+      "data: {\"stage\": \"breaker\", \"progress\": 100, \"message\": \"브레이커 배치 완료\"}",
+      "data: {\"stage\": \"critic\", \"progress\": 100, \"message\": \"배치 검증 완료\"}",
+      "data: {\"stage\": \"format\", \"progress\": 100, \"message\": \"문서 포맷팅 완료\"}",
+      "data: {\"stage\": \"cover\", \"progress\": 100, \"message\": \"표지 생성 완료\"}",
+      "data: {\"stage\": \"doc_lint\", \"progress\": 100, \"message\": \"문서 검증 완료\"}",
+      "data: {\"stage\": \"complete\", \"progress\": 100, \"message\": \"견적 생성 완료\", \"quote_id\": \"uuid\"}"
+    ],
+    "validation_checks": {
+      "enclosure_fit_score": 0.92,
+      "phase_balance": 2.8,
+      "clearance_violations": 0,
+      "thermal_violations": 0,
+      "lint_errors": 0
+    }
+  }
+}

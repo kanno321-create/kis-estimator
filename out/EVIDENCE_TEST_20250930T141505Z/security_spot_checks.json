@@ -1,0 +1,19 @@
+{
+  "security_tests": [
+    {
+      "test": "no_token_401_or_403",
+      "command": "curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/v1/evidence/packs",
+      "expected": "401 or 403"
+    },
+    {
+      "test": "user_token_403",
+      "command": "curl -s -o /dev/null -w \"%{http_code}\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0LXVzZXIiLCJyb2xlIjoiYXV0aGVudGljYXRlZCIsImF1ZCI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3NTkyNDE4MzUsImV4cCI6MTc1OTI0NTQzNX0.gsaeiHJNrzize8r7VebipX7UvSYuPPE6DzHTkuxPnXc\" http://localhost:8000/v1/evidence/packs",
+      "expected": "403"
+    },
+    {
+      "test": "admin_token_200",
+      "command": "curl -s -o /dev/null -w \"%{http_code}\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0LWFkbWluIiwicm9sZSI6ImFkbWluIiwiYXVkIjoiYXV0aGVudGljYXRlZCIsImlhdCI6MTc1OTI0MTgzNSwiZXhwIjoxNzU5MjQ1NDM1fQ.pUp4GKo7hlYllqC_l1R5zsUPVwA6SuwhDsqELaGvWwI\" http://localhost:8000/v1/evidence/packs",
+      "expected": "200"
+    }
+  ]
+}

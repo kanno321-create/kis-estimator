@@ -1,0 +1,1104 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "KIS Estimator API",
+    "description": "Contract-First Estimator System with Evidence-Gated validation",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/healthz": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Health check endpoint - must respond < 50ms",
+        "operationId": "health_check_healthz_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readyz": {
+      "get": {
+        "summary": "Readiness Check",
+        "description": "Readiness check endpoint with DB and Storage validation.\nRequirements:\n- DB: SELECT 1, current UTC timestamp\n- Storage: Upload test file \u2192 generate signed URL \u2192 cleanup\n- Response: {\"status\":\"ok\",\"db\":\"ok\",\"storage\":\"ok\",\"ts\":\"<UTC-ISO>Z\",\"traceId\":\"...\"}",
+        "operationId": "readiness_check_readyz_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi": {
+      "get": {
+        "summary": "Get Openapi Spec",
+        "description": "Return OpenAPI specification",
+        "operationId": "get_openapi_spec_openapi_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/estimate/v1/estimate": {
+      "post": {
+        "tags": [
+          "Estimate",
+          "estimate"
+        ],
+        "summary": "Create Estimate",
+        "description": "FIX-4 Pipeline: Enclosure \u2192 Breaker \u2192 Critic \u2192 Format \u2192 Cover \u2192 Lint\n\nQuality Gates:\n- Enclosure: fit_score >= 0.90\n- Layout: phase_dev <= 0.03, clearance_ok = true\n- Format: formula_loss = 0\n- Lint: errors = 0",
+        "operationId": "create_estimate_v1_estimate_v1_estimate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstimateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/v1/estimate/v1/estimate/{id}": {
+      "get": {
+        "tags": [
+          "Estimate",
+          "estimate"
+        ],
+        "summary": "Get Estimate",
+        "description": "Retrieve estimate by ID",
+        "operationId": "get_estimate_v1_estimate_v1_estimate__id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/estimate/v1/estimate/stream": {
+      "get": {
+        "tags": [
+          "Estimate",
+          "estimate"
+        ],
+        "summary": "Stream Estimate",
+        "description": "SSE stream for estimate progress\n\nEvents:\n- HEARTBEAT: Every 3s (meta.seq monotonic)\n- PROGRESS: Stage progress (0-100%)\n- GATE_RESULT: Gate pass/fail\n- DONE: Pipeline complete\n\nAll events include meta.seq (never None)",
+        "operationId": "stream_estimate_v1_estimate_v1_estimate_stream_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Quoteid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/validate/v1/validate": {
+      "post": {
+        "tags": [
+          "Validation",
+          "validate"
+        ],
+        "summary": "Validate Input",
+        "description": "Tab parsing rules:\n- 2 tabs: Analyze tabs 1 and 2\n- 3+ tabs: Tab 2 is high-voltage (ignore), analyze tabs 1 and 3\n- New panel block: \"\uc18c\uacc4/\ud569\uacc4\" + 1-2 blank rows",
+        "operationId": "validate_input_v1_validate_v1_validate_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_validate_input_v1_validate_v1_validate_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/v1/documents/v1/documents": {
+      "get": {
+        "tags": [
+          "Documents",
+          "documents"
+        ],
+        "summary": "List Documents",
+        "description": "List documents with signed URLs (10-min TTL)",
+        "operationId": "list_documents_v1_documents_v1_documents_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Quoteid"
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/documents/v1/documents/export": {
+      "post": {
+        "tags": [
+          "Documents",
+          "documents"
+        ],
+        "summary": "Export Documents",
+        "description": "Export documents in specified formats",
+        "operationId": "export_documents_v1_documents_v1_documents_export_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Quoteid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Kinds"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/v1/catalog": {
+      "get": {
+        "tags": [
+          "Catalog",
+          "catalog"
+        ],
+        "summary": "List Catalog",
+        "description": "Search catalog items",
+        "operationId": "list_catalog_v1_catalog_v1_catalog_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Kind"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Q"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "title": "Size"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/v1/catalog/items": {
+      "post": {
+        "tags": [
+          "Catalog",
+          "catalog"
+        ],
+        "summary": "Upsert Catalog Items",
+        "description": "Upsert catalog items (seed/admin)",
+        "operationId": "upsert_catalog_items_v1_catalog_v1_catalog_items_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array",
+                "title": "Items"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/sse/test": {
+      "get": {
+        "tags": [
+          "sse"
+        ],
+        "summary": "Sse Test",
+        "description": "SSE test endpoint with JWT authentication.\n\nHeaders:\n    Authorization: Bearer <JWT>\n\nReturns:\n    StreamingResponse with text/event-stream\n\nRaises:\n    HTTPException: 401 if no auth, 403 if invalid token",
+        "operationId": "sse_test_api_sse_test_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/evidence/packs": {
+      "get": {
+        "tags": [
+          "Evidence",
+          "Evidence"
+        ],
+        "summary": "List evidence packs",
+        "description": "List all Go-Live evidence packs from Supabase Storage (admin only)",
+        "operationId": "list_packs_v1_evidence_packs_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Search query (partial match on pack ID)",
+              "title": "Q"
+            },
+            "description": "Search query (partial match on pack ID)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Max results per page",
+              "default": 50,
+              "title": "Limit"
+            },
+            "description": "Max results per page"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Skip first N results",
+              "default": 0,
+              "title": "Offset"
+            },
+            "description": "Skip first N results"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Sort order (created_at_desc or created_at_asc)",
+              "default": "created_at_desc",
+              "title": "Order"
+            },
+            "description": "Sort order (created_at_desc or created_at_asc)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/evidence/packs/{pack_id}": {
+      "get": {
+        "tags": [
+          "Evidence",
+          "Evidence"
+        ],
+        "summary": "Get pack details",
+        "description": "Get detailed file list for a specific evidence pack (admin only)",
+        "operationId": "get_pack_details_v1_evidence_packs__pack_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pack_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pack Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackDetailsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/evidence/packs/{pack_id}/download": {
+      "get": {
+        "tags": [
+          "Evidence",
+          "Evidence"
+        ],
+        "summary": "Generate download URL",
+        "description": "Generate signed URL for file download (admin only, short expiration)",
+        "operationId": "get_download_url_v1_evidence_packs__pack_id__download_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pack_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Pack Id"
+            }
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "File name within pack (e.g., 'SHA256SUMS.txt' or 'artifacts/report.pdf')",
+              "title": "File"
+            },
+            "description": "File name within pack (e.g., 'SHA256SUMS.txt' or 'artifacts/report.pdf')"
+          },
+          {
+            "name": "expires_in",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 3600,
+              "minimum": 60,
+              "description": "URL expiration in seconds (default: 600 = 10 min)",
+              "default": 600,
+              "title": "Expires In"
+            },
+            "description": "URL expiration in seconds (default: 600 = 10 min)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DownloadUrlResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/evidence/verify": {
+      "post": {
+        "tags": [
+          "Evidence",
+          "Evidence"
+        ],
+        "summary": "Verify pack integrity",
+        "description": "Verify evidence pack integrity by comparing actual file hashes against SHA256SUMS.txt (admin only)",
+        "operationId": "verify_pack_v1_evidence_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Root",
+        "description": "Root endpoint",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_validate_input_v1_validate_v1_validate_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "ruleset": {
+            "type": "string",
+            "title": "Ruleset",
+            "default": "tab"
+          }
+        },
+        "type": "object",
+        "title": "Body_validate_input_v1_validate_v1_validate_post"
+      },
+      "DownloadUrlResponse": {
+        "properties": {
+          "signed_url": {
+            "type": "string",
+            "title": "Signed Url"
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In"
+          },
+          "file_path": {
+            "type": "string",
+            "title": "File Path"
+          },
+          "generated_at": {
+            "type": "string",
+            "title": "Generated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "signed_url",
+          "expires_in",
+          "file_path",
+          "generated_at"
+        ],
+        "title": "DownloadUrlResponse",
+        "description": "Response for GET /v1/evidence/packs/{pack_id}/download"
+      },
+      "EstimateRequest": {
+        "properties": {
+          "customer": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Customer"
+          },
+          "panels": {
+            "items": {},
+            "type": "array",
+            "title": "Panels"
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "default": "KRW"
+          },
+          "locale": {
+            "type": "string",
+            "title": "Locale",
+            "default": "ko-KR"
+          }
+        },
+        "type": "object",
+        "required": [
+          "customer",
+          "panels"
+        ],
+        "title": "EstimateRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "PackDetailsResponse": {
+        "properties": {
+          "pack_id": {
+            "type": "string",
+            "title": "Pack Id"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "total_files": {
+            "type": "integer",
+            "title": "Total Files"
+          },
+          "total_bytes": {
+            "type": "integer",
+            "title": "Total Bytes"
+          },
+          "has_sha256sums": {
+            "type": "boolean",
+            "title": "Has Sha256Sums"
+          },
+          "files": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Files"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pack_id",
+          "created_at",
+          "total_files",
+          "total_bytes",
+          "has_sha256sums",
+          "files"
+        ],
+        "title": "PackDetailsResponse",
+        "description": "Response for GET /v1/evidence/packs/{pack_id}"
+      },
+      "PackListResponse": {
+        "properties": {
+          "packs": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Packs"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          }
+        },
+        "type": "object",
+        "required": [
+          "packs",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "title": "PackListResponse",
+        "description": "Response for GET /v1/evidence/packs"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "VerifyRequest": {
+        "properties": {
+          "pack_id": {
+            "type": "string",
+            "title": "Pack Id",
+            "description": "Evidence pack ID to verify"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pack_id"
+        ],
+        "title": "VerifyRequest",
+        "description": "Request for POST /v1/evidence/verify"
+      },
+      "VerifyResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "OK or FAIL"
+          },
+          "pack_id": {
+            "type": "string",
+            "title": "Pack Id"
+          },
+          "files_checked": {
+            "type": "integer",
+            "title": "Files Checked"
+          },
+          "mismatched": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Mismatched"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "title": "Duration Ms"
+          },
+          "verified_at": {
+            "type": "string",
+            "title": "Verified At"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "pack_id",
+          "files_checked",
+          "duration_ms",
+          "verified_at",
+          "trace_id"
+        ],
+        "title": "VerifyResponse",
+        "description": "Response for POST /v1/evidence/verify"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

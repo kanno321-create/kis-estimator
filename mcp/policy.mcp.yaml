@@ -1,0 +1,368 @@
+# MCP Gateway Policy Configuration
+# Tool orchestration and quality gates
+
+version: "1.0"
+name: "KIS Estimator MCP Policy"
+
+tools:
+  # ==========================================
+  # ENCLOSURE TOOLS
+  # ==========================================
+  enclosure.solve:
+    description: "Solve optimal enclosure dimensions"
+    required_params:
+      - panels
+    quality_gates:
+      - name: "fit_score"
+        operator: ">="
+        value: 0.90
+      - name: "ip_rating"
+        operator: ">="
+        value: 44
+    timeout: 30
+    retry: 3
+
+  enclosure.validate:
+    description: "Validate enclosure specifications"
+    required_params:
+      - enclosure
+      - requirements
+    timeout: 10
+    retry: 2
+
+  # ==========================================
+  # LAYOUT TOOLS
+  # ==========================================
+  layout.place_breakers:
+    description: "Optimize breaker placement"
+    required_params:
+      - breakers
+      - enclosure
+    quality_gates:
+      - name: "utilization"
+        operator: "<="
+        value: 0.95
+    timeout: 60
+    retry: 3
+
+  layout.check_clearance:
+    description: "Check clearance violations"
+    required_params:
+      - placement
+    quality_gates:
+      - name: "violations"
+        operator: "="
+        value: 0
+    timeout: 10
+    retry: 2
+
+  layout.balance_phases:
+    description: "Calculate phase balance"
+    required_params:
+      - placement
+    quality_gates:
+      - name: "imbalance"
+        operator: "<="
+        value: 0.03
+    timeout: 10
+    retry: 2
+
+  # ==========================================
+  # ESTIMATE TOOLS
+  # ==========================================
+  estimate.format:
+    description: "Format estimate document"
+    required_params:
+      - request
+      - enclosure
+      - placement
+    quality_gates:
+      - name: "formula_preserved"
+        operator: "="
+        value: 1.0
+    timeout: 30
+    retry: 2
+
+  estimate.export:
+    description: "Export estimate to PDF/Excel"
+    required_params:
+      - format
+      - data
+    supported_formats:
+      - pdf
+      - xlsx
+    timeout: 60
+    retry: 2
+
+  # ==========================================
+  # DOCUMENT TOOLS
+  # ==========================================
+  doc.cover_generate:
+    description: "Generate document cover"
+    required_params:
+      - customer
+    timeout: 10
+    retry: 2
+
+  doc.apply_branding:
+    description: "Apply company branding"
+    required_params:
+      - document
+    quality_gates:
+      - name: "policy_violation"
+        operator: "="
+        value: 0
+    timeout: 10
+    retry: 2
+
+  doc.lint:
+    description: "Validate document quality"
+    required_params:
+      - document
+    quality_gates:
+      - name: "errors"
+        operator: "="
+        value: 0
+    timeout: 10
+    retry: 2
+
+  doc.policy_check:
+    description: "Check policy compliance"
+    required_params:
+      - document
+    quality_gates:
+      - name: "violations"
+        operator: "="
+        value: 0
+    timeout: 10
+    retry: 2
+
+  # ==========================================
+  # RAG TOOLS
+  # ==========================================
+  rag.ingest:
+    description: "Ingest documents into knowledge base"
+    required_params:
+      - documents
+    timeout: 120
+    retry: 2
+
+  rag.normalize:
+    description: "Normalize data for indexing"
+    required_params:
+      - data
+    timeout: 30
+    retry: 2
+
+  rag.index:
+    description: "Index content for retrieval"
+    required_params:
+      - content
+    timeout: 60
+    retry: 2
+
+  rag.verify:
+    description: "Verify citation coverage"
+    required_params:
+      - document
+    quality_gates:
+      - name: "citation_coverage"
+        operator: "="
+        value: 1.0
+    timeout: 30
+    retry: 2
+
+  # ==========================================
+  # TESTING TOOLS
+  # ==========================================
+  contract.lint:
+    description: "Validate OpenAPI contract"
+    required_params:
+      - spec
+    timeout: 10
+    retry: 1
+
+  db.modeler:
+    description: "Generate DDL with TIMESTAMPTZ"
+    required_params:
+      - schema
+    timeout: 30
+    retry: 1
+
+  testgen.make:
+    description: "Generate test cases"
+    required_params:
+      - component
+    timeout: 60
+    retry: 1
+
+  fuzz.contract:
+    description: "Fuzz test API contract"
+    required_params:
+      - endpoints
+    timeout: 300
+    retry: 1
+
+  regression.run:
+    description: "Run regression test suite"
+    required_params:
+      - test_suite
+    quality_gates:
+      - name: "passed"
+        operator: "="
+        value: 20
+      - name: "failed"
+        operator: "="
+        value: 0
+    timeout: 600
+    retry: 1
+
+  # ==========================================
+  # SECURITY & OPS TOOLS
+  # ==========================================
+  sec.secrets_guard:
+    description: "Scan for exposed secrets"
+    required_params:
+      - paths
+    quality_gates:
+      - name: "violations"
+        operator: "="
+        value: 0
+    timeout: 60
+    retry: 1
+
+  ops.rollbacks:
+    description: "Execute rollback procedure"
+    required_params:
+      - version
+    timeout: 300
+    retry: 1
+
+  ops.impact.report:
+    description: "Generate impact report"
+    required_params:
+      - changes
+    timeout: 60
+    retry: 1
+
+# ==========================================
+# PIPELINE DAG
+# ==========================================
+pipeline:
+  stages:
+    - name: "enclosure"
+      tools:
+        - enclosure.solve
+        - enclosure.validate
+      parallel: false
+      required: true
+
+    - name: "layout"
+      tools:
+        - layout.place_breakers
+        - layout.check_clearance
+        - layout.balance_phases
+      parallel: false
+      required: true
+      depends_on: ["enclosure"]
+
+    - name: "format"
+      tools:
+        - estimate.format
+      parallel: false
+      required: true
+      depends_on: ["layout"]
+
+    - name: "cover"
+      tools:
+        - doc.cover_generate
+        - doc.apply_branding
+      parallel: true
+      required: true
+      depends_on: ["format"]
+
+    - name: "lint"
+      tools:
+        - doc.lint
+        - doc.policy_check
+      parallel: true
+      required: true
+      depends_on: ["cover"]
+
+    - name: "evidence"
+      tools:
+        - rag.verify
+      parallel: false
+      required: true
+      depends_on: ["lint"]
+
+# ==========================================
+# THRESHOLDS
+# ==========================================
+thresholds:
+  global:
+    max_retries: 3
+    timeout_seconds: 600
+    evidence_required: true
+
+  performance:
+    p50_ms: 100
+    p95_ms: 200
+    p99_ms: 500
+
+  quality:
+    fit_score_min: 0.90
+    phase_imbalance_max: 0.03
+    lint_errors_max: 0
+    citation_coverage_min: 1.0
+
+  thermal:
+    row_limit_watts: 650
+    panel_limit_watts: 2500
+
+  clearance:
+    horizontal_mm: 50
+    vertical_mm: 30
+    door_mm: 30
+
+# ==========================================
+# EVIDENCE COLLECTION
+# ==========================================
+evidence:
+  enabled: true
+  format: "json"
+  hash_algorithm: "sha256"
+
+  collection:
+    - stage: "input"
+      fields: ["request", "timestamp", "trace_id"]
+
+    - stage: "processing"
+      fields: ["tool_calls", "parameters", "results"]
+
+    - stage: "output"
+      fields: ["response", "evidence_sha", "artifacts"]
+
+  storage:
+    path: "/evidence/{trace_id}/"
+    retention_days: 90
+
+# ==========================================
+# HARD GATES (Deployment blockers)
+# ==========================================
+hard_gates:
+  - name: "regression_suite"
+    condition: "regression.run.passed == 20"
+    message: "All 20 regression tests must pass"
+
+  - name: "evidence_complete"
+    condition: "evidence.coverage == 100%"
+    message: "Evidence pack must be complete"
+
+  - name: "security_clean"
+    condition: "sec.secrets_guard.violations == 0"
+    message: "No secrets or vulnerabilities allowed"
+
+  - name: "contract_valid"
+    condition: "contract.lint.errors == 0"
+    message: "OpenAPI contract must be valid"

@@ -1,0 +1,75 @@
+{
+  "status": "success",
+  "data": {
+    "items": [
+      {
+        "id": "BKR-MCCB-800A-4P",
+        "name": "MCCB 800A 4P",
+        "category": "breaker",
+        "type": "MCCB",
+        "rating": 800,
+        "poles": 4,
+        "price": 450000,
+        "stock": 15
+      },
+      {
+        "id": "BKR-MCCB-400A-4P",
+        "name": "MCCB 400A 4P",
+        "category": "breaker",
+        "type": "MCCB",
+        "rating": 400,
+        "poles": 4,
+        "price": 280000,
+        "stock": 23
+      },
+      {
+        "id": "BKR-MCB-32A-2P",
+        "name": "MCB 32A 2P",
+        "category": "breaker",
+        "type": "MCB",
+        "rating": 32,
+        "poles": 2,
+        "price": 35000,
+        "stock": 145
+      },
+      {
+        "id": "ENC-2000X800X600",
+        "name": "Enclosure 2000x800x600",
+        "category": "enclosure",
+        "type": "standing",
+        "dimensions": {
+          "height": 2000,
+          "width": 800,
+          "depth": 600
+        },
+        "ip_rating": "IP54",
+        "price": 850000,
+        "stock": 5
+      },
+      {
+        "id": "ENC-1200X600X400",
+        "name": "Enclosure 1200x600x400",
+        "category": "enclosure",
+        "type": "wall_mount",
+        "dimensions": {
+          "height": 1200,
+          "width": 600,
+          "depth": 400
+        },
+        "ip_rating": "IP44",
+        "price": 420000,
+        "stock": 8
+      }
+    ],
+    "pagination": {
+      "limit": 5,
+      "offset": 0,
+      "total": 127
+    }
+  },
+  "meta": {
+    "response_time_ms": 42,
+    "cache_hit": false,
+    "traceId": "550e8400-e29b-41d4-a716-446655440001"
+  }
+}

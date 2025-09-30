@@ -1,0 +1,22 @@
+{"case":"enclosure_fit_basic","stage":"enclosure","input":{"breakers":[{"poles":3,"capacity":"100A","qty":1}],"materials":[]},"expect":{"fit_score_gte":0.90},"priority":"high"}
+{"case":"enclosure_fit_medium","stage":"enclosure","input":{"breakers":[{"poles":3,"capacity":"200A","qty":1},{"poles":2,"capacity":"30A","qty":10}],"materials":[]},"expect":{"fit_score_gte":0.90},"priority":"high"}
+{"case":"enclosure_fit_complex","stage":"enclosure","input":{"breakers":[{"poles":3,"capacity":"200A","qty":2},{"poles":2,"capacity":"50A","qty":20}],"materials":[{"sku":"ACC-BUSBAR-3P-100A","qty":2}]},"expect":{"fit_score_gte":0.90},"priority":"high"}
+{"case":"enclosure_ip_rating","stage":"enclosure","input":{"breakers":[{"poles":3,"capacity":"100A","qty":1}],"ip_required":"IP44"},"expect":{"ip_rating_gte":"IP44"},"priority":"medium"}
+{"case":"enclosure_door_clearance","stage":"enclosure","input":{"breakers":[{"poles":3,"capacity":"100A","qty":1}],"door_clearance_mm":30},"expect":{"door_clearance_gte":30},"priority":"medium"}
+{"case":"phase_balance_3breaker","stage":"breaker","input":{"breakers":[{"poles":3,"capacity":"100A","phase":"R"},{"poles":3,"capacity":"100A","phase":"S"},{"poles":3,"capacity":"100A","phase":"T"}]},"expect":{"phase_dev_lte":0.03},"priority":"critical"}
+{"case":"phase_balance_mixed","stage":"breaker","input":{"breakers":[{"poles":2,"capacity":"30A","qty":12}]},"expect":{"phase_dev_lte":0.03},"priority":"critical"}
+{"case":"breaker_clearance_ok","stage":"breaker","input":{"breakers":[{"poles":3,"capacity":"200A","qty":2}],"min_clearance_mm":50},"expect":{"clearance_violations":0},"priority":"critical"}
+{"case":"breaker_thermal_ok","stage":"breaker","input":{"breakers":[{"poles":3,"capacity":"200A","qty":5}],"thermal_margin":0.8},"expect":{"thermal_violations":0},"priority":"high"}
+{"case":"breaker_position_valid","stage":"breaker","input":{"breakers":[{"poles":2,"capacity":"30A","qty":10}]},"expect":{"position_errors":0},"priority":"high"}
+{"case":"critic_no_violations","stage":"critic","input":{"layout":{"breakers":[],"clearances":[]}},"expect":{"violations":0},"priority":"critical"}
+{"case":"critic_warnings_acceptable","stage":"critic","input":{"layout":{"warnings":["thermal_margin_low"]}},"expect":{"violations":0,"warnings_lte":3},"priority":"medium"}
+{"case":"critic_thermal_check","stage":"critic","input":{"layout":{"thermal_load":0.85}},"expect":{"thermal_ok":true},"priority":"high"}
+{"case":"critic_recommendations","stage":"critic","input":{"layout":{}},"expect":{"has_recommendations":true},"priority":"low"}
+{"case":"critic_pass_gate","stage":"critic","input":{"layout":{}},"expect":{"gate_pass":true},"priority":"critical"}
+{"case":"format_formula_preserved","stage":"format","input":{"formulas":["=SUM(A1:A10)","=B1*C1"]},"expect":{"formula_loss":0},"priority":"critical"}
+{"case":"format_named_ranges","stage":"format","input":{"named_ranges":["TotalPrice","ItemCount"]},"expect":{"named_range_loss":0},"priority":"high"}
+{"case":"cover_branding_ok","stage":"cover","input":{"customer":"Test Corp","logo":true},"expect":{"policy_violations":0},"priority":"critical"}
+{"case":"lint_no_errors","stage":"lint","input":{"document":{}},"expect":{"lint_errors":0},"priority":"critical"}
+{"case":"e2e_full_pipeline","stage":"e2e","input":{"customer":{"name":"E2E Test"},"panels":[{"name":"Main","breakers":[{"type":"main","poles":3,"capacity":"100A","qty":1}]}]},"expect":{"all_gates_pass":true,"evidence_complete":true},"priority":"critical"}
+{"case":"evidence_sha256_match","stage":"evidence","input":{"quote_id":"test-ev-001","stage":"enclosure","data":"test"},"expect":{"sha256_match":true,"integrity_valid":true},"priority":"critical"}
+{"case":"sse_sequence_monotonic","stage":"sse","input":{"quote_id":"test-sse-001"},"expect":{"seq_monotonic":true,"meta_not_none":true},"priority":"critical"}

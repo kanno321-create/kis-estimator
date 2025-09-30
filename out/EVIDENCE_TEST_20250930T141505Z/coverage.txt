@@ -1,0 +1,6 @@
+api\routers\evidence.py               86      3    97%
+api\services\evidence_service.py     125     10    92%
+------------------------------------------------------
+TOTAL                                211     13    94%
+Coverage HTML written to dir out/EVIDENCE_TEST_20250930T141505Z/coverage_html
+======================= 17 passed, 2 warnings in 25.62s =======================

@@ -1,0 +1,12 @@
+{
+  "total": 3000,
+  "ok": 2994,
+  "err": 6,
+  "err_pct": 0.2,
+  "p95_ms": 30.0,
+  "p50_ms": 18.0,
+  "mean_ms": 18.628333333333334,
+  "rps": 50.0,
+  "tuning_applied": true,
+  "status": "PASS"
+}

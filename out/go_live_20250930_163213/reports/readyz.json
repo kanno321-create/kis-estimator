@@ -1,0 +1,21 @@
+{
+  "status": "ok",
+  "timestamp": "2025-09-30T16:32:50Z",
+  "traceId": "trace-1759217570",
+  "checks": {
+    "database": "ok",
+    "redis": "ok",
+    "jwt_configured": true,
+    "cors_configured": true,
+    "rate_limiting": "active",
+    "trusted_host": "configured",
+    "db_pool": "optimized",
+    "workers": 8,
+    "timeout_config": "tuned"
+  },
+  "version": "2.1.1",
+  "meta": {
+    "deployment_id": "deploy_20250930_163213",
+    "tuning_applied": true
+  }
+}

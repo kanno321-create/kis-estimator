@@ -1,0 +1,10 @@
+Memory:
+N/A
+
+Disk:
+Filesystem            Size  Used Avail Use% Mounted on
+C:/Program Files/Git  1.9T  237G  1.6T  13% /
+G:                    1.9T  318G  1.6T  18% /g
+
+File Limits:
+3200

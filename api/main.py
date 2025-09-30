@@ -31,7 +31,7 @@ from api.security_config import get_allowed_origins, get_allowed_hosts, EXPOSE_H
 from api.auth import verify_token
 
 # Routers
-from api.routers import estimate, validate, documents, catalog
+from api.routers import estimate, validate, documents, catalog, sse, evidence
 
 # Services
 from api.services import (
@@ -45,7 +45,7 @@ from api.services import (
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - [%(trace_id)s] - %(message)s'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
@@ -75,12 +75,17 @@ class AppContext:
         # Initialize database connection
         await init_db()
 
-        # Initialize services
-        await estimate_service.initialize()
-        await layout_service.initialize()
-        await enclosure_service.initialize()
-        await document_service.initialize()
-        await rag_service.initialize()
+        # Initialize services (check if methods exist)
+        if hasattr(estimate_service, 'initialize'):
+            await estimate_service.initialize()
+        if hasattr(layout_service, 'initialize'):
+            await layout_service.initialize()
+        if hasattr(enclosure_service, 'initialize'):
+            await enclosure_service.initialize()
+        if hasattr(document_service, 'initialize'):
+            await document_service.initialize()
+        if hasattr(rag_service, 'initialize'):
+            await rag_service.initialize()
 
         self.ready = True
         logger.info("KIS Estimator API started successfully")
@@ -92,12 +97,17 @@ class AppContext:
         # Close database connections
         await close_db()
 
-        # Cleanup services
-        await estimate_service.cleanup()
-        await layout_service.cleanup()
-        await enclosure_service.cleanup()
-        await document_service.cleanup()
-        await rag_service.cleanup()
+        # Cleanup services (check if methods exist)
+        if hasattr(estimate_service, 'cleanup'):
+            await estimate_service.cleanup()
+        if hasattr(layout_service, 'cleanup'):
+            await layout_service.cleanup()
+        if hasattr(enclosure_service, 'cleanup'):
+            await enclosure_service.cleanup()
+        if hasattr(document_service, 'cleanup'):
+            await document_service.cleanup()
+        if hasattr(rag_service, 'cleanup'):
+            await rag_service.cleanup()
 
         self.ready = False
         logger.info("KIS Estimator API shut down successfully")
@@ -289,6 +299,17 @@ async def readiness_check(request: Request):
     # Check storage health
     storage_health = await storage_client.check_storage_health()
 
+    # Check SSE route availability
+    sse_status = "ok"
+    try:
+        from fastapi.routing import APIRoute
+        from api.routers import sse as sse_module
+        sse_routes = [r for r in sse_module.router.routes if isinstance(r, APIRoute) and r.path.endswith("/test")]
+        if not sse_routes:
+            sse_status = "missing"
+    except Exception:
+        sse_status = "missing"
+
     # Overall status
     all_ok = (
         db_health.get("status") == "ok"
@@ -305,7 +326,8 @@ async def readiness_check(request: Request):
                 "db_error": db_health.get("error"),
                 "storage_error": storage_health.get("error"),
                 "ts": datetime.now(timezone.utc).isoformat() + "Z",
-                "traceId": trace_id
+                "traceId": trace_id,
+                "checks": {"sse": sse_status}
             }
         )
 
@@ -315,7 +337,8 @@ async def readiness_check(request: Request):
             "db": "ok",
             "storage": "ok",
             "ts": db_health.get("timestamp", datetime.now(timezone.utc).isoformat() + "Z"),
-            "traceId": trace_id
+            "traceId": trace_id,
+            "checks": {"sse": sse_status}
         }
     )
 
@@ -358,6 +381,16 @@ app.include_router(
     tags=["Catalog"],
     dependencies=[Depends(verify_token)]
 )
+
+# SSE router (no prefix override - already has /api/sse in router definition)
+app.include_router(sse.router)
+
+# Evidence router (admin-only, JWT auth handled by router dependencies)
+app.include_router(evidence.router, tags=["Evidence"])
+
+# Parser router (admin-only, JWT auth handled by router dependencies)
+from api.routers import parser_routes
+app.include_router(parser_routes.router, tags=["Parser"])
 
 # Root endpoint
 @app.get("/")

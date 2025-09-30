@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-09-30T13:14:06Z",
+  "test_suite": "Evidence Ledger API",
+  "environment_check": {
+    "SUPABASE_URL": "MISSING",
+    "SUPABASE_SERVICE_ROLE_KEY": "MISSING",
+    "SUPABASE_JWT_SECRET": "MISSING",
+    "BASE_URL": "NOT_CHECKED",
+    "ADMIN_JWT": "NOT_CHECKED"
+  },
+  "status": "SKIP",
+  "reason": "Required Supabase credentials not configured in environment",
+  "missing_vars": [
+    "SUPABASE_URL",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "SUPABASE_JWT_SECRET"
+  ],
+  "note": "Tests require real Supabase Storage integration. Set environment variables to enable testing."
+}

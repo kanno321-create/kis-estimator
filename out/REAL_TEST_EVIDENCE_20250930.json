@@ -1,0 +1,82 @@
+{
+  "test_type": "REAL_PRODUCTION_TEST",
+  "timestamp": "2025-09-30T19:10:00+09:00",
+  "mock_used": false,
+  "evidence": {
+    "database": {
+      "connection": "SUCCESS",
+      "host": "aws-1-ap-northeast-2.pooler.supabase.com",
+      "port": 5432,
+      "tables_found": 10,
+      "tables_list": [
+        "audit_logs",
+        "breaker_catalog",
+        "customers",
+        "enclosure_catalog",
+        "evidence_blobs",
+        "panels",
+        "quote_items",
+        "quotes",
+        "sse_events",
+        "validation_rules"
+      ],
+      "quotes_count": 0
+    },
+    "service": {
+      "url": "http://localhost:8000",
+      "status": "RUNNING",
+      "readyz_response": {
+        "status": "ready",
+        "database": {
+          "status": "connected",
+          "error": null
+        },
+        "environment": {
+          "has_supabase_url": true,
+          "has_db_url": true,
+          "has_anon_key": true,
+          "has_service_key": true
+        }
+      }
+    },
+    "load_test": {
+      "requests": 20,
+      "success_rate": "100%",
+      "success_count": 20,
+      "fail_count": 0,
+      "performance_ms": {
+        "avg": 2139.5,
+        "p50": 2140.9,
+        "p95": 2174.8,
+        "min": 2115.9,
+        "max": 2174.8
+      },
+      "target_p95": 200,
+      "performance_status": "CRITICAL_BREACH",
+      "breach_factor": 10.87
+    }
+  },
+  "quality_gates": {
+    "db_connection": "PASS",
+    "service_health": "PASS",
+    "performance_p95_target": "FAIL",
+    "overall_status": "FAIL"
+  },
+  "critical_issues": [
+    {
+      "issue": "Performance p95 breach",
+      "severity": "CRITICAL",
+      "target": "200ms",
+      "actual": "2174.8ms",
+      "breach": "987% over target",
+      "action_required": "Immediate performance optimization"
+    }
+  ],
+  "validation": {
+    "real_database_queried": true,
+    "real_service_tested": true,
+    "real_metrics_collected": true,
+    "no_mocks": true,
+    "evidence_integrity": "SHA256_VERIFIED"
+  }
+}

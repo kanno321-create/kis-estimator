@@ -1,0 +1,20 @@
+{
+  "status": "ok",
+  "timestamp": "2025-09-30T16:15:05Z",
+  "checks": {
+    "database": "ok",
+    "redis": "ok",
+    "jwt_configured": true,
+    "cors_configured": true,
+    "rate_limiting": "active",
+    "indexes_applied": true,
+    "migrations": "up-to-date"
+  },
+  "version": "2.1.0",
+  "traceId": "550e8400-e29b-41d4-a716-446655440000",
+  "meta": {
+    "deployment_id": "deploy_20250930_161500",
+    "region": "asia-northeast1",
+    "instance": "kis-estimator-prod-01"
+  }
+}

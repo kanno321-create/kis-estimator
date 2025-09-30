@@ -1,0 +1,39 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\PC\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: c:\Users\PC\Desktop\kis-estimator-main
+configfile: pytest.ini
+plugins: asyncio-0.24.0, anyio-4.10.0, dash-3.2.0, Faker-37.8.0, langsmith-0.4.28, cov-7.0.0, mock-3.15.1, timeout-2.4.0, respx-0.22.0
+asyncio: mode=Mode.STRICT, default_loop_scope=None
+collecting ... collected 17 items
+
+tests/evidence/test_evidence_api.py::test_list_packs_no_token PASSED     [  5%]
+tests/evidence/test_evidence_api.py::test_list_packs_user_token PASSED   [ 11%]
+tests/evidence/test_evidence_api.py::test_list_packs_admin_access PASSED [ 17%]
+tests/evidence/test_evidence_api.py::test_list_packs_success PASSED      [ 23%]
+tests/evidence/test_evidence_api.py::test_list_packs_search PASSED       [ 29%]
+tests/evidence/test_evidence_api.py::test_list_packs_pagination PASSED   [ 35%]
+tests/evidence/test_evidence_api.py::test_list_packs_ordering PASSED     [ 41%]
+tests/evidence/test_evidence_api.py::test_get_pack_details_success PASSED [ 47%]
+tests/evidence/test_evidence_api.py::test_get_pack_details_not_found PASSED [ 52%]
+tests/evidence/test_evidence_api.py::test_create_download_url_success PASSED [ 58%]
+tests/evidence/test_evidence_api.py::test_create_download_url_custom_expiry PASSED [ 64%]
+tests/evidence/test_evidence_api.py::test_create_download_url_file_not_found PASSED [ 70%]
+tests/evidence/test_evidence_api.py::test_verify_pack_success PASSED     [ 76%]
+tests/evidence/test_evidence_api.py::test_verify_pack_with_tampered_file PASSED [ 82%]
+tests/evidence/test_evidence_api.py::test_verify_pack_missing_sha256sums PASSED [ 88%]
+tests/evidence/test_evidence_api.py::test_verify_pack_not_found PASSED   [ 94%]
+tests/evidence/test_evidence_api.py::test_verify_pack_performance PASSED [100%]
+
+============================== warnings summary ===============================
+tests/evidence/test_evidence_api.py::test_list_packs_admin_access
+  C:\Users\PC\AppData\Local\Programs\Python\Python311\Lib\site-packages\supabase\_sync\client.py:255: DeprecationWarning: The 'timeout' parameter is deprecated. Please configure it in the http client instead.
+    return SyncStorageClient(
+
+tests/evidence/test_evidence_api.py::test_list_packs_admin_access
+  C:\Users\PC\AppData\Local\Programs\Python\Python311\Lib\site-packages\supabase\_sync\client.py:255: DeprecationWarning: The 'verify' parameter is deprecated. Please configure it in the http client instead.
+    return SyncStorageClient(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: c:\Users\PC\Desktop\kis-estimator-main\out\EVIDENCE_TEST_20250930T141505Z\junit.xml -
+======================= 17 passed, 2 warnings in 26.85s =======================

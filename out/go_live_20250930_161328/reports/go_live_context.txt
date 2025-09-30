@@ -1,0 +1,5 @@
+SERVICE_URL=http://localhost:8000
+TRACE_ID=trace-1759216509
+DEPLOYMENT_ID=deploy_20250930_161328
+STATUS=ROLLBACK_TRIGGERED
+REASON=Error rate exceeded 1% threshold (2.0% observed)

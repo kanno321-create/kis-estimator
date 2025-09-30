@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "total": 100,
+  "ok_count": 98,
+  "err_count": 2,
+  "err_pct": 2.0,
+  "p95_ms": 114.85,
+  "rps": 1.6666666666666667,
+  "mean_ms": 42.24,
+  "min_ms": 9.0,
+  "max_ms": 127.0
+}

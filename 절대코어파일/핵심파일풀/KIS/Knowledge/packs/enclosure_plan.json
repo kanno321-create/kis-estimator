@@ -1,0 +1,32 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KIS Enclosure Plan",
+  "type": "object",
+  "required": ["chosen_model", "fit_score", "gaps", "utilisation", "ip_rating"],
+  "properties": {
+    "chosen_model": {"type": "string"},
+    "fit_score": {"type": "number"},
+    "gaps": {
+      "type": "object",
+      "properties": {
+        "W": {"type": "number"},
+        "H": {"type": "number"},
+        "D": {"type": "number"},
+        "HEAT": {"type": "number"}
+      }
+    },
+    "utilisation": {
+      "type": "object",
+      "properties": {
+        "W": {"type": "number"},
+        "H": {"type": "number"},
+        "D": {"type": "number"},
+        "HEAT": {"type": "number"}
+      }
+    },
+    "ip_rating": {"type": "string"},
+    "slot_unit": {"type": "number"},
+    "max_heat_w": {"type": "number"},
+    "price": {"type": "number"}
+  }
+}

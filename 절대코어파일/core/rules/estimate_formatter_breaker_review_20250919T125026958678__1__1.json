@@ -1,0 +1,39 @@
+{
+  "clearance_violations": 0,
+  "critic": {
+    "clearance_violations": 0,
+    "issues": [],
+    "phase_balance": 0.0031,
+    "score": 0.997
+  },
+  "phase_balance": 0.0031,
+  "phase_totals": {
+    "A": 432.0,
+    "B": 428.0,
+    "C": 430.0
+  },
+  "placements": [
+    {
+      "breaker_id": "L02A",
+      "heat_w": 432.0,
+      "phase": "A",
+      "slot": "S01",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L02B",
+      "heat_w": 428.0,
+      "phase": "B",
+      "slot": "S02",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L02C",
+      "heat_w": 430.0,
+      "phase": "C",
+      "slot": "S03",
+      "width_unit": 0.45
+    }
+  ],
+  "slot_unit": 1.2
+}

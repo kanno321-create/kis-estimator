@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "description": "KIS Enclosure Catalog - Standard electrical enclosures",
+  "items": [
+    {
+      "id": "ENC_600_800_200",
+      "name": "표준 분전반 600×800×200",
+      "dimensions": {
+        "width": 600,
+        "height": 800,
+        "depth": 200
+      },
+      "volume": 96000000,
+      "material": "mild_steel",
+      "protection_rating": "IP54",
+      "price": 280000,
+      "max_heat_dissipation": 150
+    },
+    {
+      "id": "ENC_800_1000_300",
+      "name": "중형 분전반 800×1000×300",
+      "dimensions": {
+        "width": 800,
+        "height": 1000,
+        "depth": 300
+      },
+      "volume": 240000000,
+      "material": "mild_steel",
+      "protection_rating": "IP54",
+      "price": 450000,
+      "max_heat_dissipation": 300
+    },
+    {
+      "id": "ENC_1000_1200_400",
+      "name": "대형 분전반 1000×1200×400",
+      "dimensions": {
+        "width": 1000,
+        "height": 1200,
+        "depth": 400
+      },
+      "volume": 480000000,
+      "material": "mild_steel",
+      "protection_rating": "IP54",
+      "price": 720000,
+      "max_heat_dissipation": 500
+    },
+    {
+      "id": "ENC_600_600_200_SUS",
+      "name": "스테인리스 소형반 600×600×200",
+      "dimensions": {
+        "width": 600,
+        "height": 600,
+        "depth": 200
+      },
+      "volume": 72000000,
+      "material": "stainless_steel",
+      "protection_rating": "IP65",
+      "price": 380000,
+      "max_heat_dissipation": 120
+    },
+    {
+      "id": "ENC_800_800_250_IP65",
+      "name": "옥외용 분전반 800×800×250",
+      "dimensions": {
+        "width": 800,
+        "height": 800,
+        "depth": 250
+      },
+      "volume": 160000000,
+      "material": "aluminum",
+      "protection_rating": "IP65",
+      "price": 520000,
+      "max_heat_dissipation": 200
+    },
+    {
+      "id": "ENC_1200_1500_500",
+      "name": "특대형 분전반 1200×1500×500",
+      "dimensions": {
+        "width": 1200,
+        "height": 1500,
+        "depth": 500
+      },
+      "volume": 900000000,
+      "material": "mild_steel",
+      "protection_rating": "IP54",
+      "price": 1200000,
+      "max_heat_dissipation": 800
+    }
+  ]
+}

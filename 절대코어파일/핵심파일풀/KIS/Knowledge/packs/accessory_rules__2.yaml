@@ -1,0 +1,11 @@
+version: 2025.01
+accessories:
+  ct_meter:
+    voltage_class: HV/LV
+    max_quantity: 3
+  surge_protector:
+    classes:
+      - Type1
+      - Type2
+stock_policy:
+  reorder_threshold: 0.15

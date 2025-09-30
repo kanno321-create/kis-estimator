@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "doc": "외함 크기 산출 공식",
+    "version": "v1.00",
+    "date": "2025-08-25"
+  },
+  "dimensions": {
+    "notation": "W*H*D",
+    "inner_panel_gap_mm": 100,
+    "inner_panel_gap_exceptions": [
+      {
+        "material": "STEEL 1.0T",
+        "type_hint": "HB(기성함)",
+        "gap_mm": 50
+      }
+    ]
+  },
+  "enclosure_types": [
+    "옥내노출",
+    "옥외노출",
+    "옥내자립",
+    "옥외자립",
+    "전주부착형",
+    "FRP함",
+    "하이박스"
+  ],
+  "base": {
+    "applies_to": [
+      "옥내자립",
+      "옥외자립",
+      "FRP함(기본 옥외자립)"
+    ],
+    "size_rule": {
+      "W": "=외함 W",
+      "H_mm_default": 200,
+      "D": "=외함 D"
+    },
+    "price_formula": "((W*H)/90000)*32000"
+  },
+  "pole_mount": {
+    "requirement": "전주부착형은 반드시 옥외함",
+    "bracket_weld_cost_addon": 20000
+  },
+  "A_top": {
+    "A1_by_main_AF": [
+      {
+        "AF_range": "20~60A",
+        "A1_mm": 130
+      },
+      {
+        "AF_range": "75~100A",
+        "A1_mm": 170
+      }
+    ],
+    "A2_mm": 130
+  },
+  "B_gap_between_main_and_first_row": {
+    "value_mm": 30
+  },
+  "C_branch_total_height": {
+    "pairing_rule": "R+S+T+N 통일",
+    "tables_mm": {
+      "2P": [
+        {
+          "AF": "30AF",
+          "mm": 40
+        },
+        {
+          "AF": "50AF 컴팩트/FB",
+          "mm": 50
+        },
+        {
+          "AF": "60AF",
+          "mm": 50
+        },
+        {
+          "AF": "100AF",
+          "mm": 50
+        },
+        {
+          "AF": "200~250AF",
+          "mm": 105
+        },
+        {
+          "AF": "400AF",
+          "mm": 140
+        },
+        {
+          "AF": "600~800AF",
+          "mm": 210
+        }
+      ],
+      "3P": [
+        {
+          "AF": "50AF",
+          "mm": 75
+        },
+        {
+          "AF": "100AF",
+          "mm": 75
+        },
+        {
+          "AF": "125AF",
+          "mm": 90
+        },
+        {
+          "AF": "200~250AF",
+          "mm": 105
+        },
+        {
+          "AF": "400AF",
+          "mm": 140
+        },
+        {
+          "AF": "600~800AF",
+          "mm": 210
+        }
+      ],
+      "4P": [
+        {
+          "AF": "50AF",
+          "mm": 100
+        },
+        {
+          "AF": "60AF",
+          "mm": 100
+        },
+        {
+          "AF": "100AF",
+          "mm": 100
+        },
+        {
+          "AF": "125AF",
+          "mm": 120
+        },
+        {
+          "AF": "200~250AF",
+          "mm": 140
+        },
+        {
+          "AF": "400AF",
+          "mm": 185
+        },
+        {
+          "AF": "600~800AF",
+          "mm": 280
+        }
+      ]
+    },
+    "small_2P_note": "2P 15~30A 소형은 마주보기 40mm"
+  },
+  "D_bottom_space": [
+    {
+      "main_amp_range": "20~225A",
+      "mm": 150
+    },
+    {
+      "main_amp_range": "300~400A",
+      "mm": 200
+    },
+    {
+      "main_amp_range": "500A",
+      "mm": 250
+    }
+  ],
+  "E_accessory_allowance": {
+    "recommended_ratio": "20~30%",
+    "duct_mm": 40
+  },
+  "H_formula": "H = A + B + C + D + E",
+  "W_D_rule": "W, D는 기존 공식을 따른다"
+}

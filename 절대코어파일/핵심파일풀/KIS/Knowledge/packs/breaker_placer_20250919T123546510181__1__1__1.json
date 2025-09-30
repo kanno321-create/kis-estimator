@@ -1,0 +1,33 @@
+{
+  "clearance_violations": 2,
+  "phase_balance": 0.0397,
+  "phase_totals": {
+    "A": 450.0,
+    "B": 400.0,
+    "C": 408.0
+  },
+  "placements": [
+    {
+      "breaker_id": "L08A",
+      "heat_w": 450.0,
+      "phase": "A",
+      "slot": "S01",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L08B",
+      "heat_w": 400.0,
+      "phase": "B",
+      "slot": "S02",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L08C",
+      "heat_w": 408.0,
+      "phase": "C",
+      "slot": "S03",
+      "width_unit": 0.45
+    }
+  ],
+  "slot_unit": 1.2
+}

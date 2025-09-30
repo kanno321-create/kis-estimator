@@ -1,0 +1,8 @@
+version: 2025.01
+panels:
+  default:
+    max_modules: 64
+    grounding: bonded
+compliance:
+  insulation: IEC-61439
+  ip_rating_min: IP54

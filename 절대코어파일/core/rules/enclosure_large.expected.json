@@ -1,0 +1,35 @@
+{
+  "name": "large_size",
+  "input": {
+    "w": 750,
+    "h": 950,
+    "d_req": 300
+  },
+  "expected": {
+    "raw": {
+      "w": 750,
+      "h": 950,
+      "d": 300
+    },
+    "rounded": {
+      "h": 1000
+    },
+    "match": {
+      "model": "ENC-800x1000x300",
+      "w": 800,
+      "h": 1000,
+      "d": 300,
+      "price": 78000,
+      "score": 4.502403846153847,
+      "fit_type": "oversized"
+    },
+    "candidates_count": 2,
+    "why_trace_rules": [
+      "RAW_DIMENSIONS",
+      "ROUND_UP_100",
+      "CANDIDATE_SCORES",
+      "ENCLOSURE_MATCH"
+    ],
+    "needs_review": false
+  }
+}

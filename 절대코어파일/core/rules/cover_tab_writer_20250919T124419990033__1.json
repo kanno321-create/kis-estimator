@@ -1,0 +1,26 @@
+{
+  "notes": [
+    "Cover tab writer generated summary"
+  ],
+  "summary": {
+    "brand": {
+      "font_size": 11.0,
+      "logo_ref": "assets/logo.svg",
+      "primary_color": "003366"
+    },
+    "client": "Client-04",
+    "currency": "KRW",
+    "estimator": "KIS-AI",
+    "issued_at": "2025-09-19T12:44:19.989030Z",
+    "project_name": "Project-04",
+    "project_number": "KIS-2025-04",
+    "revision": "RC2",
+    "totals": {
+      "grand_total": 6355470.0,
+      "labor": 255000.0,
+      "materials": 5522700.0,
+      "subtotal": 5777700.0,
+      "vat": 577770.0
+    }
+  }
+}

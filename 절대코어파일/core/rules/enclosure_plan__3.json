@@ -1,0 +1,51 @@
+{
+  "ts": 1758213068,
+  "zones": [
+    {
+      "id": "Z1",
+      "type": "main",
+      "devices": 24,
+      "ip_required": "IP44"
+    },
+    {
+      "id": "Z2",
+      "type": "meter",
+      "devices": 2,
+      "ip_required": "IP65"
+    }
+  ],
+  "requirements": {
+    "min_width_mm": 650,
+    "min_height_mm": 910,
+    "ip_rating": "IP65",
+    "meter_window": true,
+    "ct_compartment": true,
+    "inspection_window": true,
+    "door_swing": "left",
+    "mounting": "wall"
+  },
+  "sku_candidates": [
+    {
+      "sku": "ENCL-650x910-IP65",
+      "fit_score": 0.93,
+      "cost": 1183.0
+    },
+    {
+      "sku": "ENCL-750x910-IP65",
+      "fit_score": 0.91,
+      "cost": 1365.0
+    },
+    {
+      "sku": "ENCL-650x1010-IP65",
+      "fit_score": 0.9,
+      "cost": 1313.0
+    }
+  ],
+  "selected_sku": {
+    "sku": "ENCL-650x910-IP65",
+    "fit_score": 0.93,
+    "cost": 1183.0
+  },
+  "constraints_satisfied": true,
+  "violations": []
+}

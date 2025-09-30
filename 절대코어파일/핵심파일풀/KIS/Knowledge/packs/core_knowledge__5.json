@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "name": "korean_industry_core_knowledge",
+    "version": "1.0.0",
+    "updated_at_utc+09": "2025-09-10T12:00:00+09:00",
+    "locale": "ko-KR",
+    "units": {
+      "length": "mm",
+      "current": "A",
+      "mass": "kg",
+      "currency": "KRW"
+    },
+    "display_rounding": {
+      "mass_kg_decimals": 2,
+      "currency_round_to": "1 KRW"
+    }
+  },
+  "pipeline": {
+    "order": [
+      "accessories",
+      "drawing_parse",
+      "enclosure",
+      "mapping",
+      "estimation"
+    ],
+    "strict_blocking_checks": true
+  },
+  "merge_policy": {
+    "key_strategies": {
+      "accessory": "category|model_range|capacity_A|size_signature",
+      "breaker": "brand|family|type|frame_AF|poles|options_signature",
+      "enclosure": "model_or_custom|W|H|D|material|cover_type"
+    },
+    "duplicate_resolution": "merge_sources_and_notes_keep_latest_values",
+    "provenance_required": true
+  },
+  "catalog": {
+    "accessories": {
+      "items": [
+        {
+          "id": "MAG_MC_9_22",
+          "category": "magnet_contactor",
+          "model_range": "MC9~MC22",
+          "size": {
+            "W_mm": 46,
+            "H_mm": 75
+          },
+          "unit": "EA",
+          "notes": [
+            "bundle_rules:BND_MAGNET_BASE"
+          ]
+        },
+        {
+          "id": "MAG_MC_32_40",
+          "category": "magnet_contactor",
+          "model_range": "MC32~MC40",
+          "size": {
+            "W_mm": 69,
+            "H_mm": 83
+          },
+          "unit": "EA",
+          "notes": [
+            "bundle_rules:BND_MAGNET_BASE"
+          ]
+        },
+        {
+          "id": "TIMER_24H",
+          "category": "timer_24h",
+          "size": {
+            "W_mm": 65,
+            "H_mm": 100
+          },
+          "unit": "EA",
+          "notes": [
+            "drawing_symbol:T"
+          ]
+        },
+        {
+          "id": "TIMER_SUNSET_20A",
+          "category": "sunset_timer",
+          "capacity_A": 20,
+          "size": {
+            "W_mm": 65,
+            "H_mm": 102
+          },
+          "unit": "EA",
+          "notes": [
+            "default_capacity_used"
+          ]
+        },
+        {
+          "id": "METER_3PH",
+          "category": "meter_3ph",
+          "size": {
+            "W_mm": 130,
+            "H_mm": 130
+          },
+          "mounting_options": [
+            "adjacent_to_breaker",
+            "lower_enclosure"
+          ],
+          "unit": "EA"
+        },
+        {
+          "id": "METER_1PH",
+          "category": "meter_1ph",
+          "size": {
+            "W_mm": 130,
+            "H_mm": 80
+          },
+          "mounting_options": [
+            "adjacent_to_breaker",
+            "lower_enclosure"
+          ],
+          "unit": "EA"
+        },
+        {
+          "id": "METER_CT",
+          "category": "meter_ct",
+          "size": {
+            "W_mm": 130,
+            "H_mm": 130
+          },
+          "requires": [
+            "CT_for_corresponding_breaker"
+          ],
+          "condition": "expected_load_A > 120",
+          "unit": "EA"
+        },
+        {
+          "id": "PBL_ONOFF",
+          "category": "pbl_switch",
+          "mounting": [
+            "door"
+          ],
+          "unit": "EA"
+        },
+        {
+          "id": "FUSE_HOLDER",
+          "category": "fuse_holder",
+          "size": {
+            "W_mm": 30
+          },
+          "unit": "EA"
+        },
+        {
+          "id": "TERMINAL_BLOCK_600V",
+          "category": "terminal_block",
+          "size": {
+            "H_mm": 50
+          },
+          "unit": "EA"
+        },
+        {
+          "id": "DUCT_PVC_40",
+          "category": "pvc_duct",
+          "size": {
+            "W_mm": 40
+          },
+          "unit": "EA",
+          "effects": {
+            "panel": {
+              "usable_W_reduction_mm": 100,
+              "clearance_left_mm": 30,
+              "clearance_right_mm": 30
+            }
+          }
+        },
+        {
+          "id": "CABLE_WIRE",
+          "category": "wire",
+          "unit": "식"
+        }
+      ]
+    }
+  },
+  "rules": {
+    "bundles": [
+      {
+        "id": "BND_MAGNET_BASE",
+        "if_item_category": "magnet_contactor",
+        "then_add": [
+          {
+            "item_id": "FUSE_HOLDER",
+            "qty_per": 1
+          },
+          {
+            "item_id": "TERMINAL_BLOCK_600V",
+            "qty_per": 3
+          },
+          {
+            "item_id": "DUCT_PVC_40",
+            "qty_per": 2
+          },
+          {
+            "item_id": "CABLE_WIRE",
+            "qty_per": 2
+          }
+        ],
+        "labor_add_per_item_won": 20000,
+        "class": "MANDATORY",
+        "explanations": [
+          "모든 마그네트는 위 동반자재 필수",
+          "마그네트 1EA당 인건비 20000 추가"
+        ]
+      },
+      {
+        "id": "BND_TIMER_EFFECT",
+        "if_item_category": "timer_24h",
+        "then_add": [
+          {
+            "item_id": "PBL_ONOFF",
+            "qty_per": 1,
+            "flags": [
+              "SS_added"
+            ]
+          }
+        ],
+        "class": "MANDATORY",
+        "explanations": [
+          "타이머 존재시 PBL/SS 추가(도면 연결 기준 수량 해석)"
+        ]
+      }
+    ],
+    "drawing": {
+      "symbols": {
+        "T": {
+          "maps_to_item_id": "TIMER_24H"
+        },
+        "ON_OFF": {
+          "maps_to_item_id": "PBL_ONOFF"
+        }
+      },
+      "quantity_inference": {
+        "timer_controls_multiple_magnets": {
+          "method": "follow_connection_lines",
+          "fallback_assumption": "1_timer_to_1_magnet"
+        }
+      }
+    },
+    "enclosure": {
+      "effects": {
+        "pvc_duct": {
+          "usable_W_reduction_mm": 100,
+          "left_clearance_mm": 30,
+          "right_clearance_mm": 30
+        }
+      },
+      "height_formula": {
+        "expression": "H_total = P + 2*D + S_top + S_bottom + M",
+        "variables": {
+          "P": {
+            "desc": "분전반 기본 높이(mm)"
+          },
+          "D": {
+            "desc": "덕트 높이(mm)"
+          },
+          "S_top": {
+            "desc": "상단 여유 50mm",
+            "default_mm": 50
+          },
+          "S_bottom": {
+            "desc": "하단 여유 50mm",
+            "default_mm": 50
+          },
+          "M": {
+            "desc": "부속자재 높이 합(mm)"
+          }
+        },
+        "two_tier_mounting": {
+          "condition": "magnet_density_requires_two_tiers",
+          "adjustment": "H_total += (2*D + 2*50 + M)"
+        }
+      },
+      "meter_mounting_policy": {
+        "adjacent_to_breaker": {
+          "effect_on_W": "increase_by_meter_W",
+          "effect_on_H": "no_change"
+        },
+        "lower_enclosure": {
+          "effect_on_H": "increase_to_fit_meter",
+          "effect_on_W": "no_or_small_increase_approx_+100"
+        }
+      },
+      "standard_vs_custom": {
+        "standard_lookup": "use_preloaded_standard_enclosure_table",
+        "fallback": "custom_fabrication_if_no_match"
+      },
+      "p_cover_and_coating": {
+        "p_cover": {
+          "default_material": "acrylic",
+          "steel_override": {
+            "when_requested": true,
+            "unit_price_formula": {
+              "expression": "((W*H)/90000)*12000",
+              "vars": [
+                "W",
+                "H"
+              ],
+              "unit": "KRW"
+            }
+          }
+        },
+        "coating": {
+          "ranges": [
+            {
+              "breaker_main_AF_min": 50,
+              "breaker_main_AF_max": 250,
+              "qty": 1,
+              "unit_price_won": 5000
+            },
+            {
+              "breaker_main_AF_min": 400,
+              "breaker_main_AF_max": 800,
+              "qty": 1,
+              "unit_price_won": 10000
+            }
+          ]
+        }
+      }
+    },
+    "breaker_selection": {
+      "naming": {
+        "brand": "SANGDO",
+        "mccb_example": "SBS-54",
+        "fields": {
+          "brand_symbol": "S",
+          "family": "B",
+          "type_code": {
+            "E": "economy",
+            "S": "standard"
+          },
+          "frame_digit_map": {
+            "3": 30,
+            "5": 50,
+            "10": 100,
+            "20": 225,
+            "40": 400,
+            "60": 600,
+            "80": 800
+          },
+          "poles_digit_map": {
+            "2": 2,
+            "3": 3,
+            "4": 4
+          }
+        }
+      },
+      "policy": {
+        "default_type_preference": "economy",
+        "fallback_if_not_available": "standard",
+        "small_high_sensitivity_elb_models": [
+          "SIE-32",
+          "32GRHS",
+          "SIB-32",
+          "BS32"
+        ],
+        "annotations": {
+          "housing_use": {
+            "trigger": "request_note_contains_주택용",
+            "label_suffix": "(주택용)"
+          },
+          "spd_use": {
+            "trigger": "request_or_drawing_indicates_SPD",
+            "default_model": {
+              "type": "MCCB",
+              "poles": 4,
+              "AF": 40,
+              "note": "고객요청으로 30A/50A 변동 가능"
+            },
+            "label_suffix": "(SPD용)"
+          }
+        }
+      }
+    },
+    "busbar": {
+      "main": {
+        "unit_mass": "kg",
+        "unit_price_per_kg_won": 20000,
+        "quantity_formula_by_main_AF": [
+          {
+            "range": {
+              "min_A": 20,
+              "max_A": 250
+            },
+            "expression": "(W*H)*0.000007"
+          },
+          {
+            "range": {
+              "min_A": 300,
+              "max_A": 400
+            },
+            "expression": "(W*H)*0.000013"
+          },
+          {
+            "range": {
+              "min_A": 500,
+              "max_A": 800
+            },
+            "expression": "(W*H)*0.000015"
+          }
+        ],
+        "spec_table_note": "규격 정보(두께×폭)는 일부 범위만 확정됨. 부족 구간은 branch 규격을 참조하거나 별도 표 완성 필요."
+      },
+      "branch": {
+        "spec_by_range": [
+          {
+            "range": {
+              "max_A": 100
+            },
+            "spec": "3T*15"
+          },
+          {
+            "range": {
+              "min_A": 125,
+              "max_A": 250
+            },
+            "spec": "5T*20"
+          },
+          {
+            "range": {
+              "min_A": 300,
+              "max_A": 400
+            },
+            "spec": "6T*30"
+          },
+          {
+            "range": {
+              "min_A": 500,
+              "max_A": 800
+            },
+            "spec": "8T*40"
+          }
+        ]
+      },
+      "notes": [
+        "W,H는 외함 가로·세로(mm)",
+        "출력 질량은 kg 소수 2자리 표기"
+      ]
+    },
+    "labor_and_misc": {
+      "assembly_charge": {
+        "ranges": [
+          {
+            "main_AF_min": 50,
+            "main_AF_max": 100,
+            "base_enclosure": {
+              "W": 600,
+              "H": 700
+            },
+            "base_price_won": 50000,
+            "increment_per_100H_mm_won": 15000,
+            "exceptions": [
+              {
+                "condition": "majority_branch_small_20A_single_phase_models",
+                "add_won": 10000
+              }
+            ]
+          },
+          {
+            "main_AF_min": 125,
+            "main_AF_max": 250,
+            "base_enclosure": {
+              "W": 700,
+              "H": 800
+            },
+            "base_price_won": 60000,
+            "increment_per_100H_mm_won": 15000,
+            "exceptions": [
+              {
+                "condition": "majority_branch_small_20A_single_phase_models",
+                "add_won": 10000
+              }
+            ]
+          },
+          {
+            "main_AF_min": 400,
+            "main_AF_max": 400,
+            "base_enclosure": {
+              "W": 800,
+              "H": 1200
+            },
+            "base_price_won": 130000,
+            "increment_per_100H_mm_won": 20000,
+            "exceptions": [
+              {
+                "condition": "majority_branch_small_20A_single_phase_models",
+                "add_won": 15000
+              }
+            ]
+          },
+          {
+            "main_AF_min": 600,
+            "main_AF_max": 800,
+            "base_enclosure": {
+              "W": 900,
+              "H": 1600
+            },
+            "base_price_won": 250000,
+            "increment_per_100H_mm_won": 40000,
+            "exceptions": [
+              {
+                "condition": "majority_branch_small_20A_single_phase_models",
+                "add_won": 15000
+              }
+            ]
+          }
+        ]
+      },
+      "misc_consumables": {
+        "base_price_won": 7000,
+        "base_size": {
+          "W": 600,
+          "H": 700
+        },
+        "increment_per_100W_or_100H_mm_won": 1000,
+        "per_accessory_add_won": 12000,
+        "cap_won": 42000
+      },
+      "et_nt_np_insulator": {
+        "E.T": {
+          "by_main_AF": [
+            {
+              "main_AF_min": 50,
+              "main_AF_max": 250,
+              "base_price_won": 4500,
+              "add_per_12_branch_breakers": 1
+            },
+            {
+              "main_AF_min": 400,
+              "main_AF_max": 400,
+              "base_price_won": 12000,
+              "add_per_12_branch_breakers": 1
+            },
+            {
+              "main_AF_min": 600,
+              "main_AF_max": 800,
+              "base_price_won": 18000,
+              "add_per_12_branch_breakers": 1
+            }
+          ]
+        },
+        "N.T": {
+          "unit_price_won": 3000
+        },
+        "N.P_CARD_HOLDER": {
+          "rule": "branch_breaker_total_quantity",
+          "fixed_spec": "3T*40*200",
+          "unit_price_won": 4000
+        },
+        "INSULATOR": {
+          "by_main_AF": [
+            {
+              "main_AF_max": 250,
+              "qty": 4,
+              "unit_price_won": 1100
+            },
+            {
+              "main_AF_min": 400,
+              "main_AF_max": 800,
+              "qty": 4,
+              "unit_price_won": 4400
+            }
+          ]
+        },
+        "ELB_SUPPORT": {
+          "models_counted": [
+            "SIE-32",
+            "SIB-32",
+            "32GRHS",
+            "BS32"
+          ],
+          "unit_price_won": 500
+        }
+      }
+    }
+  },
+  "validation": {
+    "checks": [
+      {
+        "id": "CHK_BUNDLE_MAGNET",
+        "class": "MANDATORY",
+        "desc": "마그네트 존재시 동반자재(FUSE_HOLDER/TERMINAL_BLOCK/PVC DUCT/CABLE/WIRE) 포함",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_PBL_ON_OFF",
+        "class": "MANDATORY",
+        "desc": "도면 ON/OFF 표시 시 PBL 포함",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_TIMER_SS",
+        "class": "MANDATORY",
+        "desc": "타이머 존재시 SS/PBL 처리",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_PVC_DUCT_EFFECT",
+        "class": "MANDATORY",
+        "desc": "PVC덕트 효과(유효W-100, 좌우여유30) 반영",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_ENCLOSURE_H_FORMULA",
+        "class": "MANDATORY",
+        "desc": "H_total 공식 적용 및 2칸 취부 시 보정",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_BUSBAR_RANGE",
+        "class": "MANDATORY",
+        "desc": "BUS-BAR 용량 구간/규격 매칭",
+        "fail_blocks_estimate": true
+      },
+      {
+        "id": "CHK_ASSEMBLY_MISC_RULES",
+        "class": "MANDATORY",
+        "desc": "조립비/잡자재비/코팅/피커버 규칙 적용",
+        "fail_blocks_estimate": true
+      }
+    ]
+  },
+  "why_trace": {
+    "emit": true,
+    "format": "per_item_with_rule_ids",
+    "examples": [
+      {
+        "item": "PBL_ONOFF",
+        "because": [
+          "rules.bundles.BND_TIMER_EFFECT",
+          "rules.drawing.symbols.ON_OFF"
+        ]
+      },
+      {
+        "item": "DUCT_PVC_40",
+        "because": [
+          "rules.bundles.BND_MAGNET_BASE"
+        ]
+      },
+      {
+        "field": "enclosure.H_total",
+        "because": [
+          "rules.enclosure.height_formula.expression"
+        ]
+      }
+    ]
+  },
+  "io_contract": {
+    "inputs_required": [
+      "drawing_symbols",
+      "requested_annotations",
+      "expected_load_A",
+      "main_breaker_AF",
+      "branch_breakers[]",
+      "enclosure_standard_table"
+    ],
+    "outputs": [
+      "bom",
+      "enclosure_size",
+      "busbar_main_kg",
+      "busbar_branch_spec",
+      "labor_costs",
+      "consumables_cost",
+      "coating_cost",
+      "p_cover_cost",
+      "validation_passed",
+      "why_trace"
+    ]
+  }
+}

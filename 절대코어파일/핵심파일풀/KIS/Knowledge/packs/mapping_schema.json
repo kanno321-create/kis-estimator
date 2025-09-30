@@ -1,0 +1,98 @@
+{
+  "version": "2025-09-05",
+  "updated_at": "2025-09-04T16:03:53.509030Z",
+  "sheet": "견적서",
+  "columns": {
+    "B": "품명",
+    "C": "규격",
+    "D": "단위",
+    "E": "수량",
+    "F": "단가",
+    "G": "금액"
+  },
+  "formulas": {
+    "G": "E*F"
+  },
+  "tokens": {
+    "magnet": [
+      "MC-12",
+      "MC-18",
+      "MC-22",
+      "MC-32",
+      "MC-40",
+      "MC12",
+      "MC18",
+      "MC22",
+      "MC32",
+      "MC40",
+      "마그네트",
+      "접촉기"
+    ],
+    "timer": [
+      "TIMER",
+      "타이머"
+    ],
+    "pbl": [
+      "PBL",
+      "PB",
+      "푸시버튼"
+    ],
+    "spd": [
+      "SPD",
+      "MCCB SPD",
+      "SPD WIRE",
+      "직결",
+      "스파크방지"
+    ],
+    "small_breaker": [
+      "2P 20A",
+      "2P 30A"
+    ],
+    "fb": [
+      "FB",
+      "5kA",
+      "누전 2P 15A",
+      "누전 2P 20A",
+      "누전 2P 30A",
+      "누전 2P 40A",
+      "누전 3P 15A",
+      "누전 3P 20A",
+      "누전 3P 30A",
+      "누전 3P 40A",
+      "누전 3P 50A"
+    ]
+  },
+  "bom_rules": {
+    "magnet_required_set": {
+      "enabled": true,
+      "fuseholder": {
+        "spec": "4A",
+        "unit": "EA",
+        "qty_per_magnet": 1,
+        "unit_price": 4000
+      },
+      "terminal_block": {
+        "spec": "600V",
+        "unit": "EA",
+        "qty_per_magnet": 1,
+        "unit_price": 4000
+      },
+      "pvc_duct": {
+        "spec": "DUCT",
+        "unit": "EA",
+        "qty_per_magnet": 2,
+        "unit_price": 3300
+      },
+      "cable_wire": {
+        "spec": "KIV",
+        "unit": "식",
+        "qty_per_magnet": 1
+      }
+    },
+    "timer_optional": true,
+    "pbl_optional": true
+  },
+  "pricing": {
+    "brand_affects_price_only": true
+  }
+}

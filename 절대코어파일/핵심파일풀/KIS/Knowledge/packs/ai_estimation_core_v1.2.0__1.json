@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.2.0",
+  "signature": "SHA256:core_v120_certified_by_ceo_20250115",
+  "last_modified": "2025-01-15T09:00:00Z",
+  "authority": "CEO_SIGNATURE_REQUIRED",
+  "core_formulas": {
+    "pvc_cover_steel": {
+      "formula": "(W × H) / 90000 × 12000",
+      "description": "PVC cover cost for steel enclosures",
+      "units": "KRW",
+      "rounding": "round_to_nearest_100"
+    },
+    "coating_area": {
+      "formula": "2 × (W×H + W×D + H×D)",
+      "description": "Total surface area for coating calculation",
+      "units": "mm²",
+      "conversion_factor": 0.000001
+    },
+    "space_utilization": {
+      "formula": "used_volume / total_enclosure_volume",
+      "description": "Space efficiency ratio",
+      "constraints": {
+        "maximum": 0.85,
+        "safety_margin": 0.15
+      }
+    }
+  },
+  "layout_rules": {
+    "yang_array": {
+      "description": "Korean standard dual-row mounting",
+      "activation_threshold": 400,
+      "spacing_minimum": 25,
+      "clearance_sides": 50
+    },
+    "facing_arrangement": {
+      "description": "Face-to-face breaker arrangement",
+      "center_spacing": 150,
+      "maintenance_clearance": 75
+    }
+  },
+  "cost_factors": {
+    "labor_rate_per_hour": 35000,
+    "management_overhead": 0.15,
+    "material_markup": 0.12,
+    "standard_installation_hours": {
+      "breaker_per_unit": 0.5,
+      "enclosure_base": 2.0,
+      "coating_per_m2": 0.25,
+      "pvc_cover_per_unit": 0.1
+    }
+  }
+}

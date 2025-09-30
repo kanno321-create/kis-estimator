@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "version": "1.0",
+    "standard": "IEC 61439-1:2020 + IEC 61439-2:2020",
+    "signed_by": "CEO",
+    "signed_at": "PENDING",
+    "description": "IEC 61439 compliance tables for Korean electrical switchgear"
+  },
+  "tables": {
+    "clearance_creepage": {
+      "description": "Air clearance and creepage distances per IEC 61439-1 Table 1",
+      "pollution_degree_2": {
+        "50V": {"clearance_mm": 0.2, "creepage_mm": 0.4},
+        "125V": {"clearance_mm": 0.5, "creepage_mm": 1.25},
+        "250V": {"clearance_mm": 1.5, "creepage_mm": 2.5},
+        "500V": {"clearance_mm": 3.0, "creepage_mm": 5.0},
+        "690V": {"clearance_mm": 4.0, "creepage_mm": 6.3},
+        "1000V": {"clearance_mm": 5.5, "creepage_mm": 8.0}
+      },
+      "pollution_degree_3": {
+        "50V": {"clearance_mm": 0.2, "creepage_mm": 0.8},
+        "125V": {"clearance_mm": 0.5, "creepage_mm": 2.5},
+        "250V": {"clearance_mm": 1.5, "creepage_mm": 4.0},
+        "500V": {"clearance_mm": 3.0, "creepage_mm": 8.0},
+        "690V": {"clearance_mm": 4.0, "creepage_mm": 10.0},
+        "1000V": {"clearance_mm": 5.5, "creepage_mm": 12.5}
+      }
+    },
+    "temp_rise_design": {
+      "description": "Temperature rise limits per IEC 61439-1 Table 4",
+      "conductor_connections": {
+        "bare_copper": {"max_temp_c": 105, "max_rise_k": 70},
+        "insulated_copper": {"max_temp_c": 90, "max_rise_k": 55},
+        "silver_plated": {"max_temp_c": 105, "max_rise_k": 70}
+      },
+      "accessible_parts": {
+        "metallic_parts": {"max_rise_k": 30},
+        "insulating_parts": {"max_rise_k": 40}
+      }
+    },
+    "short_circuit_withstand": {
+      "description": "Short-circuit withstand requirements per IEC 61439-1",
+      "test_conditions": {
+        "peak_current_factor": 2.5,
+        "power_factor": 0.15,
+        "asymmetry_factor": 1.8,
+        "test_duration_s": 1.0
+      },
+      "verification_methods": [
+        "testing",
+        "comparison_with_tested_assembly", 
+        "calculation"
+      ]
+    },
+    "protective_circuit": {
+      "description": "Protective conductor requirements per IEC 61439-1",
+      "min_cross_section": {
+        "up_to_16mm2": "equal_to_line",
+        "16_to_35mm2": "16mm2_min",
+        "above_35mm2": "half_line_conductor"
+      },
+      "connection_requirements": {
+        "bolted_connection": {
+          "min_bolts": 2,
+          "torque_factor": 0.8,
+          "material": "copper_or_equivalent"
+        }
+      }
+    },
+    "ip_degree": {
+      "description": "IP degree requirements per IEC 60529",
+      "enclosure_types": {
+        "IP20": {"protection": "finger_safe", "min_opening_mm": 12.5},
+        "IP30": {"protection": "tool_safe", "min_opening_mm": 2.5},
+        "IP40": {"protection": "wire_safe", "min_opening_mm": 1.0},
+        "IP54": {"protection": "dust_limited", "water": "splash_proof"},
+        "IP55": {"protection": "dust_limited", "water": "jet_proof"},
+        "IP65": {"protection": "dust_tight", "water": "jet_proof"}
+      }
+    }
+  }
+}

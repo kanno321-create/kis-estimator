@@ -1,0 +1,9 @@
+{
+  "ip_min": "IP54",
+  "load_count": 3,
+  "required_d": 375.0,
+  "required_h": 1820.0,
+  "required_w": 660.0,
+  "total_heat_w": 1289.0,
+  "total_width_unit": 1.35
+}

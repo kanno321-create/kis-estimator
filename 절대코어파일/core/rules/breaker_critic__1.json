@@ -1,0 +1,13 @@
+{
+  "critic_pass": true,
+  "violations": [],
+  "warnings": [],
+  "metrics": {
+    "phase_imbalance_pct": 3.47,
+    "clearance_violations": 0,
+    "thermal_violations": 0,
+    "total_heat_w": 195.3814122326023,
+    "slot_count": 12
+  },
+  "recommendations": []
+}

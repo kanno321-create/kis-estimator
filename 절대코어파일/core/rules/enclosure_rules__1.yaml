@@ -1,0 +1,13 @@
+version: 2025.01
+enclosures:
+  base:
+    materials:
+      - steel
+      - aluminum
+    certifications:
+      - KS
+      - IEC
+clearance_mm:
+  front: 900
+  rear: 300
+  side: 150

@@ -1,0 +1,11 @@
+{
+  "clearance_violations": 2,
+  "issues": [
+    {
+      "code": "clearance_violation",
+      "description": "Detected 2 clearance violations"
+    }
+  ],
+  "phase_balance": 0.0047,
+  "score": 0.795
+}

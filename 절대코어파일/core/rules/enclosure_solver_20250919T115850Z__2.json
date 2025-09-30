@@ -1,0 +1,21 @@
+{
+  "fit_score": 0.95,
+  "ip_risk": 0.02,
+  "layout": [
+    {
+      "module": "L14A",
+      "phase": "A",
+      "slot": "L01"
+    },
+    {
+      "module": "L14B",
+      "phase": "B",
+      "slot": "L02"
+    },
+    {
+      "module": "L14C",
+      "phase": "C",
+      "slot": "L03"
+    }
+  ]
+}

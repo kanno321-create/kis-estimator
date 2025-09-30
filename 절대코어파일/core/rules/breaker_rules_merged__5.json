@@ -1,0 +1,308 @@
+[
+  {
+    "unique_key": "상도_SBS-54_rules_only",
+    "brand": "상도",
+    "model": "SBS-54",
+    "series": "SBS",
+    "compact": false,
+    "rules_source": true,
+    "dimension_source": false,
+    "selection_guide": [
+      "기본은 경제형 사용",
+      "누전 2P 40, 50A는 컴팩트형(FB) 사용",
+      "2P 20A, 30A는 소형차단기 우선",
+      "4P 50AF (20~50A)는 경제형 없으므로 표준형 사용",
+      "고감도 차단기는 도면 상 특이 표기됨",
+      "주택용은 모델명 옆 '주택용' 표기",
+      "SPD용은 MCCB 4P 40A → 모델명 옆 'SPD용' 표기"
+    ]
+  },
+  {
+    "unique_key": "상도_SEE-104_rules_only",
+    "brand": "상도",
+    "model": "SEE-104",
+    "series": "SEE",
+    "compact": false,
+    "rules_source": true,
+    "dimension_source": false,
+    "selection_guide": [
+      "기본은 경제형 사용",
+      "누전 2P 40, 50A는 컴팩트형(FB) 사용",
+      "2P 20A, 30A는 소형차단기 우선",
+      "4P 50AF (20~50A)는 경제형 없으므로 표준형 사용",
+      "고감도 차단기는 도면 상 특이 표기됨",
+      "주택용은 모델명 옆 '주택용' 표기",
+      "SPD용은 MCCB 4P 40A → 모델명 옆 'SPD용' 표기"
+    ]
+  },
+  {
+    "unique_key": "LS_ABN-54_rules_only",
+    "brand": "LS",
+    "model": "ABN-54",
+    "series": "ABN",
+    "compact": false,
+    "rules_source": true,
+    "dimension_source": false,
+    "selection_guide": [
+      "기본은 경제형 사용",
+      "누전 2P 40, 50A는 컴팩트형(FB) 사용",
+      "2P 20A, 30A는 소형차단기 우선",
+      "4P 50AF (20~50A)는 경제형 없으므로 표준형 사용",
+      "고감도 차단기는 도면 상 특이 표기됨",
+      "주택용은 모델명 옆 '주택용' 표기",
+      "SPD용은 MCCB 4P 40A → 모델명 옆 'SPD용' 표기"
+    ]
+  },
+  {
+    "unique_key": "LS_EBS-203_rules_only",
+    "brand": "LS",
+    "model": "EBS-203",
+    "series": "EBS",
+    "compact": true,
+    "rules_source": true,
+    "dimension_source": false,
+    "selection_guide": [
+      "기본은 경제형 사용",
+      "누전 2P 40, 50A는 컴팩트형(FB) 사용",
+      "2P 20A, 30A는 소형차단기 우선",
+      "4P 50AF (20~50A)는 경제형 없으므로 표준형 사용",
+      "고감도 차단기는 도면 상 특이 표기됨",
+      "주택용은 모델명 옆 '주택용' 표기",
+      "SPD용은 MCCB 4P 40A → 모델명 옆 'SPD용' 표기"
+    ]
+  },
+  {
+    "unique_key": "SANGDO_SBS-54_4P_50AF",
+    "brand": "SANGDO",
+    "model": "SBS-54",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 50,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-104_4P_100AF",
+    "brand": "SANGDO",
+    "model": "SBS-104",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 100,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-124_4P_125AF",
+    "brand": "SANGDO",
+    "model": "SBS-124",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 125,
+    "poles": 4,
+    "size_mm": [
+      120,
+      155,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-204_4P_200AF",
+    "brand": "SANGDO",
+    "model": "SBS-204",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 200,
+    "poles": 4,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-254_4P_250AF",
+    "brand": "SANGDO",
+    "model": "SBS-254",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 250,
+    "poles": 4,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-404_4P_400AF",
+    "brand": "SANGDO",
+    "model": "SBS-404",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 400,
+    "poles": 4,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-604_4P_600AF",
+    "brand": "SANGDO",
+    "model": "SBS-604",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 600,
+    "poles": 4,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SBS-804_4P_800AF",
+    "brand": "SANGDO",
+    "model": "SBS-804",
+    "series": "SBS",
+    "type": "Standard",
+    "frame_AF": 800,
+    "poles": 4,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "LS_ABN-104_4P_100AF",
+    "brand": "LS",
+    "model": "ABN-104",
+    "series": "ABN",
+    "type": "Economy",
+    "frame_AF": 100,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "LS_ABN-124_4P_125AF",
+    "brand": "LS",
+    "model": "ABN-124",
+    "series": "ABN",
+    "type": "Standard",
+    "frame_AF": 125,
+    "poles": 4,
+    "size_mm": [
+      120,
+      155,
+      60
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "LS_ABS-50FB_2P_50AF",
+    "brand": "LS",
+    "model": "ABS-50FB",
+    "series": "FB",
+    "type": "Standard",
+    "frame_AF": 50,
+    "poles": 2,
+    "size_mm": [
+      50,
+      96,
+      60
+    ],
+    "compact": true,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "LS_ABS-50FB_3P_50AF",
+    "brand": "LS",
+    "model": "ABS-50FB",
+    "series": "FB",
+    "type": "Standard",
+    "frame_AF": 50,
+    "poles": 3,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "compact": true,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  },
+  {
+    "unique_key": "SANGDO_SIB-32_2P_32AF",
+    "brand": "SANGDO",
+    "model": "SIB-32",
+    "series": "SMALL",
+    "type": "Standard",
+    "frame_AF": 32,
+    "poles": 2,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "compact": false,
+    "rules_source": false,
+    "dimension_source": true,
+    "selection_guide": null
+  }
+]

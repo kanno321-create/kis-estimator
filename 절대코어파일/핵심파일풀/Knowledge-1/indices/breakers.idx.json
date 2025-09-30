@@ -1,0 +1,434 @@
+[
+  {
+    "model": "32GRHS",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "32GRHS고감도",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-102",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-202",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-204",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-402",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-403",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-404",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-54",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-602",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-603",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-604",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-62",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-63",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-64",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-802",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-803",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABN-804",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-102",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-202",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-204",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-402",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-403",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-404",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-54",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-602",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-603",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-604",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-62",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-63",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-64",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-802",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-803",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS-804",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS52FB",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "ABS53FB",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "BS-32",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-102",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-202",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-403",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-404",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-603",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-63",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBN-803",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-204",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-403",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-404",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-54",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-603",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-63",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-64",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS-803",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS52FB",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "EBS53FB",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBC-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBC-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBE-102",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBE-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBE-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-202",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-204",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-403",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-404",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-54",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-603",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-604",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-803",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SBS-804",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SEC-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SEC-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SEE-102",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SEE-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SEE-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-103",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-104",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-203",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-204",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-52",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-53",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SES-54",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SIB-32",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SIB-32 고감도",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SIE-32",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  },
+  {
+    "model": "SIE-32고감도",
+    "ref": "KIS/Knowledge/packs/breaker_map.json"
+  }
+]

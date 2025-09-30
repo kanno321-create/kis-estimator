@@ -1,0 +1,23 @@
+{
+  "W": {
+    "100AF": 600,
+    "125-250AF": 700,
+    "400AF": 800,
+    "600AF+": 900
+  },
+  "H": {
+    "top_margin": {
+      "100AF": 130
+    },
+    "bottom_margin": {
+      "100AF": 100
+    },
+    "per_breaker_row": 100,
+    "per_magnet_row": 70,
+    "per_terminal_row": 50
+  },
+  "D": {
+    "default": 200,
+    "if_PBL": 250
+  }
+}

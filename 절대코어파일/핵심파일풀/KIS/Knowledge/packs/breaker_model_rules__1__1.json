@@ -1,0 +1,37 @@
+{
+  "brands": {
+    "상도": {
+      "prefix": "S",
+      "model_structure": "S-[B|E|C]-[E|S]-[프레임]-[극수]",
+      "compact_types": [
+        "SBC",
+        "SEC"
+      ],
+      "examples": [
+        "SBS-54",
+        "SEE-104"
+      ]
+    },
+    "LS": {
+      "prefix": "A|E",
+      "model_structure": "A|E-[B]-[N|S]-[프레임]-[극수]",
+      "compact_types": [
+        "ABS",
+        "EBS"
+      ],
+      "examples": [
+        "ABN-54",
+        "EBS-203"
+      ]
+    }
+  },
+  "selection_guide": [
+    "기본은 경제형 사용",
+    "누전 2P 40, 50A는 컴팩트형(FB) 사용",
+    "2P 20A, 30A는 소형차단기 우선",
+    "4P 50AF (20~50A)는 경제형 없으므로 표준형 사용",
+    "고감도 차단기는 도면 상 특이 표기됨",
+    "주택용은 모델명 옆 '주택용' 표기",
+    "SPD용은 MCCB 4P 40A → 모델명 옆 'SPD용' 표기"
+  ]
+}

@@ -1,0 +1,2389 @@
+[
+  {
+    "model": "HB405015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      150
+    ],
+    "price": 22000,
+    "custom_required": false
+  },
+  {
+    "model": "HB405020",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      200
+    ],
+    "price": 28000,
+    "custom_required": false
+  },
+  {
+    "model": "HB406015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      600,
+      150
+    ],
+    "price": 29500,
+    "custom_required": false
+  },
+  {
+    "model": "HB506015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      150
+    ],
+    "price": 32200,
+    "custom_required": false
+  },
+  {
+    "model": "HB506020",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      200
+    ],
+    "price": 41500,
+    "custom_required": false
+  },
+  {
+    "model": "HB507015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      150
+    ],
+    "price": 36500,
+    "custom_required": false
+  },
+  {
+    "model": "HB606015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      600,
+      150
+    ],
+    "price": 37800,
+    "custom_required": false
+  },
+  {
+    "model": "HB607015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      150
+    ],
+    "price": 49000,
+    "custom_required": false
+  },
+  {
+    "model": "HB607020",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      200
+    ],
+    "price": 53000,
+    "custom_required": false
+  },
+  {
+    "model": "HB608015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      150
+    ],
+    "price": 53800,
+    "custom_required": false
+  },
+  {
+    "model": "HB608020",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      200
+    ],
+    "price": 55800,
+    "custom_required": false
+  },
+  {
+    "model": "HB609015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      150
+    ],
+    "price": 60000,
+    "custom_required": false
+  },
+  {
+    "model": "HB609020",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      200
+    ],
+    "price": 63000,
+    "custom_required": false
+  },
+  {
+    "model": "HB6010015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      100,
+      10
+    ],
+    "price": 70000,
+    "custom_required": false
+  },
+  {
+    "model": "HB708015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      800,
+      150
+    ],
+    "price": 74000,
+    "custom_required": false
+  },
+  {
+    "model": "HB709015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      150
+    ],
+    "price": 91000,
+    "custom_required": false
+  },
+  {
+    "model": "HB7010015",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      100,
+      10
+    ],
+    "price": 36000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 30 40 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      300,
+      400,
+      150
+    ],
+    "price": 36000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 40 50 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      150
+    ],
+    "price": 50000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 40 50 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      200
+    ],
+    "price": 59000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 50 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      500,
+      150
+    ],
+    "price": 60000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      150
+    ],
+    "price": 69000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 60 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      200
+    ],
+    "price": 70000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 70 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      150
+    ],
+    "price": 79000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 70 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      200
+    ],
+    "price": 81000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      800,
+      150
+    ],
+    "price": 84000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 50 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      900,
+      150
+    ],
+    "price": 93000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 55 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      550,
+      600,
+      150
+    ],
+    "price": 72000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      600,
+      150
+    ],
+    "price": 80000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 70 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      150
+    ],
+    "price": 85000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 70 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      200
+    ],
+    "price": 95000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      150
+    ],
+    "price": 103000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 80 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      200
+    ],
+    "price": 109000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      150
+    ],
+    "price": 113000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 90 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      200
+    ],
+    "price": 120000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1000,
+      150
+    ],
+    "price": 123000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 100 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1000,
+      200
+    ],
+    "price": 130000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 120 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1200,
+      150
+    ],
+    "price": 160000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 60 120 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1200,
+      200
+    ],
+    "price": 170000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      800,
+      150
+    ],
+    "price": 115000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      150
+    ],
+    "price": 128000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 90 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      200
+    ],
+    "price": 137000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1000,
+      150
+    ],
+    "price": 142000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 100 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1000,
+      200
+    ],
+    "price": 153000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 120 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1200,
+      150
+    ],
+    "price": 175000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 120 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1200,
+      200
+    ],
+    "price": 183000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 130 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1300,
+      200
+    ],
+    "price": 200000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 140 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1400,
+      200
+    ],
+    "price": 215000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 150 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1500,
+      200
+    ],
+    "price": 225000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 160 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1600,
+      200
+    ],
+    "price": 243000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 70 180 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1800,
+      250
+    ],
+    "price": 290000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      900,
+      150
+    ],
+    "price": 142000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 90 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      900,
+      200
+    ],
+    "price": 149000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1000,
+      150
+    ],
+    "price": 155000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 100 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1000,
+      200
+    ],
+    "price": 159000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 120 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1200,
+      250
+    ],
+    "price": 210000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 140 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1400,
+      250
+    ],
+    "price": 255000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 150 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1500,
+      250
+    ],
+    "price": 270000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 180 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1800,
+      250
+    ],
+    "price": 315000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 90 160 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      900,
+      1600,
+      250
+    ],
+    "price": 315000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 90 180 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      900,
+      1800,
+      250
+    ],
+    "price": 345000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 90 180 40",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      900,
+      1800,
+      400
+    ],
+    "price": 435000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 80 220 40",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      2200,
+      400
+    ],
+    "price": 490000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 90 220 40",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      900,
+      2200,
+      400
+    ],
+    "price": 560000,
+    "custom_required": false
+  },
+  {
+    "model": "HDS 100 220 40",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      1000,
+      2200,
+      400
+    ],
+    "price": 610000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 30 40 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      300,
+      400,
+      150
+    ],
+    "price": 21000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 40 40 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      400,
+      150
+    ],
+    "price": 25000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 40 50 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      150
+    ],
+    "price": 30000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 50 50 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      500,
+      150
+    ],
+    "price": 35000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 50 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      150
+    ],
+    "price": 41000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 50 70 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      150
+    ],
+    "price": 48000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 50 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      800,
+      150
+    ],
+    "price": 53000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 55 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      550,
+      600,
+      150
+    ],
+    "price": 45000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      600,
+      150
+    ],
+    "price": 49000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 70 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      150
+    ],
+    "price": 57000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      150
+    ],
+    "price": 62000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      150
+    ],
+    "price": 70000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1000,
+      150
+    ],
+    "price": 77000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 60 120 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1200,
+      150
+    ],
+    "price": 95000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 70 80 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      800,
+      150
+    ],
+    "price": 73000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 70 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      150
+    ],
+    "price": 81000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 70 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1000,
+      150
+    ],
+    "price": 90000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 70 120 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1200,
+      150
+    ],
+    "price": 109000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 80 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      900,
+      150
+    ],
+    "price": 95000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 80 100 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1000,
+      150
+    ],
+    "price": 105000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 80 120 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1200,
+      150
+    ],
+    "price": 125000,
+    "custom_required": false
+  },
+  {
+    "model": "HS 80 140 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Indoor",
+    "size_mm": [
+      800,
+      1400,
+      150
+    ],
+    "price": 145000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 30 40",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 23000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 40 40",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 25000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 40 50",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 29000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 50 50",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 33000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 50 60",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 37000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 50 70",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 42000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 50 80",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 48000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 55 60",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 41000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 60",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 42000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 70",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 48000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 80",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 52000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 90",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 58000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 100",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 64000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 60 120",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 72000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 70 80",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 60000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 70 90",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 65000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 70 100",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 71000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 70 120",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 83000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 80 90",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 71000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 80 100",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 79000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 80 120",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 95000,
+    "custom_required": false
+  },
+  {
+    "model": "SS 80 140",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": null,
+    "price": 111000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 30 40 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      300,
+      400,
+      150
+    ],
+    "price": 43000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 40 50 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      400,
+      500,
+      180
+    ],
+    "price": 65000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 50 60 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      500,
+      600,
+      180
+    ],
+    "price": 80000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 50 70 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      500,
+      700,
+      180
+    ],
+    "price": 90000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 60 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      600,
+      180
+    ],
+    "price": 92000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 70 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      700,
+      180
+    ],
+    "price": 100000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 80 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      800,
+      180
+    ],
+    "price": 115000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 90 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      900,
+      180
+    ],
+    "price": 130000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 70 80 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      800,
+      180
+    ],
+    "price": 135000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 70 90 18",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      900,
+      180
+    ],
+    "price": 145000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 70 100 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      1000,
+      200
+    ],
+    "price": 166000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 70 120 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      1200,
+      200
+    ],
+    "price": 200000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 80 120 20",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      800,
+      1200,
+      200
+    ],
+    "price": 220000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 80 120 25",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      800,
+      1200,
+      250
+    ],
+    "price": 230000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 60 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      600,
+      150
+    ],
+    "price": 92000,
+    "custom_required": false
+  },
+  {
+    "model": "HT 60 90 15",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.6,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      900,
+      150
+    ],
+    "price": 125000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 20 30 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      200,
+      300,
+      180
+    ],
+    "price": 50000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 30 40 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      300,
+      400,
+      180
+    ],
+    "price": 73000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 40 50 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      400,
+      500,
+      180
+    ],
+    "price": 94000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 50 60 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      500,
+      600,
+      180
+    ],
+    "price": 127000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 50 70 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      500,
+      700,
+      180
+    ],
+    "price": 141000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 60 60 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      600,
+      180
+    ],
+    "price": 145000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 60 70 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      700,
+      180
+    ],
+    "price": 173000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 60 80 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      800,
+      180
+    ],
+    "price": 193000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 60 90 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      900,
+      180
+    ],
+    "price": 218000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 60 100 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      600,
+      1000,
+      180
+    ],
+    "price": 248000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 70 80 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      800,
+      180
+    ],
+    "price": 230000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 70 90 18",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      900,
+      180
+    ],
+    "price": 256000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 70 100 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      1000,
+      200
+    ],
+    "price": 266000,
+    "custom_required": false
+  },
+  {
+    "model": "SC 70 120 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Outdoor",
+    "size_mm": [
+      700,
+      1200,
+      200
+    ],
+    "price": 320000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 30 40 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      300,
+      400,
+      150
+    ],
+    "price": 54000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 30 40 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      300,
+      400,
+      200
+    ],
+    "price": 60000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 40 50 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      150
+    ],
+    "price": 76000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 40 50 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      400,
+      500,
+      200
+    ],
+    "price": 84000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 50 60 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      150
+    ],
+    "price": 107000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 50 60 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      600,
+      200
+    ],
+    "price": 110000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 50 70 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      150
+    ],
+    "price": 125000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 50 70 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      500,
+      700,
+      200
+    ],
+    "price": 128000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 70 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      150
+    ],
+    "price": 147000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 70 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      700,
+      200
+    ],
+    "price": 149000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 80 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      150
+    ],
+    "price": 168000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 80 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      800,
+      200
+    ],
+    "price": 170000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 90 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      150
+    ],
+    "price": 195000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 90 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      900,
+      200
+    ],
+    "price": 197000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 100 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1000,
+      150
+    ],
+    "price": 210000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 100 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1000,
+      200
+    ],
+    "price": 220000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 120 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1200,
+      150
+    ],
+    "price": 248000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 60 120 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      600,
+      1200,
+      200
+    ],
+    "price": 262000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 80 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      800,
+      150
+    ],
+    "price": 200000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 80 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      800,
+      200
+    ],
+    "price": 205000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 90 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      150
+    ],
+    "price": 215000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 90 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      900,
+      200
+    ],
+    "price": 220000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 100 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1000,
+      150
+    ],
+    "price": 253000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 100 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1000,
+      200
+    ],
+    "price": 255000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 120 15",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1200,
+      150
+    ],
+    "price": 275000,
+    "custom_required": false
+  },
+  {
+    "model": "SHDS 70 120 20",
+    "category": "Enclosure",
+    "material": "SUS",
+    "grade": "201",
+    "thickness_mm": 1.2,
+    "installation": "Indoor",
+    "size_mm": [
+      700,
+      1200,
+      200
+    ],
+    "price": 296000,
+    "custom_required": false
+  }
+]

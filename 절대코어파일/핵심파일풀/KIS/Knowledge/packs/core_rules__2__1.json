@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "project": "천재적사고 / 한국산업",
+    "version": "v2.0.0",
+    "generated_at": "2025-09-05 23:32:07.183183",
+    "notes": [
+      "대표 지식 고정(코어). 대표 승인 없이 수정 금지."
+    ]
+  },
+  "excel_mapping": {
+    "est_sheet": {
+      "columns": {
+        "E": "unit_price",
+        "F": "qty",
+        "G": "amount=E*F"
+      }
+    }
+  },
+  "breaker_dimensions_mm": {
+    "small_32": {
+      "aliases": [
+        "SIE-32",
+        "SIB-32",
+        "32GRHS",
+        "BS-32"
+      ],
+      "2P": [
+        33,
+        70,
+        42
+      ]
+    },
+    "FB": {
+      "2P": [
+        50,
+        96,
+        60
+      ],
+      "3P": [
+        75,
+        96,
+        60
+      ]
+    },
+    "50AF_econ_std": {
+      "2P": [
+        50,
+        130,
+        60
+      ],
+      "3P": [
+        75,
+        130,
+        60
+      ],
+      "4P": [
+        100,
+        130,
+        60
+      ]
+    },
+    "60AF_econ_std": {
+      "3P": [
+        75,
+        130,
+        60
+      ],
+      "4P": [
+        100,
+        130,
+        60
+      ]
+    },
+    "100AF_econ": {
+      "2P": [
+        50,
+        130,
+        60
+      ],
+      "3P": [
+        75,
+        130,
+        60
+      ],
+      "4P": [
+        100,
+        130,
+        60
+      ]
+    },
+    "100_125AF_std": {
+      "2P": [
+        60,
+        155,
+        60
+      ],
+      "3P": [
+        90,
+        155,
+        60
+      ],
+      "4P": [
+        120,
+        155,
+        60
+      ]
+    },
+    "200_250AF": {
+      "2P": [
+        70,
+        165,
+        60
+      ],
+      "3P": [
+        105,
+        165,
+        60
+      ],
+      "4P": [
+        140,
+        165,
+        60
+      ]
+    },
+    "400AF": {
+      "3P": [
+        140,
+        257,
+        109
+      ],
+      "4P": [
+        187,
+        257,
+        109
+      ]
+    },
+    "600AF": {
+      "3P": [
+        210,
+        280,
+        109
+      ],
+      "4P": [
+        280,
+        280,
+        109
+      ]
+    },
+    "800AF": {
+      "3P": [
+        210,
+        280,
+        109
+      ],
+      "4P": [
+        280,
+        280,
+        109
+      ]
+    }
+  },
+  "frame_clearances": {
+    "definition": "상·하 여유공간(메인 기준)",
+    "units": "mm",
+    "rules": [
+      {
+        "af_range": "50-100",
+        "top": 130,
+        "bottom": 100
+      },
+      {
+        "af_exact": 125,
+        "top": 200,
+        "bottom": 130
+      },
+      {
+        "af_range": "200-250",
+        "top": 200,
+        "bottom": 200
+      },
+      {
+        "af_exact": 400,
+        "top": 350,
+        "bottom": 200
+      },
+      {
+        "af_range": "600-800",
+        "top": 500,
+        "bottom": 270
+      }
+    ]
+  },
+  "enclosure_width_rules_mm": {
+    "step": 100,
+    "rules": [
+      {
+        "main_af_range": "50-100",
+        "W": 600,
+        "exceptions": [
+          "분기 전부 소형(2P 20~30A)만이면 W=500 허용",
+          "분기 개수 ≥ 28 이면 W=700 권장(600도 가능)"
+        ]
+      },
+      {
+        "main_af_range": "125-250",
+        "W": 700
+      },
+      {
+        "main_af_exact": 400,
+        "W": 800,
+        "bump_if": {
+          "branch_200_250_count_gte": 2,
+          "W": 900
+        }
+      },
+      {
+        "main_af_range": "600-800",
+        "W": 900,
+        "bump_if": {
+          "branch_200_250_count_gte": 2,
+          "W": 1000
+        }
+      }
+    ]
+  },
+  "depth_rules_mm": {
+    "step": 50,
+    "base": 150,
+    "constraints": [
+      "PBL(푸시버튼램프) 포함 시 D=150 금지, D>=200 필수",
+      "250AF 미만 패널도 PBL 포함 시 D>=200",
+      "FB 사용은 D에 영향 없음",
+      "계량기 단독 1개는 D 변화 없음"
+    ]
+  },
+  "spd_rules": {
+    "per_panel_face_max": 1,
+    "adds_height_mm": 100,
+    "defaults": [
+      "도면·요청 없음 → 5kA FB 타입 기본",
+      "도면에 5kA 명시 → FB 고정, 대체 없음",
+      "고객이 50AF 요구(높은 kA 의도) → FB 금지(단, 차단기 종류는 유지: ELB↔MCCB 교체 금지)"
+    ],
+    "classification": {
+      "breaker_name_contains": [
+        "SP",
+        "MCCB SPD"
+      ],
+      "wire_item": "SPD/WIRE=접지연결용 KIV"
+    }
+  },
+  "breaker_type_rules": [
+    "ELB↔MCCB 상호 교체 금지(유형 유지 필수)",
+    "FB는 메인 차단기로 거의 쓰지 않음(분기 우선)",
+    "4P 50A와 4P 75A(경제형) 등 동치 크기는 마주보기 가능"
+  ],
+  "layout_logic": {
+    "priority": "배치 먼저 → 치수 산출",
+    "order": [
+      "상부전선공간",
+      "메인차단기",
+      "메인-분기 간 간격(15)",
+      "분기총합",
+      "하부전선공간"
+    ],
+    "facing_rule": "분기는 1차 단자가 메인 부스바를 향하도록 눕혀 마주보기",
+    "gap_mm": {
+      "main_to_branches": 15
+    },
+    "panel_backplate_margin_mm": 100
+  },
+  "magnet_rules": {
+    "sizes_mm": {
+      "MC_12_22": [
+        45,
+        73,
+        96
+      ],
+      "MC_32_40": [
+        69,
+        83,
+        117
+      ]
+    },
+    "placement": [
+      "마그네트 1개 & 타이머 없음 → 메인 옆 빈공간 배치, H 변화 없음",
+      "마그네트 ≥2 → 하단 배치, 줄당 +250mm, 줄 추가마다 +250mm"
+    ],
+    "row_capacity_at_W600": {
+      "MC_12_22": 5,
+      "MC_32_40": 4
+    },
+    "capacity_growth": [
+      {
+        "type": "MC_12_22",
+        "per_W_increase_mm": 100,
+        "add_per_row": 2
+      },
+      {
+        "type": "MC_32_40",
+        "per_W_increase_mm": 150,
+        "add_per_row": 2
+      }
+    ],
+    "duct_allowance_per_side_mm": 40
+  },
+  "meter_rules": {
+    "sizes_mm": {
+      "single": [
+        75,
+        130,
+        60
+      ],
+      "three": [
+        115,
+        134,
+        69
+      ]
+    },
+    "W600_capacity": {
+      "single": 6,
+      "three": 4
+    },
+    "height_increase": {
+      "if_count_ge": 2,
+      "H_add_mm": 250
+    },
+    "width_scaling": {
+      "single_per_W": {
+        "every_mm": 100,
+        "add": 1
+      },
+      "three_per_W": {
+        "every_mm": 150,
+        "add": 1
+      }
+    },
+    "note": "계량기 1개는 메인 옆 설치 → H 증가 없음"
+  },
+  "fb_orientation_rule": "FB 분기일 때 높이는 1차 단자 방향 치수 사용(2P=50mm, 3P=75mm)",
+  "branch_many_threshold": 28
+}

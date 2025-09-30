@@ -1,0 +1,11 @@
+{
+  "fit_score": 0.95,
+  "ip_risk": 0.02,
+  "layout": [
+    {
+      "module": "L1",
+      "phase": "A",
+      "slot": "L01"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+﻿{
+  "chosen_model": "ENCL-800",
+  "fit_score": 0.842,
+  "gaps": {"W": 0.2, "H": 0.068, "D": 0.111, "HEAT": 0.25},
+  "utilisation": {"W": 0.8, "H": 0.932, "D": 0.889, "HEAT": 0.75},
+  "ip_rating": "IP54",
+  "slot_unit": 1.2,
+  "max_heat_w": 1500.0,
+  "price": 1750000.0
+}

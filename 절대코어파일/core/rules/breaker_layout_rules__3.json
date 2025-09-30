@@ -1,0 +1,5 @@
+{
+  "main_breaker": "중앙 상단 고정",
+  "branch_arrangement": "좌우 대칭 3열 또는 4열, 프레임 크기 고려",
+  "ordering": "극수 > 프레임 > 암페어 순"
+}

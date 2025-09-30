@@ -1,0 +1,21 @@
+{
+  "brand": {
+    "font_size": 11.0,
+    "logo_ref": "assets/logo.svg",
+    "primary_color": "003366"
+  },
+  "client": "Client-20",
+  "currency": "KRW",
+  "estimator": "KIS-AI",
+  "issued_at": "2025-09-19T12:36:18.412548Z",
+  "project_name": "Project-20",
+  "project_number": "KIS-2025-20",
+  "revision": "RC2",
+  "totals": {
+    "grand_total": 6290790.0,
+    "labor": 255000.0,
+    "materials": 5463900.0,
+    "subtotal": 5718900.0,
+    "vat": 571890.0
+  }
+}

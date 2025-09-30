@@ -1,0 +1,21 @@
+{
+  "brand": {
+    "font_size": 11.0,
+    "logo_ref": "assets/logo.svg",
+    "primary_color": "003366"
+  },
+  "client": "KIS QA",
+  "currency": "KRW",
+  "estimator": "KIS-AI",
+  "issued_at": "2025-09-19T12:37:51.481919Z",
+  "project_name": "Self Test",
+  "project_number": "KIS-SELF",
+  "revision": "RC2",
+  "totals": {
+    "grand_total": 2062500.0,
+    "labor": 255000.0,
+    "materials": 1620000.0,
+    "subtotal": 1875000.0,
+    "vat": 187500.0
+  }
+}

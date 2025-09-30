@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MappingRules",
+  "type": "object",
+  "properties": {
+    "excel_column_map": {
+      "type": "object"
+    },
+    "recognizers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "normalizers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validators": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

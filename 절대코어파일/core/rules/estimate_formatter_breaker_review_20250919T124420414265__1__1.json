@@ -1,0 +1,39 @@
+{
+  "clearance_violations": 0,
+  "critic": {
+    "clearance_violations": 0,
+    "issues": [],
+    "phase_balance": 0.0063,
+    "score": 0.994
+  },
+  "phase_balance": 0.0063,
+  "phase_totals": {
+    "A": 426.0,
+    "B": 428.0,
+    "C": 420.0
+  },
+  "placements": [
+    {
+      "breaker_id": "L10A",
+      "heat_w": 426.0,
+      "phase": "A",
+      "slot": "S01",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L10B",
+      "heat_w": 428.0,
+      "phase": "B",
+      "slot": "S02",
+      "width_unit": 0.45
+    },
+    {
+      "breaker_id": "L10C",
+      "heat_w": 420.0,
+      "phase": "C",
+      "slot": "S03",
+      "width_unit": 0.45
+    }
+  ],
+  "slot_unit": 1.2
+}

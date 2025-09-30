@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "doc": "인건비 및 기타사항 단가",
+    "version": "v1.0.0",
+    "date": "2025-08-25"
+  },
+  "ET": {
+    "rules": [
+      {
+        "af_range": "50~250AF",
+        "base_krw": 4500,
+        "add_per_12_branches": true
+      },
+      {
+        "af_range": "400AF",
+        "base_krw": 12000,
+        "add_per_12_branches": true
+      },
+      {
+        "af_range": "600~800AF",
+        "base_krw": 18000,
+        "add_per_12_branches": true
+      }
+    ]
+  },
+  "NT": {
+    "unit_price_krw": 3000,
+    "qty": 1
+  },
+  "NP_CARD_HOLDER": {
+    "quantity_formula": "분기총수량"
+  },
+  "NP_3T_40_200": {
+    "qty": 1,
+    "unit_price_krw": 4000
+  },
+  "COATING": {
+    "rules": [
+      {
+        "af_range": "50~250AF",
+        "unit_price_krw": 5000
+      },
+      {
+        "af_range": "400~800AF",
+        "unit_price_krw": 10000
+      }
+    ]
+  },
+  "P_COVER": {
+    "steel_formula": "((W*H)/90000)*12000"
+  },
+  "ELB_SUPPORT": {
+    "models": [
+      "SIE-32",
+      "SIB-32",
+      "32GRHS",
+      "BS32"
+    ],
+    "unit_price_krw": 500,
+    "quantity_formula": "해당 모델 총수량"
+  },
+  "INSULATOR": {
+    "per_main_qty": 4,
+    "rules": [
+      {
+        "af_range": "50~250AF",
+        "unit_price_per_piece_krw": 1100
+      },
+      {
+        "af_range": "400~800AF",
+        "unit_price_per_piece_krw": 4400
+      }
+    ]
+  },
+  "CONSUMABLES": {
+    "base_WH": [
+      600,
+      700
+    ],
+    "base_krw": 7000,
+    "per_100mm_add_krw": 1000,
+    "per_accessory_add_krw": 12000,
+    "cap_krw": 42000
+  },
+  "ASSEMBLY_CHARGE": {
+    "tiers": [
+      {
+        "af_range": "50~100AF",
+        "base_WH": [
+          600,
+          700
+        ],
+        "base_krw": 50000,
+        "per_100H_add_krw": 15000,
+        "exception_increment_krw": 10000
+      },
+      {
+        "af_range": "125~250AF",
+        "base_WH": [
+          700,
+          800
+        ],
+        "base_krw": 60000,
+        "per_100H_add_krw": 15000,
+        "exception_increment_krw": 10000
+      },
+      {
+        "af_range": "400AF",
+        "base_WH": [
+          800,
+          1200
+        ],
+        "base_krw": 130000,
+        "per_100H_add_krw": 20000,
+        "exception_increment_krw": 15000
+      },
+      {
+        "af_range": "600~800AF",
+        "base_WH": [
+          900,
+          1600
+        ],
+        "base_krw": 250000,
+        "per_100H_add_krw": 40000,
+        "exception_increment_krw": 15000
+      }
+    ]
+  }
+}

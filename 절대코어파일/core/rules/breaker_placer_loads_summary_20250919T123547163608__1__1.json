@@ -1,0 +1,10 @@
+{
+  "count": 3,
+  "phases": [
+    "A",
+    "B",
+    "C"
+  ],
+  "total_heat": 1278.0,
+  "total_width_unit": 1.35
+}

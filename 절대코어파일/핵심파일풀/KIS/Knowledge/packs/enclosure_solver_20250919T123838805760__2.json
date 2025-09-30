@@ -1,0 +1,20 @@
+{
+  "chosen_model": "ENCL-600",
+  "fit_score": 0.3,
+  "gaps": {
+    "D": 0.0,
+    "H": 0.0,
+    "HEAT": 0.7,
+    "W": 0.0
+  },
+  "ip_rating": "IP55",
+  "max_heat_w": 1200.0,
+  "price": 1500000.0,
+  "slot_unit": 1.0,
+  "utilisation": {
+    "D": 1.0,
+    "H": 1.0,
+    "HEAT": 0.3,
+    "W": 1.0
+  }
+}

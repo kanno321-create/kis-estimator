@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "target": "enclosure_plan",
+  "timestamp": "2025-09-19T01:31:08.154031",
+  "summary": {
+    "fit_score": 0.93,
+    "ip_rating": "IP65",
+    "zones": 2,
+    "violations": 0
+  }
+}

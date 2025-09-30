@@ -1,0 +1,35 @@
+{
+  "name": "normal_match",
+  "input": {
+    "w": 380,
+    "h": 550,
+    "d_req": 180
+  },
+  "expected": {
+    "raw": {
+      "w": 380,
+      "h": 550,
+      "d": 180
+    },
+    "rounded": {
+      "h": 600
+    },
+    "match": {
+      "model": "ENC-500x600x200",
+      "w": 500,
+      "h": 600,
+      "d": 200,
+      "price": 35000,
+      "score": 9.05022857142857,
+      "fit_type": "oversized"
+    },
+    "candidates_count": 5,
+    "why_trace_rules": [
+      "RAW_DIMENSIONS",
+      "ROUND_UP_100",
+      "CANDIDATE_SCORES",
+      "ENCLOSURE_MATCH"
+    ],
+    "needs_review": false
+  }
+}

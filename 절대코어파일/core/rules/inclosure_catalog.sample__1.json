@@ -1,0 +1,79 @@
+[
+  {
+    "model": "ENC-400x500x150",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [400, 500, 150],
+    "price": 22000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-400x600x150",
+    "category": "Enclosure", 
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [400, 600, 150],
+    "price": 28000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-500x600x200",
+    "category": "Enclosure",
+    "material": "STEEL", 
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [500, 600, 200],
+    "price": 35000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-600x700x200",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor", 
+    "size_mm": [600, 700, 200],
+    "price": 42000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-600x800x250",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [600, 800, 250],
+    "price": 55000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-800x1000x300",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [800, 1000, 300],
+    "price": 78000,
+    "custom_required": false
+  },
+  {
+    "model": "ENC-1000x1200x400",
+    "category": "Enclosure",
+    "material": "STEEL",
+    "grade": null,
+    "thickness_mm": 1.0,
+    "installation": "Indoor",
+    "size_mm": [1000, 1200, 400],
+    "price": 125000,
+    "custom_required": false
+  }
+]

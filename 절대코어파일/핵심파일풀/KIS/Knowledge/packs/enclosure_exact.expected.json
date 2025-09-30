@@ -1,0 +1,35 @@
+{
+  "name": "exact_match",
+  "input": {
+    "w": 400,
+    "h": 500,
+    "d_req": 150
+  },
+  "expected": {
+    "raw": {
+      "w": 400,
+      "h": 500,
+      "d": 150
+    },
+    "rounded": {
+      "h": 500
+    },
+    "match": {
+      "model": "ENC-400x500x150",
+      "w": 400,
+      "h": 500,
+      "d": 150,
+      "price": 22000,
+      "score": 14.336363636363634,
+      "fit_type": "exact"
+    },
+    "candidates_count": 7,
+    "why_trace_rules": [
+      "RAW_DIMENSIONS",
+      "ROUND_UP_100",
+      "CANDIDATE_SCORES",
+      "ENCLOSURE_MATCH"
+    ],
+    "needs_review": false
+  }
+}

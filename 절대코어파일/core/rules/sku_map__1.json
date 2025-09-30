@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "map_rules": "BRAND_MODEL_{poles}P_{AF}AF → InternalSKU",
+  "suppliers": {
+    "A": {
+      "reliability": 0.92
+    },
+    "B": {
+      "reliability": 0.87
+    }
+  }
+}

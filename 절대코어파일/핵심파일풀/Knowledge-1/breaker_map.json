@@ -1,0 +1,779 @@
+{
+  "SIB-32": {
+    "model": "SIB-32",
+    "series": "SIB",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 3300
+  },
+  "SIB-32 고감도": {
+    "model": "SIB-32 고감도",
+    "series": "SIB",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 3300
+  },
+  "SBC-52": {
+    "model": "SBC-52",
+    "series": "SBC",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 6700
+  },
+  "SBC-53": {
+    "model": "SBC-53",
+    "series": "SBC",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 10500
+  },
+  "SBS-52": {
+    "model": "SBS-52",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 12000
+  },
+  "SBS-53": {
+    "model": "SBS-53",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 15600
+  },
+  "SBS-54": {
+    "model": "SBS-54",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 18000
+  },
+  "SBE-102": {
+    "model": "SBE-102",
+    "series": "SBE",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 12500
+  },
+  "SBE-103": {
+    "model": "SBE-103",
+    "series": "SBE",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 17500
+  },
+  "SBE-104": {
+    "model": "SBE-104",
+    "series": "SBE",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 20000
+  },
+  "SBS-202": {
+    "model": "SBS-202",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 36000
+  },
+  "SBS-203": {
+    "model": "SBS-203",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 42000
+  },
+  "SBS-204": {
+    "model": "SBS-204",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": [
+      53000,
+      78000
+    ]
+  },
+  "SBS-403": {
+    "model": "SBS-403",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 118000
+  },
+  "SBS-404": {
+    "model": "SBS-404",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 140000
+  },
+  "SBS-603": {
+    "model": "SBS-603",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 290000
+  },
+  "SBS-604": {
+    "model": "SBS-604",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 330000
+  },
+  "SBS-803": {
+    "model": "SBS-803",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 340000
+  },
+  "SBS-804": {
+    "model": "SBS-804",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 400000
+  },
+  "SBS-103": {
+    "model": "SBS-103",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": [
+      27000,
+      35000
+    ]
+  },
+  "SBS-104": {
+    "model": "SBS-104",
+    "series": "SBS",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": [
+      32000,
+      49000
+    ]
+  },
+  "SIE-32": {
+    "model": "SIE-32",
+    "series": "SIE",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 3800
+  },
+  "SIE-32고감도": {
+    "model": "SIE-32고감도",
+    "series": "SIE",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 3800
+  },
+  "SEC-52": {
+    "model": "SEC-52",
+    "series": "SEC",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 9400
+  },
+  "SEC-53": {
+    "model": "SEC-53",
+    "series": "SEC",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 17500
+  },
+  "SES-52": {
+    "model": "SES-52",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 30000
+  },
+  "SES-53": {
+    "model": "SES-53",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 32000
+  },
+  "SES-54": {
+    "model": "SES-54",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 33400
+  },
+  "SEE-102": {
+    "model": "SEE-102",
+    "series": "SEE",
+    "brand": "Sangdo",
+    "poles": 2,
+    "price": 32000
+  },
+  "SEE-103": {
+    "model": "SEE-103",
+    "series": "SEE",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 34000
+  },
+  "SEE-104": {
+    "model": "SEE-104",
+    "series": "SEE",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 36800
+  },
+  "SES-103": {
+    "model": "SES-103",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 64400
+  },
+  "SES-104": {
+    "model": "SES-104",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 73600
+  },
+  "SES-203": {
+    "model": "SES-203",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 3,
+    "price": 125000
+  },
+  "SES-204": {
+    "model": "SES-204",
+    "series": "SES",
+    "brand": "Sangdo",
+    "poles": 4,
+    "price": 148000
+  },
+  "BS-32": {
+    "model": "BS-32",
+    "series": "BS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 5000
+  },
+  "ABS52FB": {
+    "model": "ABS52FB",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 19800
+  },
+  "ABS53FB": {
+    "model": "ABS53FB",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 24800
+  },
+  "ABN-52": {
+    "model": "ABN-52",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 23100
+  },
+  "ABS-52": {
+    "model": "ABS-52",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 25080
+  },
+  "ABN-53": {
+    "model": "ABN-53",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 31900
+  },
+  "ABS-53": {
+    "model": "ABS-53",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 34100
+  },
+  "ABN-54": {
+    "model": "ABN-54",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 37290
+  },
+  "ABS-54": {
+    "model": "ABS-54",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 42240
+  },
+  "ABN-62": {
+    "model": "ABN-62",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 24640
+  },
+  "ABN-63": {
+    "model": "ABN-63",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 32560
+  },
+  "ABN-64": {
+    "model": "ABN-64",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 39600
+  },
+  "ABS-62": {
+    "model": "ABS-62",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 26950
+  },
+  "ABS-63": {
+    "model": "ABS-63",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 35420
+  },
+  "ABS-64": {
+    "model": "ABS-64",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 39600
+  },
+  "ABN-102": {
+    "model": "ABN-102",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 27720
+  },
+  "ABS-102": {
+    "model": "ABS-102",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": [
+      39930,
+      49000
+    ]
+  },
+  "ABN-103": {
+    "model": "ABN-103",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 39930
+  },
+  "ABS-103": {
+    "model": "ABS-103",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": [
+      39930,
+      62700
+    ]
+  },
+  "ABN-104": {
+    "model": "ABN-104",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": [
+      54300,
+      87300
+    ]
+  },
+  "ABS-104": {
+    "model": "ABS-104",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 87300
+  },
+  "ABN-202": {
+    "model": "ABN-202",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 111000
+  },
+  "ABS-202": {
+    "model": "ABS-202",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 128700
+  },
+  "ABN-203": {
+    "model": "ABN-203",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": [
+      128700,
+      132000
+    ]
+  },
+  "ABS-203": {
+    "model": "ABS-203",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 151800
+  },
+  "ABN-204": {
+    "model": "ABN-204",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 154000
+  },
+  "ABS-204": {
+    "model": "ABS-204",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 174900
+  },
+  "ABN-402": {
+    "model": "ABN-402",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 195800
+  },
+  "ABS-402": {
+    "model": "ABS-402",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 221100
+  },
+  "ABN-403": {
+    "model": "ABN-403",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 228800
+  },
+  "ABS-403": {
+    "model": "ABS-403",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 258500
+  },
+  "ABN-404": {
+    "model": "ABN-404",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 322400
+  },
+  "ABS-404": {
+    "model": "ABS-404",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 322400
+  },
+  "ABN-602": {
+    "model": "ABN-602",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 396000
+  },
+  "ABS-602": {
+    "model": "ABS-602",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 455400
+  },
+  "ABN-603": {
+    "model": "ABN-603",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 511500
+  },
+  "ABS-603": {
+    "model": "ABS-603",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 586300
+  },
+  "ABN-604": {
+    "model": "ABN-604",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 594000
+  },
+  "ABS-604": {
+    "model": "ABS-604",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 666600
+  },
+  "ABN-802": {
+    "model": "ABN-802",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 488400
+  },
+  "ABS-802": {
+    "model": "ABS-802",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 550000
+  },
+  "ABN-803": {
+    "model": "ABN-803",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 641300
+  },
+  "ABS-803": {
+    "model": "ABS-803",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 728800
+  },
+  "ABN-804": {
+    "model": "ABN-804",
+    "series": "ABN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 750200
+  },
+  "ABS-804": {
+    "model": "ABS-804",
+    "series": "ABS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 876300
+  },
+  "32GRHS": {
+    "model": "32GRHS",
+    "series": "32G",
+    "brand": "LS",
+    "poles": 2,
+    "price": 10300
+  },
+  "32GRHS고감도": {
+    "model": "32GRHS고감도",
+    "series": "32G",
+    "brand": "LS",
+    "poles": 2,
+    "price": 10300
+  },
+  "EBS52FB": {
+    "model": "EBS52FB",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 2,
+    "price": 30900
+  },
+  "EBS53FB": {
+    "model": "EBS53FB",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 37000
+  },
+  "EBN-52": {
+    "model": "EBN-52",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 51700
+  },
+  "EBN-53": {
+    "model": "EBN-53",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 53900
+  },
+  "EBN-63": {
+    "model": "EBN-63",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 56650
+  },
+  "EBN-102": {
+    "model": "EBN-102",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 71500
+  },
+  "EBN-103": {
+    "model": "EBN-103",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 86460
+  },
+  "EBN-104": {
+    "model": "EBN-104",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 104170
+  },
+  "EBN-202": {
+    "model": "EBN-202",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 2,
+    "price": 154330
+  },
+  "EBN-203": {
+    "model": "EBN-203",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 192500
+  },
+  "EBN-403": {
+    "model": "EBN-403",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 352770
+  },
+  "EBN-404": {
+    "model": "EBN-404",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 4,
+    "price": 470000
+  },
+  "EBN-603": {
+    "model": "EBN-603",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 638000
+  },
+  "EBN-803": {
+    "model": "EBN-803",
+    "series": "EBN",
+    "brand": "LS",
+    "poles": 3,
+    "price": 858000
+  },
+  "EBS-53": {
+    "model": "EBS-53",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 79200
+  },
+  "EBS-54": {
+    "model": "EBS-54",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 87340
+  },
+  "EBS-63": {
+    "model": "EBS-63",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 82170
+  },
+  "EBS-64": {
+    "model": "EBS-64",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 102850
+  },
+  "EBS-103": {
+    "model": "EBS-103",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 109450
+  },
+  "EBS-104": {
+    "model": "EBS-104",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 128700
+  },
+  "EBS-203": {
+    "model": "EBS-203",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 234300
+  },
+  "EBS-204": {
+    "model": "EBS-204",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 277200
+  },
+  "EBS-403": {
+    "model": "EBS-403",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 399300
+  },
+  "EBS-404": {
+    "model": "EBS-404",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 4,
+    "price": 526900
+  },
+  "EBS-603": {
+    "model": "EBS-603",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 704000
+  },
+  "EBS-803": {
+    "model": "EBS-803",
+    "series": "EBS",
+    "brand": "LS",
+    "poles": 3,
+    "price": 858000
+  }
+}

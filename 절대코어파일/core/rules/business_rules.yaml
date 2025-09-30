@@ -1,0 +1,122 @@
+# NABERAL Business Rules Configuration
+
+# Enclosure Rules
+enclosure:
+  constraints:
+    min_fit_score: 0.90
+    min_ip_rating: 44
+    min_door_clearance_mm: 30
+    max_fill_ratio: 0.85
+
+  ip_ratings:
+    outdoor: "IP65"
+    indoor: "IP44"
+    hazardous: "IP66"
+
+  materials:
+    - steel
+    - stainless_steel
+    - aluminum
+    - grp  # Glass Reinforced Plastic
+
+# Breaker Placement Rules
+breaker:
+  phase_balance:
+    max_imbalance_percent: 4.0
+    warning_threshold: 3.5
+
+  thermal:
+    max_row_heat_w: 650
+    max_panel_heat_w: 2500
+    heat_factor: 0.5  # heat_w = rating_a * heat_factor
+
+  clearances:
+    min_horizontal_mm: 50
+    min_vertical_mm: 30
+    min_maintenance_mm: 100
+
+  constraints:
+    max_violations: 0
+    require_critic_validation: true
+
+# Document Rules
+document:
+  format:
+    lint_errors: 0
+    cover_compliance: 100
+    named_range_damage: 0
+
+  templates:
+    - standard_estimate
+    - detailed_estimate
+    - technical_proposal
+
+  languages:
+    primary: "ko"
+    secondary: "en"
+
+# Quality Gates
+quality_gates:
+  design:
+    polisher_score_min: 95
+    wcag_aa_compliance: 100
+
+  regression:
+    required_pass_rate: 100  # 20/20
+    goldset_match_rate: 99
+
+  performance:
+    api_response_ms: 200
+    breaker_placement_ms: 1000
+    document_generation_ms: 5000
+
+# Pricing Rules
+pricing:
+  markup:
+    material: 1.15
+    labor: 1.20
+    overhead: 1.10
+
+  discount:
+    max_percent: 20
+    approval_required_above: 10
+
+  currency:
+    primary: "KRW"
+    display_precision: 0  # No decimals for KRW
+
+# Validation Rules
+validation:
+  estimate:
+    min_items: 1
+    max_items: 1000
+    validity_days: 30
+
+  customer:
+    required_fields:
+      - name
+      - contact_person
+      - phone
+      - email
+
+  product:
+    required_specs:
+      - dimensions
+      - rating
+      - manufacturer
+
+# Audit Rules
+audit:
+  retention_days: 2555  # 7 years
+  log_level: "INFO"
+  sensitive_fields:
+    - password
+    - tax_id
+    - bank_account
+
+  events_to_log:
+    - create
+    - update
+    - delete
+    - approve
+    - reject

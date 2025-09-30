@@ -1,0 +1,8 @@
+version: 2025.01
+cover_sheet:
+  locale: ko-KR
+  summary_fields:
+    - project_name
+    - estimator
+    - revision
+    - currency

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnclosureLayoutDecision",
+  "type": "object",
+  "properties": {
+    "top_clearance_mm": {
+      "type": "number"
+    },
+    "bottom_clearance_mm": {
+      "type": "number"
+    },
+    "main_breaker_H_mm": {
+      "type": "number"
+    },
+    "branch_stack_H_mm": {
+      "type": "number"
+    },
+    "spares": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rules_applied": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "top_clearance_mm",
+    "bottom_clearance_mm",
+    "main_breaker_H_mm",
+    "branch_stack_H_mm",
+    "rules_applied"
+  ]
+}

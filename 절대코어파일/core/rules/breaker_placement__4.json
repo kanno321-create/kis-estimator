@@ -1,0 +1,29 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KIS Breaker Placement",
+  "type": "object",
+  "required": ["placements", "phase_balance", "clearance_violations", "phase_totals"],
+  "properties": {
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["breaker_id", "slot", "phase", "heat_w", "width_unit"],
+        "properties": {
+          "breaker_id": {"type": "string"},
+          "slot": {"type": "string"},
+          "phase": {"type": "string"},
+          "heat_w": {"type": "number"},
+          "width_unit": {"type": "number"}
+        }
+      }
+    },
+    "phase_balance": {"type": "number"},
+    "clearance_violations": {"type": "integer"},
+    "phase_totals": {
+      "type": "object",
+      "additionalProperties": {"type": "number"}
+    },
+    "slot_unit": {"type": "number"}
+  }
+}

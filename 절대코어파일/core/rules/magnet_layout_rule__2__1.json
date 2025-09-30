@@ -1,0 +1,44 @@
+{
+  "title": "마그네트 외함 배치 기준",
+  "description": "마그네트 용량에 따라 외함 W별 최대 수용 개수 규칙",
+  "rules": [
+    {
+      "magnet_range": "MC-12 ~ MC-22",
+      "base_enclosure_width": 600,
+      "base_count": 5,
+      "increment_per_100mm": 2
+    },
+    {
+      "magnet_range": "MC-30 ~ MC-42",
+      "base_enclosure_width": 600,
+      "base_count": 4,
+      "increment_per_100mm": 1
+    }
+  ],
+  "example": {
+    "W=800mm": {
+      "MC-18a": "5 + ((800-600)//100)×2 = 9EA",
+      "MC-32a": "4 + ((800-600)//100)×1 = 6EA"
+    }
+  },
+  "height_adjustment_rule": [
+    {
+      "magnet_range": "MC-12 ~ MC-22",
+      "condition": "1EA",
+      "height_increase_mm": 0,
+      "note": "메인 좌우 여유 공간에 배치, H 증가 없음"
+    },
+    {
+      "magnet_range": "MC-12 ~ MC-22",
+      "condition": "2EA 이상",
+      "height_increase_mm": 250,
+      "note": "1줄로 배치 시 H +250"
+    },
+    {
+      "magnet_range": "MC-30 ~ MC-42",
+      "condition": "1EA 이상",
+      "height_increase_mm": 300,
+      "note": "외함 H +300"
+    }
+  ]
+}

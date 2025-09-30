@@ -1,0 +1,25 @@
+﻿{
+  "summary": {
+    "project_name": "2025-0001",
+    "client": "KIS Industries",
+    "project_number": "KIS-2025-0001",
+    "estimator": "KIS-AI",
+    "revision": "RC2",
+    "currency": "KRW",
+    "issued_at": "2025-01-01T00:00:00Z",
+    "totals": {
+      "materials": 1432000.0,
+      "labor": 255000.0,
+      "subtotal": 1687000.0,
+      "vat": 168700.0,
+      "grand_total": 1855700.0
+    },
+    "brand": {
+      "primary_color": "003366",
+      "logo_ref": "assets/logo.svg",
+      "font_size": 11
+    }
+  },
+  "notes": ["Cover tab writer generated summary"],
+  "issued_at": "2025-01-01T00:00:00Z"
+}

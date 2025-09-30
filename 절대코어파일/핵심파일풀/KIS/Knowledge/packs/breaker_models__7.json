@@ -1,0 +1,2390 @@
+[
+  {
+    "model": "SIB-32",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SIB",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 3300,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      20,
+      30
+    ]
+  },
+  {
+    "model": "SIB-32 고감도",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SIB",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 3300,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      20,
+      30
+    ]
+  },
+  {
+    "model": "SBC-52",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBC",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 5.0,
+    "price": 6700,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      50,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SBC-53",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBC",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 5.0,
+    "price": 10500,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SBS-52",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 12000,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SBS-53",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 15600,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SBS-54",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 14.0,
+    "price": 18000,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SBE-102",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBE",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 12500,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SBE-103",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBE",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 17500,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SBE-104",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBE",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 14.0,
+    "price": 20000,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SBS-202",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 25.0,
+    "price": 36000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      70,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225
+    ]
+  },
+  {
+    "model": "SBS-203",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 25.0,
+    "price": 42000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225
+    ]
+  },
+  {
+    "model": "SBS-204",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 25.0,
+    "price": [
+      53000,
+      78000
+    ],
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "SBS-403",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 35.0,
+    "price": 118000,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      140,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "SBS-404",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 35.0,
+    "price": 140000,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "SBS-603",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 50.0,
+    "price": 290000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "SBS-604",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 50.0,
+    "price": 330000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "SBS-803",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 50.0,
+    "price": 340000,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "SBS-804",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 50.0,
+    "price": 400000,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "SBS-103",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 25.0,
+    "price": [
+      27000,
+      35000
+    ],
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      90,
+      155,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "SBS-104",
+    "brand": "Sangdo",
+    "category": "MCCB",
+    "series": "SBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 25.0,
+    "price": [
+      32000,
+      49000
+    ],
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      120,
+      155,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "SIE-32",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SIE",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 3800,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      20,
+      30
+    ]
+  },
+  {
+    "model": "SIE-32고감도",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SIE",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 3800,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      20,
+      30
+    ]
+  },
+  {
+    "model": "SEC-52",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SEC",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 5.0,
+    "price": 9400,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      50,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SEC-53",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SEC",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 5.0,
+    "price": 17500,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SES-52",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 30000,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SES-53",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 32000,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SES-54",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 14.0,
+    "price": 33400,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "SEE-102",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SEE",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 32000,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SEE-103",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SEE",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 34000,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SEE-104",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SEE",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 14.0,
+    "price": 36800,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      60,
+      75,
+      100
+    ]
+  },
+  {
+    "model": "SES-103",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 25.0,
+    "price": 64400,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "SES-104",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 25.0,
+    "price": 73600,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50,
+      60,
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "SES-203",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 25.0,
+    "price": 125000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "SES-204",
+    "brand": "Sangdo",
+    "category": "ELB",
+    "series": "SES",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 25.0,
+    "price": 148000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "BS-32",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "BS",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 5000,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      15,
+      20,
+      30
+    ]
+  },
+  {
+    "model": "ABS52FB",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 5.0,
+    "price": 19800,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      50,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABS53FB",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 5.0,
+    "price": 24800,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABN-52",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 23100,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABS-52",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 18.0,
+    "price": 25080,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABN-53",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 31900,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABS-53",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 34100,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABN-54",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": [
+      14.0,
+      18.0
+    ],
+    "price": 37290,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABS-54",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": 42240,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "ABN-62",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 24640,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": null,
+    "ampere": 60
+  },
+  {
+    "model": "ABN-63",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 32560,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "ABN-64",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 14.0,
+    "price": 39600,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "ABS-62",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 18.0,
+    "price": 26950,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": null,
+    "ampere": 60
+  },
+  {
+    "model": "ABS-63",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 35420,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "ABS-64",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": 39600,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "ABN-102",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 18.0,
+    "price": 27720,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "ABS-102",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 37.0,
+    "price": [
+      39930,
+      49000
+    ],
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      60,
+      155,
+      60
+    ],
+    "ampere": [
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "ABN-103",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 39930,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "ABS-103",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": [
+      39930,
+      62700
+    ],
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      90,
+      155,
+      60
+    ],
+    "ampere": [
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "ABN-104",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": [
+      54300,
+      87300
+    ],
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "ABS-104",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard/Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 87300,
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      120,
+      155,
+      60
+    ],
+    "ampere": [
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "ABN-202",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 37.0,
+    "price": 111000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      70,
+      165,
+      60
+    ],
+    "ampere": [
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "ABS-202",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 50.0,
+    "price": 128700,
+    "frame_AF": 250,
+    "compact": false,
+    "size_mm": [
+      70,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225
+    ]
+  },
+  {
+    "model": "ABN-203",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": [
+      37.0,
+      50.0
+    ],
+    "price": [
+      128700,
+      132000
+    ],
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "ABS-203",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 50.0,
+    "price": 151800,
+    "frame_AF": 250,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "ABN-204",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 154000,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225
+    ]
+  },
+  {
+    "model": "ABS-204",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 50.0,
+    "price": 174900,
+    "frame_AF": 250,
+    "compact": false,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "ABN-402",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 37.0,
+    "price": 195800,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABS-402",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 50.0,
+    "price": 221100,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABN-403",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 228800,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      140,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABS-403",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 50.0,
+    "price": 258500,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      140,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABN-404",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 322400,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABS-404",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 50.0,
+    "price": 322400,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "ABN-602",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 37.0,
+    "price": 396000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABS-602",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 65.0,
+    "price": 455400,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABN-603",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 511500,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABS-603",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 65.0,
+    "price": 586300,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABN-604",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 594000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABS-604",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 65.0,
+    "price": 666600,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "ABN-802",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 37.0,
+    "price": 488400,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "ABS-802",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 2,
+    "capacity_kA": 65.0,
+    "price": 550000,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": null,
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "ABN-803",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 641300,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "ABS-803",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 65.0,
+    "price": 728800,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "ABN-804",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 750200,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "ABS-804",
+    "brand": "LS",
+    "category": "MCCB",
+    "series": "ABS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 65.0,
+    "price": 876300,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      280,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  },
+  {
+    "model": "32GRHS",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "32G",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 10300,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      15,
+      20,
+      30
+    ]
+  },
+  {
+    "model": "32GRHS고감도",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "32G",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 2.5,
+    "price": 10300,
+    "frame_AF": 30,
+    "compact": false,
+    "size_mm": [
+      33,
+      70,
+      42
+    ],
+    "ampere": [
+      15,
+      20,
+      30
+    ]
+  },
+  {
+    "model": "EBS52FB",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard/Economy",
+    "poles": 2,
+    "capacity_kA": 5.0,
+    "price": 30900,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      50,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBS53FB",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard/Economy",
+    "poles": 3,
+    "capacity_kA": 5.0,
+    "price": 37000,
+    "frame_AF": 50,
+    "compact": true,
+    "size_mm": [
+      75,
+      96,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBN-52",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 14.0,
+    "price": 51700,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBN-53",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 53900,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBN-63",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 14.0,
+    "price": 56650,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "EBN-102",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 18.0,
+    "price": 71500,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      50,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "EBN-103",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 86460,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "EBN-104",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": 104170,
+    "frame_AF": 100,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      75,
+      100
+    ]
+  },
+  {
+    "model": "EBN-202",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 2,
+    "capacity_kA": 26.0,
+    "price": 154330,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      70,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "EBN-203",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 26.0,
+    "price": 192500,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "EBN-403",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 352770,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      140,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "EBN-404",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 470000,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "EBN-603",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 638000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "EBN-803",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBN",
+    "type": "Economy",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 858000,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "EBS-53",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 79200,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBS-54",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": 87340,
+    "frame_AF": 50,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": [
+      20,
+      30,
+      40,
+      50
+    ]
+  },
+  {
+    "model": "EBS-63",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 18.0,
+    "price": 82170,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      75,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "EBS-64",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 18.0,
+    "price": 102850,
+    "frame_AF": 60,
+    "compact": false,
+    "size_mm": [
+      100,
+      130,
+      60
+    ],
+    "ampere": 60
+  },
+  {
+    "model": "EBS-103",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 109450,
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      90,
+      155,
+      60
+    ],
+    "ampere": [
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "EBS-104",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 128700,
+    "frame_AF": 125,
+    "compact": false,
+    "size_mm": [
+      120,
+      155,
+      60
+    ],
+    "ampere": [
+      75,
+      100,
+      125
+    ]
+  },
+  {
+    "model": "EBS-203",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 37.0,
+    "price": 234300,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      105,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "EBS-204",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 37.0,
+    "price": 277200,
+    "frame_AF": 200,
+    "compact": false,
+    "size_mm": [
+      140,
+      165,
+      60
+    ],
+    "ampere": [
+      125,
+      150,
+      175,
+      200,
+      225,
+      250
+    ]
+  },
+  {
+    "model": "EBS-403",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 50.0,
+    "price": 399300,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      140,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "EBS-404",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 4,
+    "capacity_kA": 50.0,
+    "price": 526900,
+    "frame_AF": 400,
+    "compact": false,
+    "size_mm": [
+      187,
+      257,
+      109
+    ],
+    "ampere": [
+      300,
+      350,
+      400
+    ]
+  },
+  {
+    "model": "EBS-603",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 65.0,
+    "price": 704000,
+    "frame_AF": 600,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      500,
+      600
+    ]
+  },
+  {
+    "model": "EBS-803",
+    "brand": "LS",
+    "category": "ELB",
+    "series": "EBS",
+    "type": "Standard",
+    "poles": 3,
+    "capacity_kA": 65.0,
+    "price": 858000,
+    "frame_AF": 800,
+    "compact": false,
+    "size_mm": [
+      210,
+      280,
+      109
+    ],
+    "ampere": [
+      700,
+      800
+    ]
+  }]

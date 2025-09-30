@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "bundles": {
+    "BND_TIMER_EFFECT": {
+      "when_any": ["TIMER_24H"],
+      "add_lines": [
+        { "item": "PBL_ONOFF", "qty": 1, "uom": "EA", "why": "Timer requires pilot lamp" },
+        { "item": "SS_PANEL_NOTE", "qty": 1, "uom": "EA", "if_hint": "SS", "why": "Stainless panel requested" }
+      ]
+    },
+    "BND_MAGNET_BASE": {
+      "when_any": ["MAGNET"],
+      "add_lines": [
+        { "item": "FUSE_HOLDER", "qty": 1, "uom": "EA", "why": "Base accessory for magnet" },
+        { "item": "TERMINAL_BLOCK", "qty": 1, "uom": "SET", "why": "Wiring terminal set" },
+        { "item": "PVC_DUCT_40", "qty": 1, "uom": "M", "why": "Cable duct" },
+        { "item": "POWER_CABLE_STD", "qty": 3, "uom": "M", "why": "Power cable allowance" },
+        { "item": "LABOR_MAG_SETUP", "qty": 1, "uom": "JOB", "why": "Installation labor" }
+      ]
+    }
+  }
+}

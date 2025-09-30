@@ -1,0 +1,456 @@
+{
+  "version": "v1.0.0",
+  "last_updated": "2025-01-16T10:00:00Z",
+  "hash": "placeholder_will_be_calculated",
+  "signature": {
+    "ceo_signed_by": "CEO_SIGNATURE_PLACEHOLDER",
+    "cfo_signed_by": "CFO_SIGNATURE_PLACEHOLDER",
+    "signed_at": "2025-01-16T10:00:00Z"
+  },
+  "rules": [
+    {
+      "id": "SALES_INVOICE",
+      "name": "매출 인보이스 분개",
+      "name_en": "Sales Invoice Posting",
+      "category": "SALES",
+      "trigger": {
+        "event_type": "DELIVERY",
+        "conditions": [
+          {
+            "field": "delivery.status",
+            "operator": "==",
+            "value": "COMPLETED"
+          },
+          {
+            "field": "invoice.type",
+            "operator": "==",
+            "value": "SALES"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 10,
+      "entries": [
+        {
+          "account_code": "1120",
+          "debit_expr": "invoice.amount * 1.1",
+          "credit_expr": null,
+          "description": "매출채권 (VAT 포함)"
+        },
+        {
+          "account_code": "4100",
+          "debit_expr": null,
+          "credit_expr": "invoice.amount",
+          "description": "매출액"
+        },
+        {
+          "account_code": "2130",
+          "debit_expr": null,
+          "credit_expr": "invoice.amount * 0.1",
+          "description": "부가세예수금 (10%)"
+        }
+      ],
+      "validation": {
+        "balance_check": true,
+        "amount_limit": 100000000,
+        "approval_required": false
+      },
+      "description": "제품 납품 완료 시 매출 인식 및 부가세 계상"
+    },
+    {
+      "id": "PURCHASE_INVOICE",
+      "name": "매입 인보이스 분개", 
+      "name_en": "Purchase Invoice Posting",
+      "category": "PURCHASE",
+      "trigger": {
+        "event_type": "SCM_COMPLETION",
+        "conditions": [
+          {
+            "field": "scm.type",
+            "operator": "==",
+            "value": "PURCHASE_ORDER"
+          },
+          {
+            "field": "po.status",
+            "operator": "==",
+            "value": "RECEIVED"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 20,
+      "entries": [
+        {
+          "account_code": "1130",
+          "debit_expr": "po.total_amount",
+          "credit_expr": null,
+          "description": "재고자산 증가",
+          "cost_center_expr": "po.cost_center"
+        },
+        {
+          "account_code": "1150",
+          "debit_expr": "po.total_amount * 0.1",
+          "credit_expr": null,
+          "description": "매입세액 (10%)"
+        },
+        {
+          "account_code": "2110",
+          "debit_expr": null,
+          "credit_expr": "po.total_amount * 1.1",
+          "description": "매입채무 (VAT 포함)"
+        }
+      ],
+      "validation": {
+        "balance_check": true,
+        "approval_required": false
+      },
+      "description": "M35 SCM 구매 완료 시 재고 및 매입채무 계상"
+    },
+    {
+      "id": "WIP_MATERIAL",
+      "name": "WIP 재료비 투입",
+      "name_en": "WIP Material Cost",
+      "category": "WIP",
+      "trigger": {
+        "event_type": "WIP_UPDATE",
+        "conditions": [
+          {
+            "field": "wip.cost_type",
+            "operator": "==",
+            "value": "MATERIAL"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 30,
+      "entries": [
+        {
+          "account_code": "1140",
+          "debit_expr": "wip.material_cost",
+          "credit_expr": null,
+          "description": "재공품 재료비",
+          "project_code_expr": "wip.job_id"
+        },
+        {
+          "account_code": "1130",
+          "debit_expr": null,
+          "credit_expr": "wip.material_cost",
+          "description": "재고자산 감소"
+        }
+      ],
+      "validation": {
+        "balance_check": true
+      },
+      "description": "제조 작업에 재료 투입 시 WIP 계상"
+    },
+    {
+      "id": "WIP_LABOR",
+      "name": "WIP 인건비 투입",
+      "name_en": "WIP Labor Cost",
+      "category": "WIP",
+      "trigger": {
+        "event_type": "WIP_UPDATE",
+        "conditions": [
+          {
+            "field": "wip.cost_type",
+            "operator": "==",
+            "value": "LABOR"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 31,
+      "entries": [
+        {
+          "account_code": "1140",
+          "debit_expr": "wip.labor_cost",
+          "credit_expr": null,
+          "description": "재공품 인건비",
+          "project_code_expr": "wip.job_id"
+        },
+        {
+          "account_code": "2120",
+          "debit_expr": null,
+          "credit_expr": "wip.labor_cost",
+          "description": "미지급급여"
+        }
+      ],
+      "validation": {
+        "balance_check": true
+      },
+      "description": "제조 작업에 인건비 투입 시 WIP 계상"
+    },
+    {
+      "id": "WIP_OVERHEAD",
+      "name": "WIP 경비 배부",
+      "name_en": "WIP Overhead Allocation",
+      "category": "WIP", 
+      "trigger": {
+        "event_type": "WIP_UPDATE",
+        "conditions": [
+          {
+            "field": "wip.cost_type",
+            "operator": "==",
+            "value": "OVERHEAD"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 32,
+      "entries": [
+        {
+          "account_code": "1140",
+          "debit_expr": "wip.overhead_cost",
+          "credit_expr": null,
+          "description": "재공품 경비",
+          "project_code_expr": "wip.job_id"
+        },
+        {
+          "account_code": "5200",
+          "debit_expr": null,
+          "credit_expr": "wip.overhead_cost",
+          "description": "제조경비 배부"
+        }
+      ],
+      "validation": {
+        "balance_check": true
+      },
+      "description": "제조 경비를 WIP으로 배부"
+    },
+    {
+      "id": "COGS_RECOGNITION",
+      "name": "매출원가 인식",
+      "name_en": "COGS Recognition",
+      "category": "COGS",
+      "trigger": {
+        "event_type": "COGS_RECOGNITION",
+        "conditions": [
+          {
+            "field": "delivery.status",
+            "operator": "==",
+            "value": "COMPLETED"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 40,
+      "entries": [
+        {
+          "account_code": "5100",
+          "debit_expr": "cogs.total_cost",
+          "credit_expr": null,
+          "description": "매출원가",
+          "cost_center_expr": "cogs.cost_center"
+        },
+        {
+          "account_code": "1140",
+          "debit_expr": null,
+          "credit_expr": "cogs.total_cost",
+          "description": "재공품 완료 전출",
+          "project_code_expr": "cogs.job_id"
+        }
+      ],
+      "validation": {
+        "balance_check": true,
+        "approval_required": false
+      },
+      "description": "납품 완료 시 WIP에서 COGS로 전출"
+    },
+    {
+      "id": "VAT_CALCULATION",
+      "name": "부가세 정산",
+      "name_en": "VAT Settlement",
+      "category": "TAX",
+      "trigger": {
+        "event_type": "MANUAL",
+        "conditions": [
+          {
+            "field": "tax.type",
+            "operator": "==",
+            "value": "VAT_SETTLEMENT"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 50,
+      "entries": [
+        {
+          "account_code": "2130",
+          "debit_expr": "max(0, tax.output_vat - tax.input_vat)",
+          "credit_expr": null,
+          "description": "부가세 납부세액"
+        },
+        {
+          "account_code": "1150",
+          "debit_expr": null,
+          "credit_expr": "tax.input_vat",
+          "description": "매입세액 정산"
+        },
+        {
+          "account_code": "1110",
+          "debit_expr": null,
+          "credit_expr": "max(0, tax.output_vat - tax.input_vat)",
+          "description": "부가세 납부"
+        }
+      ],
+      "validation": {
+        "balance_check": true,
+        "approval_required": true
+      },
+      "description": "월별 부가세 신고 및 납부"
+    },
+    {
+      "id": "PAYMENT_CASH",
+      "name": "현금 지급",
+      "name_en": "Cash Payment",
+      "category": "ADJUSTMENT",
+      "trigger": {
+        "event_type": "PAYMENT",
+        "conditions": [
+          {
+            "field": "payment.method",
+            "operator": "==",
+            "value": "CASH"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 60,
+      "entries": [
+        {
+          "account_code": "2110",
+          "debit_expr": "payment.amount",
+          "credit_expr": null,
+          "description": "매입채무 상환"
+        },
+        {
+          "account_code": "1110",
+          "debit_expr": null,
+          "credit_expr": "payment.amount", 
+          "description": "현금 지급"
+        }
+      ],
+      "validation": {
+        "balance_check": true
+      },
+      "description": "공급업체에 현금 지급"
+    },
+    {
+      "id": "RECEIPT_CASH",
+      "name": "현금 수취",
+      "name_en": "Cash Receipt",
+      "category": "ADJUSTMENT",
+      "trigger": {
+        "event_type": "RECEIPT",
+        "conditions": [
+          {
+            "field": "receipt.method",
+            "operator": "==",
+            "value": "CASH"
+          }
+        ]
+      },
+      "active": true,
+      "priority": 61,
+      "entries": [
+        {
+          "account_code": "1110",
+          "debit_expr": "receipt.amount",
+          "credit_expr": null,
+          "description": "현금 수취"
+        },
+        {
+          "account_code": "1120",
+          "debit_expr": null,
+          "credit_expr": "receipt.amount",
+          "description": "매출채권 회수"
+        }
+      ],
+      "validation": {
+        "balance_check": true
+      },
+      "description": "고객으로부터 현금 수취"
+    }
+  ],
+  "expressions": {
+    "variables": [
+      {
+        "name": "invoice.amount",
+        "type": "NUMBER",
+        "description": "인보이스 금액 (VAT 제외)",
+        "source": "M35_RESULT"
+      },
+      {
+        "name": "po.total_amount",
+        "type": "NUMBER", 
+        "description": "구매주문 총액",
+        "source": "M35_RESULT"
+      },
+      {
+        "name": "wip.material_cost",
+        "type": "NUMBER",
+        "description": "WIP 재료비",
+        "source": "INPUT_DATA"
+      },
+      {
+        "name": "wip.labor_cost",
+        "type": "NUMBER",
+        "description": "WIP 인건비",
+        "source": "INPUT_DATA"
+      },
+      {
+        "name": "wip.overhead_cost",
+        "type": "NUMBER",
+        "description": "WIP 경비",
+        "source": "INPUT_DATA"
+      },
+      {
+        "name": "cogs.total_cost",
+        "type": "NUMBER",
+        "description": "총 매출원가",
+        "source": "WIP_CALCULATION"
+      },
+      {
+        "name": "tax.output_vat",
+        "type": "NUMBER",
+        "description": "매출 부가세",
+        "source": "TAX_CALCULATION"
+      },
+      {
+        "name": "tax.input_vat",
+        "type": "NUMBER",
+        "description": "매입 부가세",
+        "source": "TAX_CALCULATION"
+      }
+    ],
+    "functions": [
+      {
+        "name": "max",
+        "signature": "max(a: number, b: number): number",
+        "description": "두 값 중 큰 값 반환"
+      },
+      {
+        "name": "min", 
+        "signature": "min(a: number, b: number): number",
+        "description": "두 값 중 작은 값 반환"
+      },
+      {
+        "name": "round",
+        "signature": "round(value: number, decimals?: number): number",
+        "description": "지정 소수점으로 반올림"
+      },
+      {
+        "name": "abs",
+        "signature": "abs(value: number): number",
+        "description": "절댓값 반환"
+      }
+    ]
+  },
+  "metadata": {
+    "total_rules": 10,
+    "active_rules": 10,
+    "created_by": "M36_FINANCE_SYSTEM",
+    "approved_by": "CEO_CFO_JOINT",
+    "compliance_status": "COMPLIANT"
+  }
+}

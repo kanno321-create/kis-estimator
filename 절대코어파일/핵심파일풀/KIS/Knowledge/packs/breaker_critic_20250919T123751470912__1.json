@@ -1,0 +1,15 @@
+{
+  "clearance_violations": 2,
+  "issues": [
+    {
+      "code": "phase_balance_high",
+      "description": "Phase balance 0.056 exceeds threshold 0.050"
+    },
+    {
+      "code": "clearance_violation",
+      "description": "Detected 2 clearance violations"
+    }
+  ],
+  "phase_balance": 0.0556,
+  "score": 0.744
+}

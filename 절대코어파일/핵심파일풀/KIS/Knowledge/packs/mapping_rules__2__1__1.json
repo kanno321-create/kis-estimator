@@ -1,0 +1,38 @@
+{
+  "excel_column_map": {
+    "item": "B",
+    "spec": "C",
+    "unit": "D",
+    "qty": "E",
+    "unit_price": "F",
+    "amount": "G"
+  },
+  "recognizers": [
+    {
+      "name": "is_spd_breaker",
+      "if_name_contains": [
+        "SP",
+        "SPD"
+      ],
+      "then_tag": "spd_breaker"
+    },
+    {
+      "name": "is_fb",
+      "if_model_contains": [
+        "FB"
+      ],
+      "then_tag": "fb_branch"
+    }
+  ],
+  "validators": [
+    {
+      "name": "spd_max_one_per_face",
+      "if_tag": "spd",
+      "assert": "count_per_panel_face<=1"
+    },
+    {
+      "name": "no_elb_mccb_swap",
+      "assert": "type_stable"
+    }
+  ]
+}

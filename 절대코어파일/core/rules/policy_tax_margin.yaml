@@ -1,0 +1,15 @@
+version: 2025.01
+policies:
+  tax_rate_default: 0.1
+  margin_floor: 0.08
+  margin_ceiling: 0.22
+  currency: KRW
+templates:
+  registry:
+    - file: base_panel_template.xlsx
+      sha256: 0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a
+      named_ranges:
+        - NR_PANEL_CIRCUITS
+        - NR_PANEL_BREAKERS
+license_guard:
+  enabled: true

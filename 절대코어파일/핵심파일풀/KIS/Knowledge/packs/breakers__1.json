@@ -1,0 +1,145 @@
+[
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 50,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 100,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 125,
+    "poles": 4,
+    "size_mm": [
+      120,
+      155,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 200,
+    "poles": 4,
+    "size_mm": [
+      140,
+      165,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 250,
+    "poles": 4,
+    "size_mm": [
+      140,
+      165,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 400,
+    "poles": 4,
+    "size_mm": [
+      187,
+      257,
+      109
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 600,
+    "poles": 4,
+    "size_mm": [
+      280,
+      280,
+      109
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SBS",
+    "af": 800,
+    "poles": 4,
+    "size_mm": [
+      280,
+      280,
+      109
+    ]
+  },
+  {
+    "brand": "LS",
+    "series": "ABN(경제형)",
+    "af": 100,
+    "poles": 4,
+    "size_mm": [
+      100,
+      130,
+      60
+    ]
+  },
+  {
+    "brand": "LS",
+    "series": "ABN(표준형)",
+    "af": 125,
+    "poles": 4,
+    "size_mm": [
+      120,
+      155,
+      60
+    ]
+  },
+  {
+    "brand": "LS",
+    "series": "FB",
+    "af": 50,
+    "poles": 2,
+    "size_mm": [
+      50,
+      96,
+      60
+    ]
+  },
+  {
+    "brand": "LS",
+    "series": "FB",
+    "af": 50,
+    "poles": 3,
+    "size_mm": [
+      75,
+      96,
+      60
+    ]
+  },
+  {
+    "brand": "SANGDO",
+    "series": "SMALL",
+    "af": 32,
+    "poles": 2,
+    "size_mm": [
+      33,
+      70,
+      42
+    ]
+  }
+]

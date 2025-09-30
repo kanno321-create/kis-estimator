@@ -1,0 +1,5 @@
+﻿model,phase,current_a,width_unit,heat_w,price
+BRK-100-A,A,100,1,50,120000
+BRK-125-B,B,125,1,60,135000
+BRK-150-C,C,150,1,70,150000
+BRK-80-UNI,ALL,80,0.5,40,90000

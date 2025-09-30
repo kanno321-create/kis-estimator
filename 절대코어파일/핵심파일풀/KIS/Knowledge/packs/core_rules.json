@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "title": "Core Rules for FB-Type Distribution Panel",
+  "rules": [
+    {
+      "id": "SPD_RULE_001",
+      "category": "protection",
+      "title": "SPD 1면 1개 원칙",
+      "description": "FB타입 분전반에서는 각 면당 SPD(Surge Protection Device)를 1개씩만 설치해야 합니다.",
+      "mandatory": true,
+      "applies_to": ["FB타입", "분전반"]
+    },
+    {
+      "id": "FRAME_RULE_001", 
+      "category": "structure",
+      "title": "차단기 프레임 규격",
+      "description": "차단기 프레임은 KS C 4613 규격을 준수해야 하며, 정격전류에 따른 적절한 크기를 선택해야 합니다.",
+      "mandatory": true,
+      "applies_to": ["차단기", "프레임"]
+    },
+    {
+      "id": "GROUND_RULE_001",
+      "category": "safety", 
+      "title": "접지 장치 배치",
+      "description": "접지 단자는 분전반 하단에 배치하고, 접지선은 최단 경로로 연결해야 합니다.",
+      "mandatory": true,
+      "applies_to": ["접지", "안전장치"]
+    }
+  ],
+  "metadata": {
+    "created_date": "2024-01-01",
+    "last_updated": "2024-03-26", 
+    "author": "AI Orchestrator Team",
+    "version_notes": "Initial version with basic FB-type panel rules"
+  }
+}

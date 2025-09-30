@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "doc": "차단기 형명/선택 기준",
+    "version": "v1.00",
+    "date": "2025-08-25"
+  },
+  "frame_map": {
+    "3": "30AF",
+    "5": "50AF",
+    "6": "60AF",
+    "10": "100AF",
+    "20": "225AF",
+    "40": "400AF",
+    "60": "600AF",
+    "80": "800AF"
+  },
+  "poles_map": {
+    "2": "2P",
+    "3": "3P",
+    "4": "4P"
+  },
+  "brands": {
+    "SANGDO": {
+      "types": {
+        "E": "경제형",
+        "S": "표준형"
+      },
+      "families": {
+        "MCCB": {
+          "pattern": "SB{type}-{frame}{poles}",
+          "examples": [
+            "SBS-54 = 상도 MCCB 표준형 50AF 4P",
+            "SBE-103 = 상도 MCCB 경제형 100AF 3P"
+          ]
+        },
+        "ELB": {
+          "pattern": "SE{type}-{frame}{poles}",
+          "examples": [
+            "SEE-104 = 상도 ELB 경제형 100AF 4P",
+            "SES-52 = 상도 ELB 표준형 50AF 2P"
+          ]
+        },
+        "COMPACT": {
+          "pattern": "S{B|E}C-{frame}{poles}",
+          "note": "SBC= MCCB Compact, SEC= ELB Compact"
+        }
+      }
+    },
+    "LS": {
+      "types": {
+        "N": "경제형",
+        "S": "표준형"
+      },
+      "families": {
+        "MCCB": {
+          "pattern": "AB{type}-{frame}{poles}",
+          "examples": [
+            "ABN-54 = LS MCCB 경제형 50AF 4P",
+            "ABS-53 = LS MCCB 표준형 50AF 3P"
+          ]
+        },
+        "ELB": {
+          "pattern": "EB{type}-{frame}{poles}",
+          "examples": [
+            "EBS-203 = LS ELB 표준형 225AF 3P"
+          ]
+        },
+        "FB_COMPACT": {
+          "pattern": "{A|E}B{S|N}{frame}{poles}FB",
+          "note": "ABS52FB / EBS53FB"
+        }
+      }
+    }
+  }
+}

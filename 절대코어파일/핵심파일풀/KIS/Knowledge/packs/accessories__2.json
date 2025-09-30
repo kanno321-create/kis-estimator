@@ -1,0 +1,49 @@
+[
+  {
+    "name": "SPD",
+    "rule": "panel_face_max=1",
+    "H_add_mm": 100
+  },
+  {
+    "name": "PBL",
+    "rule": "requires_depth_ge_200"
+  },
+  {
+    "name": "TIMER",
+    "rule": "often_with_PBL+SS"
+  },
+  {
+    "name": "FUSEHOLDER",
+    "fixed": {
+      "spec": "4A",
+      "unit": "EA",
+      "qty": 1,
+      "price": 4000
+    }
+  },
+  {
+    "name": "TERMINAL BLOCK",
+    "fixed": {
+      "spec": "600V",
+      "unit": "EA",
+      "qty_formula": "magnet_qty",
+      "price": 4000
+    }
+  },
+  {
+    "name": "PVC DUCT",
+    "fixed": {
+      "unit": "EA",
+      "qty_formula": "magnet_qty*2",
+      "price": 3300
+    }
+  },
+  {
+    "name": "CABLE/WIRE",
+    "fixed": {
+      "type": "KIV",
+      "unit": "식",
+      "qty_formula": "magnet_qty*1"
+    }
+  }
+]

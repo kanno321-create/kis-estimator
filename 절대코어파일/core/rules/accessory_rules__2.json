@@ -1,0 +1,30 @@
+{
+  "magnet_follow": {
+    "fuseholder": {
+      "qty": 1,
+      "unit": "EA"
+    },
+    "terminal_block": {
+      "qty": "MAG_QTY",
+      "unit": "EA"
+    },
+    "pvc_duct": {
+      "qty": "MAG_QTY*2",
+      "unit": "EA"
+    },
+    "cable_wire": {
+      "qty": "MAG_QTY",
+      "unit": "식"
+    }
+  },
+  "spd": {
+    "max_per_panel": 1,
+    "extra_depth": 100
+  },
+  "meter": {
+    "extra_height_if_ge2": 250
+  },
+  "pbl": {
+    "min_depth": 200
+  }
+}

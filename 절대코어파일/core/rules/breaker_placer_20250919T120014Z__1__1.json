@@ -1,0 +1,11 @@
+{
+  "clearance_violations": 0,
+  "phase_balance": 0.03,
+  "placements": [
+    {
+      "breaker_id": "L1",
+      "phase": "A",
+      "position": "L01"
+    }
+  ]
+}

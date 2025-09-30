@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "name": "estimate_rag_bundle",
+    "version": "v1.0.0",
+    "date": "2025-08-25"
+  },
+  "sources": {
+    "breakers_rules": {
+      "meta": {
+        "doc": "차단기 형명/선택 기준",
+        "version": "v1.00",
+        "date": "2025-08-25"
+      },
+      "frame_map": {
+        "3": "30AF",
+        "5": "50AF",
+        "6": "60AF",
+        "10": "100AF",
+        "20": "225AF",
+        "40": "400AF",
+        "60": "600AF",
+        "80": "800AF"
+      },
+      "poles_map": {
+        "2": "2P",
+        "3": "3P",
+        "4": "4P"
+      },
+      "brands": {
+        "SANGDO": {
+          "types": {
+            "E": "경제형",
+            "S": "표준형"
+          },
+          "families": {
+            "MCCB": {
+              "pattern": "SB{type}-{frame}{poles}",
+              "examples": [
+                "SBS-54 = 상도 MCCB 표준형 50AF 4P",
+                "SBE-103 = 상도 MCCB 경제형 100AF 3P"
+              ]
+            },
+            "ELB": {
+              "pattern": "SE{type}-{frame}{poles}",
+              "examples": [
+                "SEE-104 = 상도 ELB 경제형 100AF 4P",
+                "SES-52 = 상도 ELB 표준형 50AF 2P"
+              ]
+            },
+            "COMPACT": {
+              "pattern": "S{B|E}C-{frame}{poles}",
+              "note": "SBC= MCCB Compact, SEC= ELB Compact"
+            }
+          }
+        },
+        "LS": {
+          "types": {
+            "N": "경제형",
+            "S": "표준형"
+          },
+          "families": {
+            "MCCB": {
+              "pattern": "AB{type}-{frame}{poles}",
+              "examples": [
+                "ABN-54 = LS MCCB 경제형 50AF 4P",
+                "ABS-53 = LS MCCB 표준형 50AF 3P"
+              ]
+            },
+            "ELB": {
+              "pattern": "EB{type}-{frame}{poles}",
+              "examples": [
+                "EBS-203 = LS ELB 표준형 225AF 3P"
+              ]
+            },
+            "FB_COMPACT": {
+              "pattern": "{A|E}B{S|N}{frame}{poles}FB",
+              "note": "ABS52FB / EBS53FB"
+            }
+          }
+        }
+      }
+    },
+    "breakers_guide": {
+      "meta": {
+        "doc": "견적시 차단기 선택 가이드",
+        "version": "v1.00",
+        "date": "2025-08-25"
+      },
+      "guide": [
+        "특별 요청 없으면 경제형 사용(부재 시 표준형 대체).",
+        "누전 2P 20A/30A: 소형 사용(상도 SIE-32, LS 32GRHS).",
+        "배선용 2P 20A/30A: 소형 사용(상도 SIB-32, LS BS32).",
+        "2P 20/30A를 50AF로 요구하면 컴팩트/FB 사용.",
+        "SPD용 MCCB 4P 40A 주변 치수 표기.",
+        "단가표는 모델별 정격A·차단용량(kA)와 매칭."
+      ]
+    },
+    "enclosure_rules": {
+      "meta": {
+        "doc": "외함 크기 산출 공식",
+        "version": "v1.00",
+        "date": "2025-08-25"
+      },
+      "dimensions": {
+        "notation": "W*H*D",
+        "inner_panel_gap_mm": 100,
+        "inner_panel_gap_exceptions": [
+          {
+            "material": "STEEL 1.0T",
+            "type_hint": "HB(기성함)",
+            "gap_mm": 50
+          }
+        ]
+      },
+      "enclosure_types": [
+        "옥내노출",
+        "옥외노출",
+        "옥내자립",
+        "옥외자립",
+        "전주부착형",
+        "FRP함",
+        "하이박스"
+      ],
+      "base": {
+        "applies_to": [
+          "옥내자립",
+          "옥외자립",
+          "FRP함(기본 옥외자립)"
+        ],
+        "size_rule": {
+          "W": "=외함 W",
+          "H_mm_default": 200,
+          "D": "=외함 D"
+        },
+        "price_formula": "((W*H)/90000)*32000"
+      },
+      "pole_mount": {
+        "requirement": "전주부착형은 반드시 옥외함",
+        "bracket_weld_cost_addon": 20000
+      },
+      "A_top": {
+        "A1_by_main_AF": [
+          {
+            "AF_range": "20~60A",
+            "A1_mm": 130
+          },
+          {
+            "AF_range": "75~100A",
+            "A1_mm": 170
+          }
+        ],
+        "A2_mm": 130
+      },
+      "B_gap_between_main_and_first_row": {
+        "value_mm": 30
+      },
+      "C_branch_total_height": {
+        "pairing_rule": "R+S+T+N 통일",
+        "tables_mm": {
+          "2P": [
+            {
+              "AF": "30AF",
+              "mm": 40
+            },
+            {
+              "AF": "50AF 컴팩트/FB",
+              "mm": 50
+            },
+            {
+              "AF": "60AF",
+              "mm": 50
+            },
+            {
+              "AF": "100AF",
+              "mm": 50
+            },
+            {
+              "AF": "200~250AF",
+              "mm": 105
+            },
+            {
+              "AF": "400AF",
+              "mm": 140
+            },
+            {
+              "AF": "600~800AF",
+              "mm": 210
+            }
+          ],
+          "3P": [
+            {
+              "AF": "50AF",
+              "mm": 75
+            },
+            {
+              "AF": "100AF",
+              "mm": 75
+            },
+            {
+              "AF": "125AF",
+              "mm": 90
+            },
+            {
+              "AF": "200~250AF",
+              "mm": 105
+            },
+            {
+              "AF": "400AF",
+              "mm": 140
+            },
+            {
+              "AF": "600~800AF",
+              "mm": 210
+            }
+          ],
+          "4P": [
+            {
+              "AF": "50AF",
+              "mm": 100
+            },
+            {
+              "AF": "60AF",
+              "mm": 100
+            },
+            {
+              "AF": "100AF",
+              "mm": 100
+            },
+            {
+              "AF": "125AF",
+              "mm": 120
+            },
+            {
+              "AF": "200~250AF",
+              "mm": 140
+            },
+            {
+              "AF": "400AF",
+              "mm": 185
+            },
+            {
+              "AF": "600~800AF",
+              "mm": 280
+            }
+          ]
+        },
+        "small_2P_note": "2P 15~30A 소형은 마주보기 40mm"
+      },
+      "D_bottom_space": [
+        {
+          "main_amp_range": "20~225A",
+          "mm": 150
+        },
+        {
+          "main_amp_range": "300~400A",
+          "mm": 200
+        },
+        {
+          "main_amp_range": "500A",
+          "mm": 250
+        }
+      ],
+      "E_accessory_allowance": {
+        "recommended_ratio": "20~30%",
+        "duct_mm": 40
+      },
+      "H_formula": "H = A + B + C + D + E",
+      "W_D_rule": "W, D는 기존 공식을 따른다"
+    },
+    "accessories": {
+      "meta": {
+        "doc": "부속자재 규격/배치/견적 규칙 (권위본)",
+        "version": "v1.0.0",
+        "date": "2025-08-25"
+      },
+      "categories": [
+        {
+          "name": "마그네트",
+          "size_table_mm": [
+            {
+              "range": "MC9~MC22",
+              "w": 46,
+              "h": 75
+            },
+            {
+              "range": "MC32~MC40",
+              "w": 69,
+              "h": 83
+            },
+            {
+              "range": "MC50~MC65",
+              "w": 79,
+              "h": 106
+            },
+            {
+              "range": "MC75~MC100",
+              "w": 94,
+              "h": 140
+            }
+          ],
+          "bom_rules": {
+            "mandatory": [
+              {
+                "item": "FUSEHOLDER",
+                "w_mm": 30
+              },
+              {
+                "item": "TERMINAL BLOCK",
+                "h_mm": 50
+              },
+              {
+                "item": "PVC DUCT",
+                "w_mm": 40
+              },
+              {
+                "item": "CABLE/WIRE"
+              }
+            ],
+            "conditional": [
+              {
+                "if": "timer_present",
+                "add": [
+                  {
+                    "item": "PBL",
+                    "variant": "ON/OFF/SS",
+                    "qty": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "labor": {
+            "per_unit_krw": 20000
+          }
+        },
+        {
+          "name": "24H 타이머",
+          "sizes_mm": {
+            "w": 65,
+            "h": 100
+          }
+        },
+        {
+          "name": "일몰일출 타이머",
+          "sizes_mm": {
+            "w": 65,
+            "h": 102
+          },
+          "amp": "20~50A(주로 20A)"
+        },
+        {
+          "name": "V/A-METER",
+          "mounting": {
+            "door": {
+              "hole": "타공",
+              "with": "캠스위치(RSTN)"
+            },
+            "internal_wiring": "메인 우측 빈공간 → 하부 추가공간 불필요"
+          }
+        },
+        {
+          "name": "계량기",
+          "standard_sizes_mm": {
+            "3상": {
+              "w": 130,
+              "h": 130
+            },
+            "단상": {
+              "w": 130,
+              "h": 80
+            },
+            "CT계량기": {
+              "w": 130,
+              "h": 130,
+              "condition": ">120A 시 CT"
+            }
+          },
+          "mounting_methods": [
+            {
+              "method": "옆 취부",
+              "impact": {
+                "W": "increase"
+              }
+            },
+            {
+              "method": "하부 취부",
+              "impact": {
+                "W": "keep_or_plus_100",
+                "H": "increase"
+              }
+            }
+          ]
+        },
+        {
+          "name": "콘덴서",
+          "status": "TBD"
+        },
+        {
+          "name": "EOCR",
+          "status": "TBD"
+        }
+      ],
+      "layout_rules": {
+        "pvc_duct": {
+          "width_mm": 40
+        },
+        "effective_inner_panel_width_reduction": {
+          "by_duct_mm": 100,
+          "side_clearance_mm_each": 30,
+          "total_effective_reduction_mm": 160
+        }
+      },
+      "estimation_rules": {
+        "labor": {
+          "magnet_per_unit_krw": 20000,
+          "panel_base_labor_krw": null
+        },
+        "meter_rules": {
+          "single_meter_no_change_if_side_space": true,
+          "bottom_mount_slot_h_mm": 200,
+          "bottom_mount_column_w_mm": 130,
+          "max_recommended_columns": 3
+        }
+      }
+    },
+    "costing": {
+      "meta": {
+        "doc": "인건비 및 기타사항 단가",
+        "version": "v1.0.0",
+        "date": "2025-08-25"
+      },
+      "ET": {
+        "rules": [
+          {
+            "af_range": "50~250AF",
+            "base_krw": 4500,
+            "add_per_12_branches": true
+          },
+          {
+            "af_range": "400AF",
+            "base_krw": 12000,
+            "add_per_12_branches": true
+          },
+          {
+            "af_range": "600~800AF",
+            "base_krw": 18000,
+            "add_per_12_branches": true
+          }
+        ]
+      },
+      "NT": {
+        "unit_price_krw": 3000,
+        "qty": 1
+      },
+      "NP_CARD_HOLDER": {
+        "quantity_formula": "분기총수량"
+      },
+      "NP_3T_40_200": {
+        "qty": 1,
+        "unit_price_krw": 4000
+      },
+      "COATING": {
+        "rules": [
+          {
+            "af_range": "50~250AF",
+            "unit_price_krw": 5000
+          },
+          {
+            "af_range": "400~800AF",
+            "unit_price_krw": 10000
+          }
+        ]
+      },
+      "P_COVER": {
+        "steel_formula": "((W*H)/90000)*12000"
+      },
+      "ELB_SUPPORT": {
+        "models": [
+          "SIE-32",
+          "SIB-32",
+          "32GRHS",
+          "BS32"
+        ],
+        "unit_price_krw": 500,
+        "quantity_formula": "해당 모델 총수량"
+      },
+      "INSULATOR": {
+        "per_main_qty": 4,
+        "rules": [
+          {
+            "af_range": "50~250AF",
+            "unit_price_per_piece_krw": 1100
+          },
+          {
+            "af_range": "400~800AF",
+            "unit_price_per_piece_krw": 4400
+          }
+        ]
+      },
+      "CONSUMABLES": {
+        "base_WH": [
+          600,
+          700
+        ],
+        "base_krw": 7000,
+        "per_100mm_add_krw": 1000,
+        "per_accessory_add_krw": 12000,
+        "cap_krw": 42000
+      },
+      "ASSEMBLY_CHARGE": {
+        "tiers": [
+          {
+            "af_range": "50~100AF",
+            "base_WH": [
+              600,
+              700
+            ],
+            "base_krw": 50000,
+            "per_100H_add_krw": 15000,
+            "exception_increment_krw": 10000
+          },
+          {
+            "af_range": "125~250AF",
+            "base_WH": [
+              700,
+              800
+            ],
+            "base_krw": 60000,
+            "per_100H_add_krw": 15000,
+            "exception_increment_krw": 10000
+          },
+          {
+            "af_range": "400AF",
+            "base_WH": [
+              800,
+              1200
+            ],
+            "base_krw": 130000,
+            "per_100H_add_krw": 20000,
+            "exception_increment_krw": 15000
+          },
+          {
+            "af_range": "600~800AF",
+            "base_WH": [
+              900,
+              1600
+            ],
+            "base_krw": 250000,
+            "per_100H_add_krw": 40000,
+            "exception_increment_krw": 15000
+          }
+        ]
+      }
+    }
+  },
+  "policies": {
+    "h_strategy": "A+B+C+D+E",
+    "meter_bottom_slot": {
+      "h_mm": 200,
+      "w_per_column_mm": 130,
+      "single_meter_no_change_if_side_space": true
+    },
+    "magnet_labor_per_unit_krw": 20000,
+    "accessory_share": {
+      "magnet": 0.6
+    },
+    "consumables_cap_krw": 42000
+  }
+}

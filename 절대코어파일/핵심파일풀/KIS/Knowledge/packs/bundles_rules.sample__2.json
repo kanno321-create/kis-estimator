@@ -1,0 +1,96 @@
+{
+  "rules": [
+    {
+      "id": "BND_MAGNET_BASE",
+      "if": {
+        "code_prefix": [
+          "MAGNET_"
+        ]
+      },
+      "add": [
+        {
+          "code": "FUSE_HOLDER",
+          "name": "Fuse holder",
+          "qty": 1,
+          "unit": "EA",
+          "category": "accessory"
+        },
+        {
+          "code": "TERM_BLOCK",
+          "name": "Terminal Block 600V",
+          "qty": 3,
+          "unit": "EA",
+          "category": "accessory"
+        },
+        {
+          "code": "PVC_DUCT",
+          "name": "PVC Duct",
+          "qty": 2,
+          "unit": "EA",
+          "category": "duct"
+        },
+        {
+          "code": "WIRE_SET",
+          "name": "Cable/Wire set",
+          "qty": 1,
+          "unit": "SET",
+          "category": "cable"
+        },
+        {
+          "labor_add": 20000
+        }
+      ]
+    },
+    {
+      "id": "BND_TIMER_EFFECT",
+      "if": {
+        "code_prefix": [
+          "TIMER_"
+        ]
+      },
+      "add": [
+        {
+          "code": "PBL_ONOFF",
+          "name": "Push button lamp ON/OFF",
+          "qty": 1,
+          "unit": "EA",
+          "category": "accessory"
+        }
+      ]
+    },
+    {
+      "id": "BND_SPD_BASE",
+      "if": {
+        "code_prefix": [
+          "SPD_"
+        ]
+      },
+      "add": [
+        {
+          "code": "WIRE_SET",
+          "name": "Cable/Wire set",
+          "qty": 1,
+          "unit": "SET",
+          "category": "cable"
+        }
+      ]
+    },
+    {
+      "id": "BND_METER_3PH",
+      "if": {
+        "code_prefix": [
+          "METER_3PH"
+        ]
+      },
+      "add": [
+        {
+          "code": "WIRE_SET",
+          "name": "Cable/Wire set",
+          "qty": 1,
+          "unit": "SET",
+          "category": "cable"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "target": "breaker_placement",
+  "timestamp": "2025-09-19T01:31:13.266653",
+  "summary": {
+    "phase_imbalance_pct": 3.9,
+    "clearances_ok": true,
+    "thermal_ok": true,
+    "total_breakers": 12
+  }
+}

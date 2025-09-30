@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(주)한국산업 - AI 견적 시스템</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --color-brand: #10a37f;
+            --color-brand-strong: #0e8f71;
+            --color-bg: #f7f7f8;
+            --color-surface: #ffffff;
+            --color-surface-2: #f3f2f1;
+            --color-border: #e1dfdd;
+            --color-text: #323130;
+            --color-text-strong: #201f1e;
+            --color-text-subtle: #605e5c;
+            --color-error: #d13438;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        /* Typography */
+        .h2-20 { font-size: 20px; font-weight: 600; line-height: 1.2; }
+        .body-16 { font-size: 16px; line-height: 1.5; }
+        .body-14 { font-size: 14px; line-height: 1.5; }
+        .caption-12 { font-size: 12px; line-height: 1.3; }
+
+        /* Layout */
+        .app-container {
+            height: 100vh;
+            display: flex;
+            background: var(--color-bg);
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100%;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s ease-out;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text-strong);
+        }
+
+        .sidebar.collapsed .sidebar-title {
+            display: none;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 5px;
+        }
+
+        .sidebar-button {
+            width: calc(100% - 24px);
+            margin: 0 12px 16px;
+            padding: 10px 16px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--color-brand);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar.collapsed .sidebar-button {
+            width: 56px;
+            margin: 0 12px 16px;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .sidebar.collapsed .sidebar-button-text {
+            display: none;
+        }
+
+        .sidebar-button:hover {
+            background: var(--color-brand-strong);
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-section-title {
+            padding: 0 16px 8px;
+            font-size: 15px;
+            color: var(--color-text-subtle);
+        }
+
+        .sidebar.collapsed .sidebar-section-title {
+            display: none;
+        }
+
+        .sidebar-nav-item {
+            position: relative;
+            width: 100%;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 24px 0 24px;
+            border: none;
+            background: none;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .sidebar.collapsed .sidebar-nav-item {
+            padding: 0 12px;
+            justify-content: center;
+        }
+
+        .sidebar-nav-item:hover {
+            background: var(--color-surface-2);
+        }
+
+        .sidebar-nav-item.active {
+            background: var(--color-surface-2);
+        }
+
+        .sidebar-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 24px;
+            background: var(--color-brand);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .sidebar.collapsed .sidebar-nav-item-text {
+            display: none;
+        }
+
+        .sidebar-chat-item {
+            width: 100%;
+            padding: 8px 16px 8px 28px;
+            border: none;
+            background: none;
+            color: var(--color-text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.15s ease;
+        }
+
+        .sidebar.collapsed .sidebar-chat-item {
+            display: none;
+        }
+
+        .sidebar-chat-item:hover {
+            background: var(--color-surface-2);
+        }
+
+        .sidebar-account {
+            padding: 12px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .sidebar.collapsed .sidebar-account-info {
+            display: none;
+        }
+
+        .account-avatar {
+            width: 24px;
+            height: 24px;
+            background: var(--color-brand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 50px;
+            line-height: 1.2;
+            font-weight: 600;
+            color: var(--color-text-strong);
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--color-text-subtle);
+            margin-bottom: 32px;
+        }
+
+        .hero-input-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 16px;
+            color: var(--color-text);
+        }
+
+        .hero-input::placeholder {
+            color: var(--color-text-subtle);
+        }
+
+        .hero-send-button {
+            padding: 8px;
+            border: none;
+            border-radius: var(--radius-md);
+            background: var(--color-brand);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .hero-send-button:hover {
+            background: var(--color-brand-strong);
+        }
+
+        .prompt-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .prompt-chip {
+            padding: 8px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .prompt-chip:hover {
+            border-color: var(--color-brand);
+            background: var(--color-brand);
+            color: white;
+        }
+
+        /* Chat View */
+        .chat-view {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-surface);
+        }
+
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-surface);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .chat-messages {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .date-divider {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--color-text-subtle);
+            font-size: 14px;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: var(--radius-lg);
+            line-height: 1.5;
+        }
+
+        .message.user .message-content {
+            background: var(--color-brand);
+            color: white;
+        }
+
+        .message.ai .message-content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .message.ai .message-avatar {
+            background: var(--color-brand);
+            color: white;
+        }
+
+        .message.user .message-avatar {
+            background: var(--color-surface-2);
+            color: var(--color-text);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            max-width: 60px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-text-subtle);
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+
+        /* Quote System */
+        .quote-system {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-surface);
+        }
+
+        .quote-tabs {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quote-tab {
+            padding: 10px 16px;
+            border: 1px solid #d1d1d1;
+            border-bottom: none;
+            background: #f9f9f9;
+            cursor: pointer;
+            margin-right: 2px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px 4px 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .quote-tab.active {
+            background: white;
+            border-color: var(--color-brand);
+            color: var(--color-brand);
+        }
+
+        .quote-tab:hover:not(.active) {
+            background: #f0f0f0;
+        }
+
+        .tab-close {
+            margin-left: 8px;
+            cursor: pointer;
+            color: #999;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .tab-close:hover {
+            background: #e1dfdd;
+            color: #666;
+        }
+
+        .new-tab {
+            padding: 6px 10px;
+            background: var(--color-brand);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            box-shadow: 0 2px 6px rgba(16, 163, 127, 0.25);
+            transition: all 0.2s ease;
+            font-size: 13px;
+        }
+
+        .new-tab:hover {
+            background: var(--color-brand-strong);
+        }
+
+        .quote-content {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .quote-left-panel {
+            width: 500px;
+            padding: 20px;
+            overflow-y: auto;
+            background: white;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .quote-right-panel {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quote-section {
+            margin-bottom: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background: white;
+        }
+
+        .quote-section-header {
+            background: #f9f9f9;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--color-border);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quote-section-content {
+            padding: 16px;
+        }
+
+        .form-grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        .form-row-horizontal {
+            display: flex;
+            gap: 8px;
+            align-items: end;
+            margin-bottom: 12px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            color: var(--color-text-subtle);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select {
+            padding: 8px 12px;
+            border: 1px solid #d1d1d1;
+            border-radius: 2px;
+            font-size: 14px;
+            background: white;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--color-brand);
+        }
+
+        .toggle-container {
+            display: flex;
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 2px;
+            border: 1px solid #d1d1d1;
+        }
+
+        .toggle-option {
+            padding: 4px 12px;
+            border-radius: 18px;
+            background: transparent;
+            color: #666;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .toggle-option.active {
+            background: var(--color-brand);
+            color: white;
+        }
+
+        .oval-toggle {
+            padding: 8px 16px;
+            border: 2px solid #d1d1d1;
+            border-radius: 25px;
+            background: white;
+            color: #666;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+            min-width: 80px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        .oval-toggle.active {
+            background: var(--color-brand);
+            border-color: var(--color-brand);
+            color: white;
+        }
+
+        .oval-toggle.elb.active {
+            background: #d13438;
+            border-color: #d13438;
+            color: white;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border: 1px solid #d1d1d1;
+            border-radius: 2px;
+            background: white;
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #f3f2f1;
+        }
+
+        .btn-primary {
+            background: var(--color-brand);
+            color: white;
+            border-color: var(--color-brand);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-brand-strong);
+        }
+
+        .item-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background: white;
+        }
+
+        .item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f3f2f1;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item:hover {
+            background: #f9f9f9;
+        }
+
+        .item-list-empty {
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        .generate-estimate-section {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            background: #f9f9f9;
+        }
+
+        .generate-estimate-btn {
+            padding: 12px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            background: var(--color-brand);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(16, 163, 127, 0.3);
+        }
+
+        .generate-estimate-btn:hover {
+            background: var(--color-brand-strong);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(16, 163, 127, 0.4);
+        }
+
+        .center-generate-button {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-brand) 0%, #0E8F71 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow:
+                0 8px 32px rgba(16, 163, 127, 0.4),
+                inset 0 2px 8px rgba(255, 255, 255, 0.2),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: pulse-glow 3s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow:
+                    0 8px 32px rgba(16, 163, 127, 0.4),
+                    inset 0 2px 8px rgba(255, 255, 255, 0.2),
+                    inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow:
+                    0 12px 40px rgba(16, 163, 127, 0.5),
+                    inset 0 2px 8px rgba(255, 255, 255, 0.25),
+                    inset 0 -2px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        .center-generate-button:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 12px 40px rgba(16, 163, 127, 0.6),
+                inset 0 3px 12px rgba(255, 255, 255, 0.3),
+                inset 0 -3px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .estimate-table {
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background: #f9f9f9;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        td {
+            font-size: 14px;
+            color: var(--color-text);
+        }
+
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+
+        /* AI Chat */
+        .ai-chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: var(--color-brand);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(16, 163, 127, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .ai-chat-button:hover {
+            background: var(--color-brand-strong);
+            transform: scale(1.05) translateY(-1px);
+            box-shadow: 0 6px 20px rgba(16, 163, 127, 0.5);
+        }
+
+        .ai-chat-popup {
+            position: fixed;
+            width: 520px;
+            height: 650px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 999999;
+            min-width: 390px;
+            min-height: 520px;
+            border: 3px solid var(--color-brand);
+        }
+
+        .ai-chat-popup.visible {
+            display: flex;
+        }
+
+        .ai-chat-header {
+            background: var(--color-brand);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            user-select: none;
+        }
+
+        .ai-chat-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-chat-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .ai-chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .ai-message, .user-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .ai-message {
+            background: #f9f9f9;
+            color: var(--color-text);
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background: var(--color-brand);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .ai-chat-file-area {
+            border: 2px dashed #d1d1d1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ai-chat-file-area:hover,
+        .ai-chat-file-area.dragover {
+            border-color: var(--color-brand);
+            background: #f0f9f6;
+        }
+
+        .ai-chat-input-area {
+            padding: 15px 20px;
+            border-top: 1px solid var(--color-border);
+            background: white;
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .ai-chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            resize: none;
+            min-height: 40px;
+            max-height: 120px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .ai-send-button {
+            padding: 8px 16px;
+            background: var(--color-brand);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .ai-send-button:hover {
+            background: var(--color-brand-strong);
+        }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .popup-content {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            min-width: 400px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .popup-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .popup-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .popup-close:hover {
+            background: #f3f2f1;
+        }
+
+        .popup-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .popup-btn {
+            padding: 10px 20px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            background: white;
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .popup-btn:hover {
+            background: #f3f2f1;
+        }
+
+        .popup-btn.primary {
+            background: var(--color-brand);
+            color: white;
+            border-color: var(--color-brand);
+        }
+
+        .popup-btn.primary:hover {
+            background: var(--color-brand-strong);
+        }
+
+        /* Utility classes */
+        .hidden { display: none !important; }
+        .visible { display: block !important; }
+        .flex { display: flex; }
+        .flex-column { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .gap-2 { gap: 8px; }
+        .gap-3 { gap: 12px; }
+        .mb-4 { margin-bottom: 16px; }
+        .p-4 { padding: 16px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 80px;
+            }
+            .sidebar-title,
+            .sidebar-section-title,
+            .sidebar-nav-item-text,
+            .sidebar-account-info {
+                display: none;
+            }
+            .quote-left-panel {
+                width: 100%;
+            }
+            .quote-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <!-- Header -->
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">(주)한국산업</h2>
+                <button id="sidebarToggle" class="btn" style="border: none; background: none; padding: 4px;">
+                    <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="sidebar-content">
+                <!-- New Chat Button -->
+                <button id="newChatBtn" class="sidebar-button">
+                    <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
+                    <span class="sidebar-button-text">새 채팅</span>
+                </button>
+
+                <!-- Recent Chats -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">최근 대화</div>
+                    <button class="sidebar-chat-item">
+                        <i data-lucide="message-square" style="width: 16px; height: 16px;"></i>
+                        <span>프로젝트 일정 관리</span>
+                    </button>
+                    <button class="sidebar-chat-item">
+                        <i data-lucide="message-square" style="width: 16px; height: 16px;"></i>
+                        <span>견적서 작성 도움</span>
+                    </button>
+                    <button class="sidebar-chat-item">
+                        <i data-lucide="message-square" style="width: 16px; height: 16px;"></i>
+                        <span>ERP 시스템 질문</span>
+                    </button>
+                </div>
+
+                <!-- Navigation -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">업무</div>
+                    <button class="sidebar-nav-item active" data-view="hero">
+                        <i data-lucide="briefcase" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">AI매니저</span>
+                    </button>
+                    <button class="sidebar-nav-item" data-view="quote">
+                        <i data-lucide="receipt" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">견적</span>
+                    </button>
+                    <button class="sidebar-nav-item" data-view="erp">
+                        <i data-lucide="grid-3-x-3" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">ERP</span>
+                    </button>
+                    <button class="sidebar-nav-item">
+                        <i data-lucide="calendar" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">캘린더</span>
+                    </button>
+                    <button class="sidebar-nav-item">
+                        <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">이메일</span>
+                    </button>
+                    <button class="sidebar-nav-item">
+                        <i data-lucide="layers" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-nav-item-text">도면</span>
+                    </button>
+                </div>
+
+                <!-- New Project Section -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">새 프로젝트</div>
+                    <button class="sidebar-button" style="background: white; color: var(--color-text); border: 1px solid var(--color-border);">
+                        <i data-lucide="folder-plus" style="width: 20px; height: 20px;"></i>
+                        <span class="sidebar-button-text">새 프로젝트</span>
+                    </button>
+                    <button class="sidebar-chat-item">
+                        <i data-lucide="folder" style="width: 16px; height: 16px;"></i>
+                        <span>A사 신규 프로젝트</span>
+                    </button>
+                    <button class="sidebar-chat-item">
+                        <i data-lucide="folder" style="width: 16px; height: 16px;"></i>
+                        <span>B사 견적 관리</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Account Menu -->
+            <div class="sidebar-account">
+                <div class="account-avatar">내</div>
+                <div class="sidebar-account-info">
+                    <div style="font-size: 16px; line-height: 1.2; color: var(--color-text);">내 계정</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <div id="heroView" class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">(주)한국산업</h1>
+                    <p class="hero-subtitle">무엇을 도와드릴까요?</p>
+
+                    <div class="hero-input-container">
+                        <button style="background: none; border: none; padding: 8px;">
+                            <i data-lucide="plus" style="width: 20px; height: 20px; color: var(--color-text-subtle);"></i>
+                        </button>
+                        <input id="heroInput" class="hero-input" placeholder="메시지를 입력하세요…(Enter로 전송)" />
+                        <button id="heroSendBtn" class="hero-send-button">
+                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                        </button>
+                    </div>
+
+                    <div class="prompt-chips">
+                        <button class="prompt-chip">프로젝트 일정 관리</button>
+                        <button class="prompt-chip">견적서 작성 도움</button>
+                        <button class="prompt-chip">ERP 시스템 질문</button>
+                        <button class="prompt-chip">업무 자동화</button>
+                        <button class="prompt-chip">데이터 분석</button>
+                        <button class="prompt-chip">품질 관리</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat View -->
+            <div id="chatView" class="chat-view hidden">
+                <div class="chat-header">
+                    <h2 class="h2-20">AI 매니저</h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn">
+                            <i data-lucide="share-2" style="width: 16px; height: 16px; margin-right: 4px;"></i>
+                            공유
+                        </button>
+                        <button class="btn">
+                            <i data-lucide="file-text" style="width: 16px; height: 16px; margin-right: 4px;"></i>
+                            컨텐츠
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="date-divider">오늘 - 2025년 9월 25일</div>
+                        <div id="messagesList"></div>
+                        <div id="typingIndicator" class="message ai hidden">
+                            <div class="message-avatar">🤖</div>
+                            <div class="typing-indicator">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div style="padding: 24px; background: var(--color-bg);">
+                    <div style="max-width: 1000px; margin: 0 auto;">
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 16px; display: flex; align-items: end; gap: 12px;">
+                            <button style="background: none; border: none; padding: 8px;">
+                                <i data-lucide="plus" style="width: 20px; height: 20px; color: var(--color-text-subtle);"></i>
+                            </button>
+                            <textarea id="chatInput" placeholder="메시지를 입력하세요…(Enter로 전송)" style="flex: 1; background: transparent; border: none; outline: none; resize: none; font-family: inherit; font-size: 16px; color: var(--color-text); min-height: 24px; max-height: 96px;" rows="1"></textarea>
+                            <button id="chatSendBtn" class="hero-send-button">
+                                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote System -->
+            <div id="quoteView" class="quote-system hidden">
+                <!-- Tabs -->
+                <div class="quote-tabs">
+                    <div id="quoteTabs">
+                        <div class="quote-tab active" data-tab="1">
+                            견적서 1
+                            <span class="tab-close">×</span>
+                        </div>
+                    </div>
+                    <button id="addTabBtn" class="new-tab">+ 새 탭</button>
+                </div>
+
+                <!-- Content -->
+                <div class="quote-content">
+                    <!-- Left Panel -->
+                    <div class="quote-left-panel">
+                        <!-- 고객정보 -->
+                        <div class="quote-section">
+                            <div class="quote-section-header">
+                                <span>고객정보</span>
+                            </div>
+                            <div class="quote-section-content">
+                                <div class="form-grid-2x2">
+                                    <div class="form-row">
+                                        <label class="form-label">업체명</label>
+                                        <input type="text" class="form-input" id="companyName" placeholder="업체명을 입력하세요">
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label">연락처</label>
+                                        <input type="text" class="form-input" id="contact" placeholder="연락처를 입력하세요">
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label">이메일</label>
+                                        <input type="email" class="form-input" id="email" placeholder="이메일을 입력하세요">
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label">주소</label>
+                                        <input type="text" class="form-input" id="address" placeholder="주소를 입력하세요">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 외함정보 -->
+                        <div class="quote-section">
+                            <div class="quote-section-header">
+                                <span>외함정보</span>
+                                <div class="toggle-container">
+                                    <button class="toggle-option active" data-type="옥내">옥내</button>
+                                    <button class="toggle-option" data-type="옥외">옥외</button>
+                                </div>
+                            </div>
+                            <div class="quote-section-content">
+                                <div class="form-grid-2x2" style="grid-template-columns: 1fr 1fr;">
+                                    <div class="form-row">
+                                        <label class="form-label">함체타입</label>
+                                        <select class="form-select" id="boxType">
+                                            <option value="">선택하세요</option>
+                                            <option value="기성함">기성함</option>
+                                            <option value="제작함">제작함</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-label">재질</label>
+                                        <select class="form-select" id="material">
+                                            <option value="">선택하세요</option>
+                                            <option value="STEEL 1.6T">STEEL 1.6T</option>
+                                            <option value="STEEL 2.0T">STEEL 2.0T</option>
+                                            <option value="STS 1.5T">STS 1.5T</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label">특이사항</label>
+                                    <input type="text" class="form-input" id="specialRequest" placeholder="특이사항을 입력하세요">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 메인 차단기 -->
+                        <div class="quote-section">
+                            <div class="quote-section-header">
+                                <span>메인 차단기</span>
+                                <button id="breakerSettingsBtn" class="btn btn-primary">차단기 설정</button>
+                            </div>
+                            <div class="quote-section-content">
+                                <div style="display: flex; gap: 20px; align-items: start;">
+                                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                                        <button class="oval-toggle active" data-breaker="MCCB">MCCB</button>
+                                        <button class="oval-toggle elb" data-breaker="ELB">ELB</button>
+                                    </div>
+
+                                    <div style="flex: 1;">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                            <div class="form-row">
+                                                <label class="form-label">극수</label>
+                                                <select class="form-select" id="mainPoles">
+                                                    <option value="">선택</option>
+                                                    <option value="2P">2P</option>
+                                                    <option value="3P">3P</option>
+                                                    <option value="4P">4P</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-row">
+                                                <label class="form-label">용량</label>
+                                                <select class="form-select" id="mainCapacity">
+                                                    <option value="">선택</option>
+                                                    <option value="100A">100A</option>
+                                                    <option value="125A">125A</option>
+                                                    <option value="150A">150A</option>
+                                                    <option value="175A">175A</option>
+                                                    <option value="200A">200A</option>
+                                                    <option value="225A">225A</option>
+                                                    <option value="250A">250A</option>
+                                                    <option value="300A">300A</option>
+                                                    <option value="350A">350A</option>
+                                                    <option value="400A">400A</option>
+                                                    <option value="500A">500A</option>
+                                                    <option value="600A">600A</option>
+                                                    <option value="700A">700A</option>
+                                                    <option value="800A">800A</option>
+                                                    <option value="1000A">1000A</option>
+                                                    <option value="1200A">1200A</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 분기 차단기 -->
+                        <div class="quote-section">
+                            <div class="quote-section-header">
+                                <span>분기 차단기</span>
+                            </div>
+                            <div class="quote-section-content">
+                                <div class="form-row-horizontal">
+                                    <div style="width: 60px;">
+                                        <label class="form-label">종류</label>
+                                        <select class="form-select" id="branchType" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="MCCB">MCCB</option>
+                                            <option value="ELB">ELB</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 60px;">
+                                        <label class="form-label">극수</label>
+                                        <select class="form-select" id="branchPoles" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="2P">2P</option>
+                                            <option value="3P">3P</option>
+                                            <option value="4P">4P</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 60px;">
+                                        <label class="form-label">용량</label>
+                                        <select class="form-select" id="branchCapacity" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="15A">15A</option>
+                                            <option value="20A">20A</option>
+                                            <option value="30A">30A</option>
+                                            <option value="40A">40A</option>
+                                            <option value="50A">50A</option>
+                                            <option value="60A">60A</option>
+                                            <option value="75A">75A</option>
+                                            <option value="100A">100A</option>
+                                            <option value="125A">125A</option>
+                                            <option value="150A">150A</option>
+                                            <option value="175A">175A</option>
+                                            <option value="200A">200A</option>
+                                            <option value="225A">225A</option>
+                                            <option value="250A">250A</option>
+                                            <option value="300A">300A</option>
+                                            <option value="350A">350A</option>
+                                            <option value="400A">400A</option>
+                                            <option value="500A">500A</option>
+                                            <option value="600A">600A</option>
+                                            <option value="700A">700A</option>
+                                            <option value="800A">800A</option>
+                                            <option value="1000A">1000A</option>
+                                            <option value="1200A">1200A</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 50px;">
+                                        <label class="form-label">수량</label>
+                                        <input type="number" class="form-input" id="branchQuantity" value="1" min="1" max="10" style="width: 50px; font-size: 12px; padding: 6px 4px; text-align: center;">
+                                    </div>
+                                    <div style="width: 55px;">
+                                        <label class="form-label">&nbsp;</label>
+                                        <button id="addBranchBtn" class="btn btn-primary" style="width: 55px; height: 32px; font-size: 11px;">확인</button>
+                                    </div>
+                                </div>
+
+                                <div id="branchList" class="item-list">
+                                    <div class="item-list-empty">추가된 분기 차단기가 없습니다</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 부속자재 -->
+                        <div class="quote-section">
+                            <div class="quote-section-header">
+                                <span>부속자재</span>
+                            </div>
+                            <div class="quote-section-content">
+                                <!-- 마그네트 라인 -->
+                                <div class="form-row-horizontal" style="margin-bottom: 15px;">
+                                    <div style="width: 75px;">
+                                        <label class="form-label">마그네트</label>
+                                        <select class="form-select" id="magnetModel" style="width: 75px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="MC-9">MC-9</option>
+                                            <option value="MC-12">MC-12</option>
+                                            <option value="MC-18">MC-18</option>
+                                            <option value="MC-22">MC-22</option>
+                                            <option value="MC-32">MC-32</option>
+                                            <option value="MC-40">MC-40</option>
+                                            <option value="MC-50">MC-50</option>
+                                            <option value="MC-65">MC-65</option>
+                                            <option value="MC-75">MC-75</option>
+                                            <option value="MC-85">MC-85</option>
+                                            <option value="MC-100">MC-100</option>
+                                            <option value="MC-130">MC-130</option>
+                                            <option value="MC-150">MC-150</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 60px;">
+                                        <label class="form-label">타이머</label>
+                                        <select class="form-select" id="magnetTimer" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="YES">포함</option>
+                                            <option value="NO">제외</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 60px;">
+                                        <label class="form-label">PBL</label>
+                                        <select class="form-select" id="magnetPBL" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="YES">포함</option>
+                                            <option value="NO">제외</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 50px;">
+                                        <label class="form-label">수량</label>
+                                        <input type="number" class="form-input" id="magnetQuantity" value="1" min="1" max="10" style="width: 50px; font-size: 12px; padding: 6px 4px; text-align: center;">
+                                    </div>
+                                    <div style="width: 55px;">
+                                        <label class="form-label">&nbsp;</label>
+                                        <button id="addMagnetBtn" class="btn btn-primary" style="width: 55px; height: 32px; font-size: 11px;">확인</button>
+                                    </div>
+                                </div>
+
+                                <!-- 기타 부속자재 라인 -->
+                                <div class="form-row-horizontal">
+                                    <div style="width: 75px;">
+                                        <label class="form-label">부속자재</label>
+                                        <select class="form-select" id="accessoryCategory" style="width: 75px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                            <option value="meter">계량기</option>
+                                            <option value="3ct">3CT</option>
+                                            <option value="timer">타이머</option>
+                                            <option value="eocr">EOCR</option>
+                                            <option value="condenser">콘덴서</option>
+                                            <option value="etc">기타</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 75px;">
+                                        <label class="form-label">세부선택</label>
+                                        <select class="form-select" id="accessoryDetail" style="width: 75px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 60px;">
+                                        <label class="form-label">규격</label>
+                                        <select class="form-select" id="accessorySpec" style="width: 60px; font-size: 12px; padding: 6px 4px;">
+                                            <option value="">선택</option>
+                                        </select>
+                                    </div>
+                                    <div style="width: 50px;">
+                                        <label class="form-label">수량</label>
+                                        <input type="number" class="form-input" id="accessoryQuantity" value="1" min="1" max="10" style="width: 50px; font-size: 12px; padding: 6px 4px; text-align: center;">
+                                    </div>
+                                    <div style="width: 55px;">
+                                        <label class="form-label">&nbsp;</label>
+                                        <button id="addAccessoryBtn" class="btn btn-primary" style="width: 55px; height: 32px; font-size: 11px;">확인</button>
+                                    </div>
+                                </div>
+
+                                <div id="accessoryList" class="item-list">
+                                    <div class="item-list-empty">추가된 부속자재가 없습니다</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 견적 생성 버튼 -->
+                        <div class="generate-estimate-section">
+                            <button id="generateEstimateBtn" class="generate-estimate-btn">견적 생성</button>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel -->
+                    <div class="quote-right-panel">
+                        <!-- KAIZEN 프로젝트 저장 버튼 -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 20px;">
+                            <h3 style="margin: 0; font-size: 18px; font-weight: 600;">견적 결과</h3>
+                            <button id="saveProjectBtn" style="
+                                background: var(--color-brand);
+                                color: white;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: var(--radius-md);
+                                font-size: 14px;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.2s ease;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                            " onmouseover="this.style.background='var(--color-brand-strong)'" onmouseout="this.style.background='var(--color-brand)'">
+                                <i data-lucide="save" style="width: 16px; height: 16px;"></i>
+                                프로젝트 저장
+                            </button>
+                        </div>
+
+                        <div id="estimateEmpty" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; min-height: 400px;">
+                            <button class="center-generate-button" onclick="generateEstimate()">
+                                <div style="font-size: 32px; margin-bottom: 8px;">📋</div>
+                                <div style="font-size: 16px; font-weight: 600;">견적 생성</div>
+                            </button>
+                            <p style="margin-top: 24px; color: #666; text-align: center; font-size: 14px;">
+                                좌측에서 필요한 정보를 입력한 후<br />
+                                견적 생성 버튼을 클릭하세요
+                            </p>
+                        </div>
+
+                        <div id="estimateResult" class="hidden">
+                            <!-- 견적 헤더 -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #f9f9f9; border-radius: 4px; margin-bottom: 15px;">
+                                <div style="font-size: 16px; font-weight: 600; color: var(--color-text);">견적서</div>
+                                <div style="font-size: 16px; font-weight: 600; color: var(--color-brand);" id="totalAmount">총액: 2,450,000원</div>
+                            </div>
+
+                            <!-- 견적 테이블 -->
+                            <div class="estimate-table">
+                                <table id="estimateTable">
+                                    <thead>
+                                        <tr>
+                                            <th>항목</th>
+                                            <th class="text-center">수량</th>
+                                            <th class="text-right">단가</th>
+                                            <th class="text-right">금액</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 견적 항목들이 동적으로 추가됨 -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- 하단 버튼 -->
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button class="btn">PDF 다운로드</button>
+                                <button class="btn">Excel 다운로드</button>
+                                <button class="btn btn-primary">견적서 전송</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ERP View -->
+            <div id="erpView" class="hidden" style="padding: 24px; background: var(--color-surface); height: 100vh; overflow-y: auto;">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div style="margin-bottom: 24px;">
+                        <h2 style="font-size: 32px; font-weight: 600; color: var(--color-text-strong); margin-bottom: 8px;">ERP 시스템</h2>
+                        <p style="color: var(--color-text-subtle); font-size: 16px;">통합 기업 자원 관리 시스템</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px;">
+                        <div style="background: white; padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                                <div>
+                                    <p style="font-size: 14px; color: var(--color-text-subtle); margin-bottom: 4px;">총 매출</p>
+                                    <p style="font-size: 32px; font-weight: 600; color: var(--color-text-strong);">₩42억</p>
+                                </div>
+                                <div style="width: 48px; height: 48px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="trending-up" style="width: 24px; height: 24px; color: #16a34a;"></i>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #16a34a;">+12% 전월 대비</p>
+                        </div>
+
+                        <div style="background: white; padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                                <div>
+                                    <p style="font-size: 14px; color: var(--color-text-subtle); margin-bottom: 4px;">진행 프로젝트</p>
+                                    <p style="font-size: 32px; font-weight: 600; color: var(--color-text-strong);">18개</p>
+                                </div>
+                                <div style="width: 48px; height: 48px; background: #dbeafe; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="folder" style="width: 24px; height: 24px; color: #2563eb;"></i>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #2563eb;">+3개 신규</p>
+                        </div>
+
+                        <div style="background: white; padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                                <div>
+                                    <p style="font-size: 14px; color: var(--color-text-subtle); margin-bottom: 4px;">대기 견적</p>
+                                    <p style="font-size: 32px; font-weight: 600; color: var(--color-text-strong);">7개</p>
+                                </div>
+                                <div style="width: 48px; height: 48px; background: #fed7aa; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="file-text" style="width: 24px; height: 24px; color: #ea580c;"></i>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #ea580c;">검토 필요</p>
+                        </div>
+
+                        <div style="background: white; padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                                <div>
+                                    <p style="font-size: 14px; color: var(--color-text-subtle); margin-bottom: 4px;">팀 구성원</p>
+                                    <p style="font-size: 32px; font-weight: 600; color: var(--color-text-strong);">24명</p>
+                                </div>
+                                <div style="width: 48px; height: 48px; background: #f3e8ff; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="users" style="width: 24px; height: 24px; color: #9333ea;"></i>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #9333ea;">활성 사용자</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Button -->
+    <button id="aiChatBtn" class="ai-chat-button">🤖</button>
+
+    <!-- AI Chat Popup -->
+    <div id="aiChatPopup" class="ai-chat-popup" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
+        <div class="ai-chat-header" id="aiChatHeader">
+            <div class="ai-chat-title">AI 견적 도우미</div>
+            <button class="ai-chat-close" id="aiChatClose">×</button>
+        </div>
+
+        <div class="ai-chat-body">
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-message">
+                    안녕하세요! 도면이나 자료를 업로드하시면 자동으로 견적을 생성해드립니다. 견적 관련 궁금한 것이 있으시면 언제든 물어보세요.
+                </div>
+            </div>
+
+            <div class="ai-chat-file-area" id="aiFileArea">
+                <div>📁 도면이나 자료를 업로드하세요</div>
+                <input type="file" id="aiFileInput" style="display: none;" multiple accept=".pdf,.jpg,.jpeg,.png,.dwg">
+            </div>
+
+            <div id="aiFileList" class="hidden"></div>
+        </div>
+
+        <div class="ai-chat-input-area">
+            <textarea id="aiChatInput" class="ai-chat-input" placeholder="견적 관련 질문을 입력하세요..."></textarea>
+            <button id="aiSendBtn" class="ai-send-button">전송</button>
+        </div>
+    </div>
+
+    <!-- Breaker Settings Popup -->
+    <div id="breakerSettingsPopup" class="popup-overlay hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-title">차단기 설정</div>
+                <button class="popup-close" id="closeBreakerSettings">×</button>
+            </div>
+
+            <div>
+                <p>차단기 브랜드별 세부 설정을 할 수 있습니다.</p>
+                <div class="form-row">
+                    <label class="form-label">메인 차단기 브랜드</label>
+                    <select class="form-select" id="mainBreakerBrand">
+                        <option value="">선택하세요</option>
+                        <option value="상도차단기">상도차단기</option>
+                        <option value="LS산전">LS산전</option>
+                        <option value="대륙차단기">대륙차단기</option>
+                        <option value="비츠로">비츠로</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">분기 차단기 기본 브랜드</label>
+                    <select class="form-select">
+                        <option value="">선택하세요</option>
+                        <option value="상도차단기">상도차단기</option>
+                        <option value="LS산전">LS산전</option>
+                        <option value="대륙차단기">대륙차단기</option>
+                        <option value="비츠로">비츠로</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label class="form-label">부속자재 기본 브랜드</label>
+                    <select class="form-select">
+                        <option value="">선택하세요</option>
+                        <option value="한국산업">한국산업</option>
+                        <option value="삼성">삼성</option>
+                        <option value="LG">LG</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button class="popup-btn" id="cancelBreakerSettings">취소</button>
+                <button class="popup-btn primary" id="saveBreakerSettings">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="public/js/kaizen-estimator.js"></script>
+    <script>
+        // Global State
+        let currentView = 'hero';
+        let sidebarCollapsed = false;
+        let messages = [];
+        let isTyping = false;
+        let aiChatVisible = false;
+
+        // Quote System State
+        let tabs = [{
+            id: 1,
+            title: '견적서 1',
+            customerInfo: { company: '', contact: '', email: '', address: '' },
+            enclosureInfo: { type: '옥내', boxType: '', material: '', request: '' },
+            mainBreakerInfo: { type: 'MCCB', poles: '', capacity: '', brand: '' },
+            branchBreakers: [],
+            accessories: [],
+            estimateVisible: false
+        }];
+        let activeTabId = 1;
+        let nextTabId = 2;
+        let branchBreakers = [];
+        let accessories = [];
+        let customerInfo = { company: '', contact: '', email: '', address: '' };
+        let enclosureInfo = { type: '옥내', boxType: '', material: '', request: '' };
+        let mainBreakerInfo = { type: 'MCCB', poles: '', capacity: '', brand: '' };
+        let estimateVisible = false;
+        let aiMessages = [];
+        let aiFiles = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            initializeEventListeners();
+            updateAccessoryOptions();
+        });
+
+        function initializeEventListeners() {
+            // Sidebar
+            document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
+            document.getElementById('newChatBtn').addEventListener('click', () => switchView('chat'));
+
+            // Navigation
+            document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const view = item.getAttribute('data-view');
+                    if (view) switchView(view);
+                    setActiveNavItem(item);
+                });
+            });
+
+            // Hero
+            document.getElementById('heroSendBtn').addEventListener('click', sendFromHero);
+            document.getElementById('heroInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendFromHero();
+            });
+
+            // Chat
+            document.getElementById('chatSendBtn').addEventListener('click', sendChatMessage);
+            document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendChatMessage();
+                }
+            });
+
+            // Prompt chips
+            document.querySelectorAll('.prompt-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    document.getElementById('heroInput').value = chip.textContent;
+                    sendFromHero();
+                });
+            });
+
+            // Quote System
+            setupQuoteSystemListeners();
+
+            // AI Chat
+            document.getElementById('aiChatBtn').addEventListener('click', toggleAiChat);
+            document.getElementById('aiChatClose').addEventListener('click', toggleAiChat);
+            document.getElementById('aiSendBtn').addEventListener('click', sendAiMessage);
+            document.getElementById('aiChatInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendAiMessage();
+                }
+            });
+            document.getElementById('aiFileArea').addEventListener('click', () => {
+                document.getElementById('aiFileInput').click();
+            });
+            document.getElementById('aiFileInput').addEventListener('change', handleAiFileSelect);
+        }
+
+        function setupQuoteSystemListeners() {
+            // Toggle buttons
+            document.querySelectorAll('.toggle-option').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parent = this.parentNode;
+                    parent.querySelectorAll('.toggle-option').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const type = this.getAttribute('data-type');
+                    if (type) {
+                        enclosureInfo.type = type;
+                    }
+                });
+            });
+
+            // Breaker toggles
+            document.querySelectorAll('.oval-toggle').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const breakerType = this.getAttribute('data-breaker');
+                    if (breakerType) {
+                        document.querySelectorAll('.oval-toggle').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        mainBreakerInfo.type = breakerType;
+                    }
+                });
+            });
+
+            // Form inputs
+            document.getElementById('companyName').addEventListener('input', (e) => customerInfo.company = e.target.value);
+            document.getElementById('contact').addEventListener('input', (e) => customerInfo.contact = e.target.value);
+            document.getElementById('email').addEventListener('input', (e) => customerInfo.email = e.target.value);
+            document.getElementById('address').addEventListener('input', (e) => customerInfo.address = e.target.value);
+
+            document.getElementById('boxType').addEventListener('change', (e) => enclosureInfo.boxType = e.target.value);
+            document.getElementById('material').addEventListener('change', (e) => enclosureInfo.material = e.target.value);
+            document.getElementById('specialRequest').addEventListener('input', (e) => enclosureInfo.request = e.target.value);
+
+            document.getElementById('mainPoles').addEventListener('change', (e) => mainBreakerInfo.poles = e.target.value);
+            document.getElementById('mainCapacity').addEventListener('change', (e) => mainBreakerInfo.capacity = e.target.value);
+
+            // Add buttons
+            document.getElementById('addBranchBtn').addEventListener('click', addBranchBreaker);
+            document.getElementById('addMagnetBtn').addEventListener('click', addMagnetItem);
+            document.getElementById('addAccessoryBtn').addEventListener('click', addAccessoryItem);
+            document.getElementById('generateEstimateBtn').addEventListener('click', generateEstimate);
+
+            // Accessory category change
+            document.getElementById('accessoryCategory').addEventListener('change', updateAccessoryOptions);
+            document.getElementById('accessoryDetail').addEventListener('change', updateAccessorySpecs);
+
+            // Tab system
+            document.getElementById('addTabBtn').addEventListener('click', addNewTab);
+
+            // Breaker settings
+            document.getElementById('breakerSettingsBtn').addEventListener('click', () => {
+                document.getElementById('breakerSettingsPopup').classList.remove('hidden');
+            });
+            document.getElementById('closeBreakerSettings').addEventListener('click', () => {
+                document.getElementById('breakerSettingsPopup').classList.add('hidden');
+            });
+            document.getElementById('cancelBreakerSettings').addEventListener('click', () => {
+                document.getElementById('breakerSettingsPopup').classList.add('hidden');
+            });
+            document.getElementById('saveBreakerSettings').addEventListener('click', () => {
+                alert('차단기 설정이 저장되었습니다.');
+                document.getElementById('breakerSettingsPopup').classList.add('hidden');
+            });
+        }
+
+        function toggleSidebar() {
+            sidebarCollapsed = !sidebarCollapsed;
+            const sidebar = document.getElementById('sidebar');
+            if (sidebarCollapsed) {
+                sidebar.classList.add('collapsed');
+            } else {
+                sidebar.classList.remove('collapsed');
+            }
+        }
+
+        function switchView(view) {
+            // Hide all views
+            document.querySelectorAll('#heroView, #chatView, #quoteView, #erpView').forEach(v => {
+                v.classList.add('hidden');
+            });
+
+            // Show target view
+            document.getElementById(view + 'View').classList.remove('hidden');
+            currentView = view;
+        }
+
+        function setActiveNavItem(activeItem) {
+            document.querySelectorAll('.sidebar-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            activeItem.classList.add('active');
+        }
+
+        function sendFromHero() {
+            const input = document.getElementById('heroInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            input.value = '';
+            switchView('chat');
+            addMessage('user', message);
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message || isTyping) return;
+
+            input.value = '';
+            addMessage('user', message);
+        }
+
+        function addMessage(type, content) {
+            const messageId = Date.now().toString();
+            const message = { id: messageId, type, content, timestamp: new Date().toLocaleTimeString() };
+            messages.push(message);
+
+            const messagesList = document.getElementById('messagesList');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
+            if (type === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="message-content">${content}</div>
+                    <div class="message-avatar">나</div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">${content}</div>
+                `;
+            }
+
+            messagesList.appendChild(messageDiv);
+
+            // Auto-scroll
+            document.querySelector('.chat-container').scrollTop = document.querySelector('.chat-container').scrollHeight;
+
+            if (type === 'user') {
+                // Show typing indicator
+                isTyping = true;
+                document.getElementById('typingIndicator').classList.remove('hidden');
+
+                // Simulate AI response
+                setTimeout(() => {
+                    isTyping = false;
+                    document.getElementById('typingIndicator').classList.add('hidden');
+
+                    let response = generateAIResponse(content);
+                    addMessage('ai', response);
+                }, 1200);
+            }
+        }
+
+        function generateAIResponse(userInput) {
+            const responses = {
+                '프로젝트': '프로젝트 관리에 대해 도움을 드리겠습니다. 효율적인 프로젝트 관리를 위해서는 명확한 목표 설정, 단계별 계획 수립, 그리고 정기적인 진행 상황 점검이 중요합니다.',
+                '견적': '견적서 작성을 시작하겠습니다. 정확한 원가 계산, 적정 이익률 반영, 경쟁사 가격 분석, 고객 예산 고려, 부가세 및 기타 비용 포함이 중요합니다.',
+                'ERP': 'ERP 시스템 사용법에 대해 안내드리겠습니다. 회계/재무 관리, 인사/급여 관리, 영업/고객 관리, 구매/재고 관리, 생산 관리 모듈이 통합적으로 연동됩니다.',
+                '업무': '효율적인 업무 관리를 위한 몇 가지 방법을 제안드립니다: 우선순위 매트릭스 활용, 시간 블록킹 기법 적용, 정기적인 업무 리뷰, 적절한 도구 활용, 팀 커뮤니케이션 강화가 중요합니다.'
+            };
+
+            for (const [keyword, response] of Object.entries(responses)) {
+                if (userInput.includes(keyword)) {
+                    return response;
+                }
+            }
+
+            return `"${userInput}"에 대해 문의해 주셨군요. (주)한국산업의 AI 어시스턴트로서 업무 관련 질문에 최선을 다해 답변드리겠습니다. 구체적으로 어떤 도움이 필요하신지 알려주시면 더 정확한 정보를 제공할 수 있습니다.`;
+        }
+
+        function updateAccessoryOptions() {
+            const category = document.getElementById('accessoryCategory').value;
+            const detailSelect = document.getElementById('accessoryDetail');
+            const specSelect = document.getElementById('accessorySpec');
+
+            detailSelect.innerHTML = '<option value="">선택</option>';
+            specSelect.innerHTML = '<option value="">선택</option>';
+
+            const options = {
+                'meter': {
+                    details: ['단상', '삼상'],
+                    specs: ['전자식', '기계식']
+                },
+                '3ct': {
+                    details: ['100/5A', '200/5A', '300/5A', '400/5A', '500/5A'],
+                    specs: ['부스바용', '환CT']
+                },
+                'timer': {
+                    details: ['일몰일출', '입력/출력'],
+                    specs: ['20A', '30A', '40A', '50A', '75A', '100A']
+                },
+                'eocr': {
+                    details: ['일반형', 'ZCT내장형'],
+                    specs: ['22', '32', '40', '60']
+                },
+                'condenser': {
+                    details: ['단상', '삼상'],
+                    specs: {
+                        '단상': [
+                            'uf: 10', 'uf: 15', 'uf: 20', 'uf: 30', 'uf: 40', 'uf: 50', 'uf: 75', 'uf: 100', 'uf: 150', 'uf: 175', 'uf: 200', 'uf: 250', 'uf: 300', 'uf: 400', 'uf: 500', 'uf: 1000',
+                            'KVA: 10', 'KVA: 15', 'KVA: 20', 'KVA: 25', 'KVA: 30', 'KVA: 40', 'KVA: 50'
+                        ],
+                        '삼상': [
+                            'uf: 10', 'uf: 15', 'uf: 20', 'uf: 30', 'uf: 40', 'uf: 50', 'uf: 75', 'uf: 100', 'uf: 200', 'uf: 250', 'uf: 300', 'uf: 400', 'uf: 500',
+                            'KVA: 10', 'KVA: 15', 'KVA: 20', 'KVA: 25', 'KVA: 30', 'KVA: 35', 'KVA: 40', 'KVA: 50', 'KVA: 60', 'KVA: 75', 'KVA: 100'
+                        ]
+                    }
+                },
+                'etc': {
+                    details: ['3구콘센트', '2구콘센트', '분전반소화기', 'TR', 'F/S', '수위센서', '단자커버', '단자피커버', '외함검침창'],
+                    specs: ['표준', '특수']
+                }
+            };
+
+            if (options[category]) {
+                options[category].details.forEach(detail => {
+                    const option = document.createElement('option');
+                    option.value = detail;
+                    option.textContent = detail;
+                    detailSelect.appendChild(option);
+                });
+
+                if (category !== 'condenser' && Array.isArray(options[category].specs)) {
+                    options[category].specs.forEach(spec => {
+                        const option = document.createElement('option');
+                        option.value = spec;
+                        option.textContent = spec;
+                        specSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        function updateAccessorySpecs() {
+            const category = document.getElementById('accessoryCategory').value;
+            const detail = document.getElementById('accessoryDetail').value;
+            const specSelect = document.getElementById('accessorySpec');
+
+            if (category === 'condenser' && detail) {
+                specSelect.innerHTML = '<option value="">선택</option>';
+
+                const condenserSpecs = {
+                    '단상': [
+                        'uf: 10', 'uf: 15', 'uf: 20', 'uf: 30', 'uf: 40', 'uf: 50', 'uf: 75', 'uf: 100', 'uf: 150', 'uf: 175', 'uf: 200', 'uf: 250', 'uf: 300', 'uf: 400', 'uf: 500', 'uf: 1000',
+                        'KVA: 10', 'KVA: 15', 'KVA: 20', 'KVA: 25', 'KVA: 30', 'KVA: 40', 'KVA: 50'
+                    ],
+                    '삼상': [
+                        'uf: 10', 'uf: 15', 'uf: 20', 'uf: 30', 'uf: 40', 'uf: 50', 'uf: 75', 'uf: 100', 'uf: 200', 'uf: 250', 'uf: 300', 'uf: 400', 'uf: 500',
+                        'KVA: 10', 'KVA: 15', 'KVA: 20', 'KVA: 25', 'KVA: 30', 'KVA: 35', 'KVA: 40', 'KVA: 50', 'KVA: 60', 'KVA: 75', 'KVA: 100'
+                    ]
+                };
+
+                if (condenserSpecs[detail]) {
+                    condenserSpecs[detail].forEach(spec => {
+                        const option = document.createElement('option');
+                        option.value = spec;
+                        option.textContent = spec;
+                        specSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        function addBranchBreaker() {
+            const type = document.getElementById('branchType').value;
+            const poles = document.getElementById('branchPoles').value;
+            const capacity = document.getElementById('branchCapacity').value;
+            const quantity = parseInt(document.getElementById('branchQuantity').value) || 1;
+
+            if (!type || !poles || !capacity) {
+                alert('모든 항목을 선택해주세요.');
+                return;
+            }
+
+            const newBreaker = { type, poles, capacity, quantity };
+            branchBreakers.push(newBreaker);
+
+            updateBranchList();
+
+            // Reset form
+            document.getElementById('branchType').value = '';
+            document.getElementById('branchPoles').value = '';
+            document.getElementById('branchCapacity').value = '';
+            document.getElementById('branchQuantity').value = '1';
+        }
+
+        function updateBranchList() {
+            const listElement = document.getElementById('branchList');
+
+            if (branchBreakers.length === 0) {
+                listElement.innerHTML = '<div class="item-list-empty">추가된 분기 차단기가 없습니다</div>';
+            } else {
+                listElement.innerHTML = branchBreakers.map((item, index) => `
+                    <div class="item">
+                        <span>${item.type} ${item.poles} ${item.capacity} (수량: ${item.quantity})</span>
+                        <button class="btn" onclick="removeBranchItem(${index})">삭제</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeBranchItem(index) {
+            branchBreakers.splice(index, 1);
+            updateBranchList();
+        }
+
+        function addMagnetItem() {
+            const model = document.getElementById('magnetModel').value;
+            const timer = document.getElementById('magnetTimer').value;
+            const pbl = document.getElementById('magnetPBL').value;
+            const quantity = parseInt(document.getElementById('magnetQuantity').value) || 1;
+
+            if (!model) {
+                alert('마그네트 모델을 선택하세요.');
+                return;
+            }
+
+            let specs = model;
+            if (timer === 'YES') specs += ' + 타이머';
+            if (pbl === 'YES') specs += ' + PBL';
+
+            const newAccessory = {
+                category: '마그네트',
+                detail: specs,
+                spec: '',
+                quantity: quantity,
+                fullName: `마그네트 | ${specs}`
+            };
+
+            accessories.push(newAccessory);
+            updateAccessoryList();
+
+            // Reset form
+            document.getElementById('magnetModel').value = '';
+            document.getElementById('magnetTimer').value = '';
+            document.getElementById('magnetPBL').value = '';
+            document.getElementById('magnetQuantity').value = '1';
+        }
+
+        function addAccessoryItem() {
+            const category = document.getElementById('accessoryCategory').value;
+            const detail = document.getElementById('accessoryDetail').value;
+            const spec = document.getElementById('accessorySpec').value;
+            const quantity = parseInt(document.getElementById('accessoryQuantity').value) || 1;
+
+            if (!category || !detail) {
+                alert('부속자재와 세부선택을 모두 선택하세요.');
+                return;
+            }
+
+            let itemName = category;
+            if (detail) itemName += ' - ' + detail;
+            if (spec) itemName += ' (' + spec + ')';
+
+            const newAccessory = {
+                category,
+                detail,
+                spec,
+                quantity,
+                fullName: itemName
+            };
+
+            accessories.push(newAccessory);
+            updateAccessoryList();
+
+            // Reset form
+            document.getElementById('accessoryCategory').value = '';
+            document.getElementById('accessoryDetail').innerHTML = '<option value="">선택</option>';
+            document.getElementById('accessorySpec').innerHTML = '<option value="">선택</option>';
+            document.getElementById('accessoryQuantity').value = '1';
+        }
+
+        function updateAccessoryList() {
+            const listElement = document.getElementById('accessoryList');
+
+            if (accessories.length === 0) {
+                listElement.innerHTML = '<div class="item-list-empty">추가된 부속자재가 없습니다</div>';
+            } else {
+                listElement.innerHTML = accessories.map((item, index) => `
+                    <div class="item">
+                        <span>${item.fullName} (수량: ${item.quantity})</span>
+                        <button class="btn" onclick="removeAccessoryItem(${index})">삭제</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeAccessoryItem(index) {
+            accessories.splice(index, 1);
+            updateAccessoryList();
+        }
+
+        function generateEstimate() {
+            document.getElementById('estimateEmpty').classList.add('hidden');
+            document.getElementById('estimateResult').classList.remove('hidden');
+
+            updateEstimateTable();
+            estimateVisible = true;
+        }
+
+        function updateEstimateTable() {
+            const tbody = document.querySelector('#estimateTable tbody');
+            let totalAmount = 0;
+            let rows = '';
+
+            // 외함
+            const enclosurePrice = 850000;
+            totalAmount += enclosurePrice;
+            rows += `
+                <tr>
+                    <td>외함 (${enclosureInfo.boxType || '기성함'} - ${enclosureInfo.material || 'STEEL 1.6T'})</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">${enclosurePrice.toLocaleString()}</td>
+                    <td class="text-right">${enclosurePrice.toLocaleString()}</td>
+                </tr>
+            `;
+
+            // 메인차단기
+            const mainBreakerPrice = 450000;
+            totalAmount += mainBreakerPrice;
+            rows += `
+                <tr>
+                    <td>메인차단기 (${mainBreakerInfo.type} ${mainBreakerInfo.poles} ${mainBreakerInfo.capacity})</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">${mainBreakerPrice.toLocaleString()}</td>
+                    <td class="text-right">${mainBreakerPrice.toLocaleString()}</td>
+                </tr>
+            `;
+
+            // 분기차단기
+            branchBreakers.forEach(item => {
+                const price = 75000 * item.quantity;
+                totalAmount += price;
+                rows += `
+                    <tr>
+                        <td>분기차단기 (${item.type} ${item.poles} ${item.capacity})</td>
+                        <td class="text-center">${item.quantity}</td>
+                        <td class="text-right">75,000</td>
+                        <td class="text-right">${price.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+
+            // 부속자재
+            accessories.forEach(item => {
+                const price = 125000 * item.quantity;
+                totalAmount += price;
+                rows += `
+                    <tr>
+                        <td>${item.fullName}</td>
+                        <td class="text-center">${item.quantity}</td>
+                        <td class="text-right">125,000</td>
+                        <td class="text-right">${price.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = rows;
+            document.getElementById('totalAmount').textContent = `총액: ${totalAmount.toLocaleString()}원`;
+        }
+
+        function addNewTab() {
+            const newTab = {
+                id: nextTabId,
+                title: `견적서 ${nextTabId}`,
+                customerInfo: { company: '', contact: '', email: '', address: '' },
+                enclosureInfo: { type: '옥내', boxType: '', material: '', request: '' },
+                mainBreakerInfo: { type: 'MCCB', poles: '', capacity: '', brand: '' },
+                branchBreakers: [],
+                accessories: [],
+                estimateVisible: false
+            };
+
+            tabs.push(newTab);
+            updateTabsUI();
+            switchTab(nextTabId);
+            nextTabId++;
+        }
+
+        function switchTab(tabId) {
+            activeTabId = tabId;
+            const tab = tabs.find(t => t.id === tabId);
+
+            if (tab) {
+                // Load tab data
+                customerInfo = {...tab.customerInfo};
+                enclosureInfo = {...tab.enclosureInfo};
+                mainBreakerInfo = {...tab.mainBreakerInfo};
+                branchBreakers = [...tab.branchBreakers];
+                accessories = [...tab.accessories];
+                estimateVisible = tab.estimateVisible;
+
+                updateFormData();
+                updateTabsUI();
+            }
+        }
+
+        function updateTabsUI() {
+            const tabsContainer = document.getElementById('quoteTabs');
+            tabsContainer.innerHTML = tabs.map(tab => `
+                <div class="quote-tab ${tab.id === activeTabId ? 'active' : ''}" onclick="switchTab(${tab.id})">
+                    ${tab.title}
+                    ${tabs.length > 1 ? `<span class="tab-close" onclick="event.stopPropagation(); closeTab(${tab.id})">×</span>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function closeTab(tabId) {
+            if (tabs.length === 1) return;
+
+            tabs = tabs.filter(tab => tab.id !== tabId);
+
+            if (tabId === activeTabId) {
+                switchTab(tabs[0].id);
+            } else {
+                updateTabsUI();
+            }
+        }
+
+        function updateFormData() {
+            // Customer info
+            document.getElementById('companyName').value = customerInfo.company;
+            document.getElementById('contact').value = customerInfo.contact;
+            document.getElementById('email').value = customerInfo.email;
+            document.getElementById('address').value = customerInfo.address;
+
+            // Enclosure info
+            document.getElementById('boxType').value = enclosureInfo.boxType;
+            document.getElementById('material').value = enclosureInfo.material;
+            document.getElementById('specialRequest').value = enclosureInfo.request;
+
+            // Main breaker
+            document.getElementById('mainPoles').value = mainBreakerInfo.poles;
+            document.getElementById('mainCapacity').value = mainBreakerInfo.capacity;
+
+            // Update lists
+            updateBranchList();
+            updateAccessoryList();
+
+            // Update estimate
+            if (estimateVisible) {
+                document.getElementById('estimateEmpty').classList.add('hidden');
+                document.getElementById('estimateResult').classList.remove('hidden');
+                updateEstimateTable();
+            } else {
+                document.getElementById('estimateEmpty').classList.remove('hidden');
+                document.getElementById('estimateResult').classList.add('hidden');
+            }
+        }
+
+        // AI Chat Functions
+        function toggleAiChat() {
+            aiChatVisible = !aiChatVisible;
+            const popup = document.getElementById('aiChatPopup');
+            if (aiChatVisible) {
+                popup.classList.add('visible');
+            } else {
+                popup.classList.remove('visible');
+            }
+        }
+
+        function sendAiMessage() {
+            const input = document.getElementById('aiChatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addAiMessage('user', message);
+            input.value = '';
+
+            setTimeout(() => {
+                addAiMessage('ai', '견적 관련 도움을 드리겠습니다. 구체적인 질문이 있으시면 알려주세요.');
+            }, 1000);
+        }
+
+        function addAiMessage(type, content) {
+            const messagesContainer = document.getElementById('aiChatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `${type}-message`;
+            messageDiv.textContent = content;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function handleAiFileSelect(e) {
+            const files = Array.from(e.target.files);
+            aiFiles = [...aiFiles, ...files];
+
+            if (files.length > 0) {
+                const fileList = document.getElementById('aiFileList');
+                fileList.classList.remove('hidden');
+                fileList.innerHTML = aiFiles.map((file, index) => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f9f9f9; border-radius: 4px; margin-bottom: 5px;">
+                        <span>${file.name}</span>
+                        <button onclick="removeAiFile(${index})">×</button>
+                    </div>
+                `).join('') + `
+                    <button onclick="analyzeFiles()" style="width: 100%; padding: 8px; background: var(--color-brand); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-bottom: 10px;">
+                        AI 분석 시작
+                    </button>
+                `;
+            }
+        }
+
+        function removeAiFile(index) {
+            aiFiles.splice(index, 1);
+            if (aiFiles.length === 0) {
+                document.getElementById('aiFileList').classList.add('hidden');
+            } else {
+                handleAiFileSelect({target: {files: []}});
+            }
+        }
+
+        function analyzeFiles() {
+            if (aiFiles.length === 0) {
+                alert('분석할 파일을 먼저 업로드하세요.');
+                return;
+            }
+
+            addAiMessage('ai', '📊 AI가 파일을 분석하고 있습니다...');
+
+            setTimeout(() => {
+                fillFormAutomatically();
+                addAiMessage('ai', '✅ 분석 완료! 도면을 분석하여 자동으로 견적 정보를 입력했습니다. 견적 생성 버튼을 클릭하면 최종 견적이 생성됩니다.');
+                aiFiles = [];
+                document.getElementById('aiFileList').classList.add('hidden');
+            }, 3000);
+        }
+
+        function fillFormAutomatically() {
+            // Auto-fill customer info
+            customerInfo.company = '㈜한국전기공업';
+            customerInfo.contact = '02-1234-5678';
+            customerInfo.email = 'contact@hkelectric.co.kr';
+            customerInfo.address = '서울시 강남구 테헤란로 123';
+
+            // Auto-fill enclosure info
+            enclosureInfo.boxType = '기성함';
+            enclosureInfo.material = 'STEEL 1.6T';
+
+            // Auto-fill main breaker
+            mainBreakerInfo.poles = '4P';
+            mainBreakerInfo.capacity = '200A';
+
+            updateFormData();
+            generateEstimate();
+        }
+    </script>
+</body>
+</html>

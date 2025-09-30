@@ -1,0 +1,213 @@
+openapi: 3.1.0
+info:
+  title: KIS Estimator API
+  version: 1.0.0
+  description: |
+    NABERAL KIS Estimator - Electrical Panel Estimation System
+    Contract-First + Evidence-Gated + SPEC KIT methodology
+
+    Quality Gates:
+    - Enclosure: fit_score >= 0.90
+    - Layout: phase_dev <= 0.03
+    - Format: formula_loss = 0
+    - Doc Lint: lint_errors = 0
+    - Regression: 20/20 PASS required
+
+servers:
+  - url: http://localhost:8000
+    description: Development server
+
+tags:
+  - name: estimate
+  - name: validate
+  - name: documents
+  - name: catalog
+
+paths:
+  /v1/estimate:
+    post:
+      operationId: createEstimate
+      tags: [estimate]
+      summary: Create new estimate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [customer, panels, currency]
+              properties:
+                customer:
+                  type: object
+                  required: [name]
+                  properties:
+                    name: {type: string}
+                    contact: {type: string}
+                    email: {type: string, format: email}
+                panels:
+                  type: array
+                  items:
+                    type: object
+                    required: [name, breakers]
+                    properties:
+                      name: {type: string}
+                      breakers:
+                        type: array
+                        items:
+                          type: object
+                          required: [type, poles, capacity, qty]
+                          properties:
+                            type: {type: string, enum: [main, branch, earth_leakage]}
+                            poles: {type: integer, enum: [1,2,3,4]}
+                            capacity: {type: string}
+                            qty: {type: integer, minimum: 1}
+                            brand: {type: string}
+                currency: {type: string, enum: [KRW, USD], default: KRW}
+                locale: {type: string, default: ko-KR}
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quoteId: {type: string, format: uuid}
+                  totals:
+                    type: object
+                    properties:
+                      total: {type: number}
+                      currency: {type: string}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /v1/estimate/{id}:
+    get:
+      operationId: getEstimate
+      tags: [estimate]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+
+  /v1/estimate/stream:
+    get:
+      operationId: streamEstimate
+      tags: [estimate]
+      summary: SSE stream
+      parameters:
+        - name: quoteId
+          in: query
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: SSE stream
+
+  /v1/validate:
+    post:
+      operationId: validateInput
+      tags: [validate]
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file: {type: string, format: binary}
+                text: {type: string}
+                ruleset: {type: string, enum: [tab, panel]}
+      responses:
+        '200':
+          description: Validated
+
+  /v1/documents:
+    get:
+      operationId: listDocuments
+      tags: [documents]
+      parameters:
+        - name: quoteId
+          in: query
+          required: true
+          schema: {type: string, format: uuid}
+        - name: kind
+          in: query
+          schema: {type: string, enum: [pdf, xlsx, svg, json]}
+      responses:
+        '200':
+          description: Document list
+
+  /v1/documents/export:
+    post:
+      operationId: exportDocuments
+      tags: [documents]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [quoteId, kinds]
+              properties:
+                quoteId: {type: string, format: uuid}
+                kinds:
+                  type: array
+                  items: {type: string, enum: [pdf, xlsx, svg]}
+      responses:
+        '202':
+          description: Accepted
+
+  /v1/catalog:
+    get:
+      operationId: listCatalog
+      tags: [catalog]
+      parameters:
+        - name: kind
+          in: query
+          schema: {type: string}
+        - name: q
+          in: query
+          schema: {type: string}
+      responses:
+        '200':
+          description: Catalog items
+
+  /v1/catalog/items:
+    post:
+      operationId: upsertCatalogItems
+      tags: [catalog]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+      responses:
+        '200':
+          description: Upserted
+
+components:
+  schemas:
+    Error:
+      type: object
+      required: [code, message, traceId, meta]
+      properties:
+        code: {type: string}
+        message: {type: string}
+        hint: {type: string, nullable: true}
+        traceId: {type: string, format: uuid}
+        meta:
+          type: object
+          required: [dedupKey]
+          properties:
+            dedupKey: {type: string}
